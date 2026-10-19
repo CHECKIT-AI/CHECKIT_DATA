@@ -1,0 +1,2779 @@
+{
+  "record_version": 1,
+  "timezone": "Asia/Seoul",
+  "scope": "근로기준법 단일 corpus의 검색 실험. 위험 판정·법적 적용·설명 생성 평가 아님.",
+  "corpus_manifest": {
+    "status": "READY",
+    "corpus_id": "labor_standards_v001",
+    "created_at": "2026-10-19T08:30:33.555891+00:00",
+    "source_file": "processed/labor_standards_v001/chunks.jsonl",
+    "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+    "collection_name": "law_articles",
+    "chunk_count": 131,
+    "distance_metric": "cosine",
+    "max_document_tokens": 838,
+    "model_name": "BAAI/bge-m3",
+    "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "max_seq_length": 8192,
+    "normalize_embeddings": true,
+    "packages": {
+      "chromadb": "1.5.9",
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.20.1"
+    }
+  },
+  "datasets": [
+    {
+      "dataset_id": "v001",
+      "path": "data/rag/evaluation/retrieval_dev_v001.jsonl",
+      "sha256": "5186918e34a6db499d9959320e6cae93f9b0cd1f856527b6b7df01ebad25332a",
+      "query_count": 12,
+      "topic_count": 6,
+      "counts_by_query_kind": {
+        "keyword": 6,
+        "natural": 6
+      },
+      "annotation_statuses": [
+        "DRAFT"
+      ],
+      "source_type": "synthetic, created for development",
+      "target": "one representative article candidate per query; not exhaustive relevance judgments or violation labels"
+    },
+    {
+      "dataset_id": "v002",
+      "path": "data/rag/evaluation/retrieval_dev_v002.jsonl",
+      "sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+      "query_count": 90,
+      "topic_count": 15,
+      "counts_by_query_kind": {
+        "keyword": 30,
+        "user_question": 30,
+        "contract_clause": 30
+      },
+      "annotation_statuses": [
+        "DRAFT"
+      ],
+      "source_type": "synthetic, created for development",
+      "target": "one representative article candidate per query; not exhaustive relevance judgments or violation labels"
+    }
+  ],
+  "experiments": [
+    {
+      "experiment_id": "E01",
+      "label": "최초 12개 BGE-M3 기준선",
+      "method": "dense",
+      "created_at_kst": "2026-10-19 17:53:00 KST",
+      "output_directory": "outputs/rag/baseline_bge_m3_20261019T085300101897Z",
+      "summary": {
+        "method": "bge_m3_dense",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 12,
+          "hit@1": 0.8333333333333334,
+          "recall@1": 0.8333333333333334,
+          "hit@3": 0.8333333333333334,
+          "recall@3": 0.8333333333333334,
+          "hit@5": 0.8333333333333334,
+          "recall@5": 0.8333333333333334,
+          "hit@10": 0.8333333333333334,
+          "recall@10": 0.8333333333333334,
+          "mrr@10": 0.8333333333333334,
+          "mean_query_ms": 70.7231494889129
+        },
+        "by_query_kind": {
+          "keyword": {
+            "query_count": 6,
+            "hit@1": 1.0,
+            "recall@1": 1.0,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 1.0,
+            "mean_query_ms": 62.99915999018898
+          },
+          "natural": {
+            "query_count": 6,
+            "hit@1": 0.6666666666666666,
+            "recall@1": 0.6666666666666666,
+            "hit@3": 0.6666666666666666,
+            "recall@3": 0.6666666666666666,
+            "hit@5": 0.6666666666666666,
+            "recall@5": 0.6666666666666666,
+            "hit@10": 0.6666666666666666,
+            "recall@10": 0.6666666666666666,
+            "mrr@10": 0.6666666666666666,
+            "mean_query_ms": 78.44713898763682
+          }
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T08:53:00.102120+00:00",
+        "dataset_name": "retrieval_dev_v001.jsonl",
+        "dataset_sha256": "5186918e34a6db499d9959320e6cae93f9b0cd1f856527b6b7df01ebad25332a",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm model: query encoding + top10 Chroma search; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "50c0367bd33242ab4e0d3d54b84fd6d9cff6afbc745dc9dfcbb9def2edefad4b",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1"
+        }
+      }
+    },
+    {
+      "experiment_id": "E02",
+      "label": "90개 확장 BGE-M3 기준선",
+      "method": "dense",
+      "created_at_kst": "2026-10-19 18:01:26 KST",
+      "output_directory": "outputs/rag/baseline_bge_m3_v002_20261019T090126318254Z",
+      "summary": {
+        "method": "bge_m3_dense",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7333333333333333,
+          "recall@1": 0.7333333333333333,
+          "hit@3": 0.9111111111111111,
+          "recall@3": 0.9111111111111111,
+          "hit@5": 0.9111111111111111,
+          "recall@5": 0.9111111111111111,
+          "hit@10": 0.9222222222222223,
+          "recall@10": 0.9222222222222223,
+          "mrr@10": 0.8141975308641974,
+          "mean_query_ms": 59.50176389758579
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6666666666666666,
+            "recall@1": 0.6666666666666666,
+            "hit@3": 0.8333333333333334,
+            "recall@3": 0.8333333333333334,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.8666666666666667,
+            "recall@10": 0.8666666666666667,
+            "mrr@10": 0.7425925925925926,
+            "mean_query_ms": 58.625018080541246
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.8333333333333334,
+            "recall@1": 0.8333333333333334,
+            "hit@3": 0.9666666666666667,
+            "recall@3": 0.9666666666666667,
+            "hit@5": 0.9666666666666667,
+            "recall@5": 0.9666666666666667,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.8944444444444444,
+            "mean_query_ms": 61.28670693918442
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.9333333333333333,
+            "recall@3": 0.9333333333333333,
+            "hit@5": 0.9333333333333333,
+            "recall@5": 0.9333333333333333,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.8055555555555556,
+            "mean_query_ms": 58.593566673031695
+          }
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:01:26.318559+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm model: query encoding + top10 Chroma search; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "0feec27540d8f9665e2109a0cdb3cb4d24bc98c70f0d1f36dd563ca49a9f8b5d",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1"
+        }
+      }
+    },
+    {
+      "experiment_id": "E03",
+      "label": "동일 조건 비교용 BGE-M3 재측정",
+      "method": "dense",
+      "created_at_kst": "2026-10-19 18:18:15 KST",
+      "output_directory": "outputs/rag/dense_v002_20261019T091815270231Z",
+      "summary": {
+        "method": "dense",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7333333333333333,
+          "recall@1": 0.7333333333333333,
+          "hit@3": 0.9111111111111111,
+          "recall@3": 0.9111111111111111,
+          "hit@5": 0.9111111111111111,
+          "recall@5": 0.9111111111111111,
+          "hit@10": 0.9222222222222223,
+          "recall@10": 0.9222222222222223,
+          "mrr@10": 0.8141975308641974,
+          "mean_query_ms": 56.49645229310004
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6666666666666666,
+            "recall@1": 0.6666666666666666,
+            "hit@3": 0.8333333333333334,
+            "recall@3": 0.8333333333333334,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.8666666666666667,
+            "recall@10": 0.8666666666666667,
+            "mrr@10": 0.7425925925925926,
+            "mean_query_ms": 56.69232902970786
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.8333333333333334,
+            "recall@1": 0.8333333333333334,
+            "hit@3": 0.9666666666666667,
+            "recall@3": 0.9666666666666667,
+            "hit@5": 0.9666666666666667,
+            "recall@5": 0.9666666666666667,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.8944444444444444,
+            "mean_query_ms": 56.64984037866816
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.9333333333333333,
+            "recall@3": 0.9333333333333333,
+            "hit@5": 0.9333333333333333,
+            "recall@5": 0.9333333333333333,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.8055555555555556,
+            "mean_query_ms": 56.14718747092411
+          }
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:18:15.270559+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "dense",
+        "retrieval_config": {
+          "method": "dense",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": null,
+          "rrf_k": null,
+          "rrf_weights": null,
+          "bm25_manifest": null
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "31eed45bb0d6b3696a737949b55ef40f85dc685c6604eee0b2330d027d297904",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "6b6ca283b212c447a1d55e18eded5cdd2142b1556b7caf4789d90cae115c9771",
+          "RAG/retrieval/retriever.py": "291e0d71a775812c352918825d59e216f5231bb7580e2dae81e0c20725e95045"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E04",
+      "label": "BM25 단독",
+      "method": "bm25",
+      "created_at_kst": "2026-10-19 18:18:16 KST",
+      "output_directory": "outputs/rag/bm25_v002_20261019T091816916780Z",
+      "summary": {
+        "method": "bm25",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.5888888888888889,
+          "recall@1": 0.5888888888888889,
+          "hit@3": 0.7555555555555555,
+          "recall@3": 0.7555555555555555,
+          "hit@5": 0.8111111111111111,
+          "recall@5": 0.8111111111111111,
+          "hit@10": 0.8333333333333334,
+          "recall@10": 0.8333333333333334,
+          "mrr@10": 0.6841975308641975,
+          "mean_query_ms": 0.36711158722432125
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6,
+            "recall@1": 0.6,
+            "hit@3": 0.7333333333333333,
+            "recall@3": 0.7333333333333333,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8333333333333334,
+            "recall@10": 0.8333333333333334,
+            "mrr@10": 0.687037037037037,
+            "mean_query_ms": 0.42330846190452576
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.9333333333333333,
+            "recall@1": 0.9333333333333333,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9666666666666667,
+            "mean_query_ms": 0.24598465533927083
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.23333333333333334,
+            "recall@1": 0.23333333333333334,
+            "hit@3": 0.5333333333333333,
+            "recall@3": 0.5333333333333333,
+            "hit@5": 0.6333333333333333,
+            "recall@5": 0.6333333333333333,
+            "hit@10": 0.6666666666666666,
+            "recall@10": 0.6666666666666666,
+            "mrr@10": 0.3988888888888889,
+            "mean_query_ms": 0.4320416444291671
+          }
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:18:16.917266+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": null,
+        "method": "bm25",
+        "retrieval_config": {
+          "method": "bm25",
+          "model": null,
+          "candidate_k_per_retriever": null,
+          "rrf_k": null,
+          "rrf_weights": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "31eed45bb0d6b3696a737949b55ef40f85dc685c6604eee0b2330d027d297904",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "6b6ca283b212c447a1d55e18eded5cdd2142b1556b7caf4789d90cae115c9771",
+          "RAG/retrieval/retriever.py": "291e0d71a775812c352918825d59e216f5231bb7580e2dae81e0c20725e95045"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E05",
+      "label": "동일 가중치 RRF 통합",
+      "method": "hybrid",
+      "created_at_kst": "2026-10-19 18:18:26 KST",
+      "output_directory": "outputs/rag/hybrid_v002_20261019T091826986480Z",
+      "summary": {
+        "method": "hybrid",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7,
+          "recall@1": 0.7,
+          "hit@3": 0.8222222222222222,
+          "recall@3": 0.8222222222222222,
+          "hit@5": 0.8777777777777778,
+          "recall@5": 0.8777777777777778,
+          "hit@10": 0.9333333333333333,
+          "recall@10": 0.9333333333333333,
+          "mrr@10": 0.7754144620811287,
+          "mean_query_ms": 56.80935930641782
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6333333333333333,
+            "recall@1": 0.6333333333333333,
+            "hit@3": 0.8,
+            "recall@3": 0.8,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8333333333333334,
+            "recall@10": 0.8333333333333334,
+            "mrr@10": 0.7148148148148148,
+            "mean_query_ms": 57.00764306820929
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.9,
+            "recall@1": 0.9,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9444444444444444,
+            "mean_query_ms": 56.57481390129154
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.5666666666666667,
+            "recall@1": 0.5666666666666667,
+            "hit@3": 0.6666666666666666,
+            "recall@3": 0.6666666666666666,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.666984126984127,
+            "mean_query_ms": 56.84562094975263
+          }
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:18:26.986791+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "hybrid",
+        "retrieval_config": {
+          "method": "hybrid",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            1.0,
+            1.0
+          ],
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "31eed45bb0d6b3696a737949b55ef40f85dc685c6604eee0b2330d027d297904",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "6b6ca283b212c447a1d55e18eded5cdd2142b1556b7caf4789d90cae115c9771",
+          "RAG/retrieval/retriever.py": "291e0d71a775812c352918825d59e216f5231bb7580e2dae81e0c20725e95045"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E06",
+      "label": "dense",
+      "method": "dense",
+      "created_at_kst": "2026-10-19 18:36:09 KST",
+      "output_directory": "outputs/rag/dense_v002_20261019T093609530988Z",
+      "summary": {
+        "method": "dense",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7333333333333333,
+          "recall@1": 0.7333333333333333,
+          "hit@3": 0.9111111111111111,
+          "recall@3": 0.9111111111111111,
+          "hit@5": 0.9111111111111111,
+          "recall@5": 0.9111111111111111,
+          "hit@10": 0.9222222222222223,
+          "recall@10": 0.9222222222222223,
+          "mrr@10": 0.8141975308641974,
+          "mean_query_ms": 58.3493250538595
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6666666666666666,
+            "recall@1": 0.6666666666666666,
+            "hit@3": 0.8333333333333334,
+            "recall@3": 0.8333333333333334,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.8666666666666667,
+            "recall@10": 0.8666666666666667,
+            "mrr@10": 0.7425925925925926,
+            "mean_query_ms": 58.50041533121839
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.8333333333333334,
+            "recall@1": 0.8333333333333334,
+            "hit@3": 0.9666666666666667,
+            "recall@3": 0.9666666666666667,
+            "hit@5": 0.9666666666666667,
+            "recall@5": 0.9666666666666667,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.8944444444444444,
+            "mean_query_ms": 58.74718606937677
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.9333333333333333,
+            "recall@3": 0.9333333333333333,
+            "hit@5": 0.9333333333333333,
+            "recall@5": 0.9333333333333333,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.8055555555555556,
+            "mean_query_ms": 57.80037376098335
+          }
+        },
+        "candidate_pool": {
+          "mean_candidate_count": 10.0,
+          "representative_target_hit_rate": 0.9222222222222223,
+          "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:36:09.531410+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "dense",
+        "retrieval_config": {
+          "method": "dense",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": null,
+          "rrf_k": null,
+          "rrf_weights": null,
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": null
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "8d265fd59693c0a4e1f877f1f197478c58401bc65b1dbad4a6873f7eab136951",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "8150fecedf5ea34cbe1e2081587c66f66aaa170d1ddd8513e708be24af70af2b",
+          "RAG/retrieval/retriever.py": "04bf785ccb6bdc6d65257ea2203abc6cb6b18719819b50a01c05a93ebd7ce335",
+          "RAG/retrieval/reranker.py": "2ed77aa53d1a84f0fc25e76399123f20271830abf968555842eb233551d25927"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E07",
+      "label": "hybrid_equal",
+      "method": "hybrid",
+      "created_at_kst": "2026-10-19 18:36:20 KST",
+      "output_directory": "outputs/rag/hybrid_equal_v002_20261019T093620474481Z",
+      "summary": {
+        "method": "hybrid",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7,
+          "recall@1": 0.7,
+          "hit@3": 0.8222222222222222,
+          "recall@3": 0.8222222222222222,
+          "hit@5": 0.8777777777777778,
+          "recall@5": 0.8777777777777778,
+          "hit@10": 0.9333333333333333,
+          "recall@10": 0.9333333333333333,
+          "mrr@10": 0.7754144620811287,
+          "mean_query_ms": 57.14929438221993
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6333333333333333,
+            "recall@1": 0.6333333333333333,
+            "hit@3": 0.8,
+            "recall@3": 0.8,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8333333333333334,
+            "recall@10": 0.8333333333333334,
+            "mrr@10": 0.7148148148148148,
+            "mean_query_ms": 57.30084294530874
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.9,
+            "recall@1": 0.9,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9444444444444444,
+            "mean_query_ms": 57.00079435482621
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.5666666666666667,
+            "recall@1": 0.5666666666666667,
+            "hit@3": 0.6666666666666666,
+            "recall@3": 0.6666666666666666,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.666984126984127,
+            "mean_query_ms": 57.146245846524835
+          }
+        },
+        "candidate_pool": {
+          "mean_candidate_count": 30.38888888888889,
+          "representative_target_hit_rate": 0.9777777777777777,
+          "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:36:20.474880+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "hybrid",
+        "retrieval_config": {
+          "method": "hybrid",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            1.0,
+            1.0
+          ],
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "8d265fd59693c0a4e1f877f1f197478c58401bc65b1dbad4a6873f7eab136951",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "8150fecedf5ea34cbe1e2081587c66f66aaa170d1ddd8513e708be24af70af2b",
+          "RAG/retrieval/retriever.py": "04bf785ccb6bdc6d65257ea2203abc6cb6b18719819b50a01c05a93ebd7ce335",
+          "RAG/retrieval/reranker.py": "2ed77aa53d1a84f0fc25e76399123f20271830abf968555842eb233551d25927"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E08",
+      "label": "weighted_80_20",
+      "method": "weighted_rrf",
+      "created_at_kst": "2026-10-19 18:36:30 KST",
+      "output_directory": "outputs/rag/weighted_80_20_v002_20261019T093630996850Z",
+      "summary": {
+        "method": "weighted_rrf",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7111111111111111,
+          "recall@1": 0.7111111111111111,
+          "hit@3": 0.8444444444444444,
+          "recall@3": 0.8444444444444444,
+          "hit@5": 0.8777777777777778,
+          "recall@5": 0.8777777777777778,
+          "hit@10": 0.9333333333333333,
+          "recall@10": 0.9333333333333333,
+          "mrr@10": 0.7857848324514991,
+          "mean_query_ms": 57.34195467213996
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.8,
+            "recall@3": 0.8,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8333333333333334,
+            "recall@10": 0.8333333333333334,
+            "mrr@10": 0.7477777777777778,
+            "mean_query_ms": 57.39824167685583
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.8666666666666667,
+            "recall@1": 0.8666666666666667,
+            "hit@3": 0.9666666666666667,
+            "recall@3": 0.9666666666666667,
+            "hit@5": 0.9666666666666667,
+            "recall@5": 0.9666666666666667,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9222222222222223,
+            "mean_query_ms": 57.467261236160994
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.5666666666666667,
+            "recall@1": 0.5666666666666667,
+            "hit@3": 0.7666666666666667,
+            "recall@3": 0.7666666666666667,
+            "hit@5": 0.8666666666666667,
+            "recall@5": 0.8666666666666667,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.6873544973544974,
+            "mean_query_ms": 57.16036110340307
+          }
+        },
+        "candidate_pool": {
+          "mean_candidate_count": 30.38888888888889,
+          "representative_target_hit_rate": 0.9777777777777777,
+          "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:36:30.997306+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "weighted_rrf",
+        "retrieval_config": {
+          "method": "weighted_rrf",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            0.8,
+            0.2
+          ],
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "8d265fd59693c0a4e1f877f1f197478c58401bc65b1dbad4a6873f7eab136951",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "8150fecedf5ea34cbe1e2081587c66f66aaa170d1ddd8513e708be24af70af2b",
+          "RAG/retrieval/retriever.py": "04bf785ccb6bdc6d65257ea2203abc6cb6b18719819b50a01c05a93ebd7ce335",
+          "RAG/retrieval/reranker.py": "2ed77aa53d1a84f0fc25e76399123f20271830abf968555842eb233551d25927"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E09",
+      "label": "weighted_70_30",
+      "method": "weighted_rrf",
+      "created_at_kst": "2026-10-19 18:36:41 KST",
+      "output_directory": "outputs/rag/weighted_70_30_v002_20261019T093641502608Z",
+      "summary": {
+        "method": "weighted_rrf",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.6777777777777778,
+          "recall@1": 0.6777777777777778,
+          "hit@3": 0.8444444444444444,
+          "recall@3": 0.8444444444444444,
+          "hit@5": 0.8777777777777778,
+          "recall@5": 0.8777777777777778,
+          "hit@10": 0.9222222222222223,
+          "recall@10": 0.9222222222222223,
+          "mrr@10": 0.7693033509700177,
+          "mean_query_ms": 57.420589382915445
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6,
+            "recall@1": 0.6,
+            "hit@3": 0.8,
+            "recall@3": 0.8,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8,
+            "recall@10": 0.8,
+            "mrr@10": 0.7,
+            "mean_query_ms": 57.68801530745501
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.8666666666666667,
+            "recall@1": 0.8666666666666667,
+            "hit@3": 0.9666666666666667,
+            "recall@3": 0.9666666666666667,
+            "hit@5": 0.9666666666666667,
+            "recall@5": 0.9666666666666667,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9222222222222223,
+            "mean_query_ms": 57.22611665260047
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.5666666666666667,
+            "recall@1": 0.5666666666666667,
+            "hit@3": 0.7666666666666667,
+            "recall@3": 0.7666666666666667,
+            "hit@5": 0.8666666666666667,
+            "recall@5": 0.8666666666666667,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.6856878306878307,
+            "mean_query_ms": 57.34763618869086
+          }
+        },
+        "candidate_pool": {
+          "mean_candidate_count": 30.38888888888889,
+          "representative_target_hit_rate": 0.9777777777777777,
+          "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:36:41.502999+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "weighted_rrf",
+        "retrieval_config": {
+          "method": "weighted_rrf",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            0.7,
+            0.3
+          ],
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "8d265fd59693c0a4e1f877f1f197478c58401bc65b1dbad4a6873f7eab136951",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "8150fecedf5ea34cbe1e2081587c66f66aaa170d1ddd8513e708be24af70af2b",
+          "RAG/retrieval/retriever.py": "04bf785ccb6bdc6d65257ea2203abc6cb6b18719819b50a01c05a93ebd7ce335",
+          "RAG/retrieval/reranker.py": "2ed77aa53d1a84f0fc25e76399123f20271830abf968555842eb233551d25927"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E10",
+      "label": "union_rerank",
+      "method": "hybrid_rerank",
+      "created_at_kst": "2026-10-19 18:45:16 KST",
+      "output_directory": "outputs/rag/union_rerank_v002_20261019T094516554047Z",
+      "summary": {
+        "method": "hybrid_rerank",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.8333333333333334,
+          "recall@1": 0.8333333333333334,
+          "hit@3": 0.9222222222222223,
+          "recall@3": 0.9222222222222223,
+          "hit@5": 0.9333333333333333,
+          "recall@5": 0.9333333333333333,
+          "hit@10": 0.9333333333333333,
+          "recall@10": 0.9333333333333333,
+          "mrr@10": 0.8712962962962963,
+          "mean_query_ms": 5596.166511618584
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.8666666666666667,
+            "recall@3": 0.8666666666666667,
+            "hit@5": 0.8666666666666667,
+            "recall@5": 0.8666666666666667,
+            "hit@10": 0.8666666666666667,
+            "recall@10": 0.8666666666666667,
+            "mrr@10": 0.7666666666666667,
+            "mean_query_ms": 5697.205802806032
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 1.0,
+            "recall@1": 1.0,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 1.0,
+            "mean_query_ms": 5106.3851014904985
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.8,
+            "recall@1": 0.8,
+            "hit@3": 0.9,
+            "recall@3": 0.9,
+            "hit@5": 0.9333333333333333,
+            "recall@5": 0.9333333333333333,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.8472222222222222,
+            "mean_query_ms": 5984.908630559221
+          }
+        },
+        "candidate_pool": {
+          "mean_candidate_count": 30.38888888888889,
+          "representative_target_hit_rate": 0.9777777777777777,
+          "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+        }
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:45:16.554512+00:00",
+        "dataset_name": "retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "method": "hybrid_rerank",
+        "retrieval_config": {
+          "method": "hybrid_rerank",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            0.8,
+            0.2
+          ],
+          "reranker": {
+            "model_name": "BAAI/bge-reranker-v2-m3",
+            "model_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+            "max_length": 1024,
+            "batch_size": 2,
+            "score_type": "raw_logit_not_probability",
+            "passage_format": "law_name_and_original_article_content"
+          },
+          "reranker_candidate_policy": "entire_union_before_final_topk",
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "retrieval_depth": 10,
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "device": "cpu",
+        "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+        "code_sha256": {
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/pipelines/evaluate.py": "8d265fd59693c0a4e1f877f1f197478c58401bc65b1dbad4a6873f7eab136951",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+          "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+          "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+          "RAG/retrieval/hybrid.py": "8150fecedf5ea34cbe1e2081587c66f66aaa170d1ddd8513e708be24af70af2b",
+          "RAG/retrieval/retriever.py": "04bf785ccb6bdc6d65257ea2203abc6cb6b18719819b50a01c05a93ebd7ce335",
+          "RAG/retrieval/reranker.py": "2ed77aa53d1a84f0fc25e76399123f20271830abf968555842eb233551d25927"
+        },
+        "packages": {
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "transformers": "5.20.1",
+          "torch": "2.14.1",
+          "rank-bm25": "0.2.2",
+          "kiwipiepy": "0.24.0",
+          "kiwipiepy_model": "0.24.0"
+        }
+      }
+    },
+    {
+      "experiment_id": "E11",
+      "label": "chroma_vs_exhaustive_cosine",
+      "method": "index_diagnostic",
+      "output_directory": "outputs/rag/exact_comparison_20261019T095622836381Z",
+      "preserved_report": "test/rag/comparisons/exact_comparison_20261019T095622836381Z",
+      "summary": {
+        "corpus": "labor_standards_v001",
+        "query_count": 90,
+        "document_count": 131,
+        "methods": {
+          "chroma": {
+            "query_count": 90,
+            "hit@1": 0.7333333333333333,
+            "recall@1": 0.7333333333333333,
+            "hit@3": 0.9111111111111111,
+            "recall@3": 0.9111111111111111,
+            "hit@5": 0.9111111111111111,
+            "recall@5": 0.9111111111111111,
+            "hit@10": 0.9222222222222223,
+            "recall@10": 0.9222222222222223,
+            "hit@20": 0.9555555555555556,
+            "recall@20": 0.9555555555555556,
+            "mrr@20": 0.8168559835226502,
+            "mean_query_ms": 1.3086481692476406
+          },
+          "exact": {
+            "query_count": 90,
+            "hit@1": 0.7333333333333333,
+            "recall@1": 0.7333333333333333,
+            "hit@3": 0.9111111111111111,
+            "recall@3": 0.9111111111111111,
+            "hit@5": 0.9111111111111111,
+            "recall@5": 0.9111111111111111,
+            "hit@10": 0.9222222222222223,
+            "recall@10": 0.9222222222222223,
+            "hit@20": 0.9555555555555556,
+            "recall@20": 0.9555555555555556,
+            "mrr@20": 0.8168559835226502,
+            "mean_query_ms": 0.12655462810976637
+          }
+        },
+        "mean_embedding_ms": 55.604049925588896,
+        "mean_overlap": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "queries_with_material_misses": {
+          "1": 0,
+          "3": 0,
+          "5": 0,
+          "10": 0,
+          "20": 0
+        },
+        "identical_order_queries_at20": 90,
+        "max_distance_error": 1.0789993619697569e-06,
+        "note": "DRAFT 개발셋. mean_query_ms는 검색만(질의 임베딩 별도). Exact는 전체 순위 생성, Chroma는 최대20개 반환. 단일 실행으로 속도 우열을 단정하지 않음."
+      },
+      "run_metadata": {
+        "created_at": "2026-10-19T09:56:22.836519+00:00",
+        "dataset": "test/rag/datasets/retrieval_dev_v002.jsonl",
+        "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+        "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+        "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+        "index_manifest": {
+          "status": "READY",
+          "corpus_id": "labor_standards_v001",
+          "created_at": "2026-10-19T08:30:33.555891+00:00",
+          "source_file": "processed/labor_standards_v001/chunks.jsonl",
+          "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+          "collection_name": "law_articles",
+          "chunk_count": 131,
+          "distance_metric": "cosine",
+          "max_document_tokens": 838,
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true,
+          "packages": {
+            "chromadb": "1.5.9",
+            "sentence-transformers": "5.7.0",
+            "torch": "2.14.1",
+            "transformers": "5.20.1"
+          }
+        },
+        "model": {
+          "model_name": "BAAI/bge-m3",
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "dimension": 1024,
+          "max_seq_length": 8192,
+          "normalize_embeddings": true
+        },
+        "device": "cpu",
+        "collection_configuration": {
+          "hnsw": {
+            "space": "cosine",
+            "ef_construction": 100,
+            "ef_search": 100,
+            "max_neighbors": 16,
+            "resize_factor": 1.2,
+            "sync_threshold": 1000
+          },
+          "spann": null,
+          "embedding_function": null
+        },
+        "metrics_at": [
+          1,
+          3,
+          5,
+          10,
+          20
+        ],
+        "distance_tolerance": 1e-06,
+        "exact": "numpy float64 exhaustive cosine; chunk_id tie-break; same stored vectors and one shared query embedding",
+        "packages": {
+          "numpy": "2.5.4",
+          "chromadb": "1.5.9",
+          "sentence-transformers": "5.7.0",
+          "torch": "2.14.1"
+        },
+        "code_sha256": {
+          "RAG/pipelines/compare_exact.py": "7b71c21250a48a82fea22e23132922a380d0bd320a14696c7bb1a52ff1aee7ea",
+          "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+          "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+          "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a"
+        }
+      }
+    }
+  ],
+  "comparison": {
+    "corpus": "labor_standards_v001",
+    "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+    "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+    "runs": {
+      "dense": "outputs/rag/dense_v002_20261019T091815270231Z",
+      "bm25": "outputs/rag/bm25_v002_20261019T091816916780Z",
+      "hybrid": "outputs/rag/hybrid_v002_20261019T091826986480Z"
+    },
+    "overall": [
+      {
+        "method": "dense",
+        "query_count": 90,
+        "hit@1": 0.7333333333333333,
+        "hit@5": 0.9111111111111111,
+        "mrr@10": 0.8141975308641974,
+        "mean_query_ms": 56.49645229310004
+      },
+      {
+        "method": "bm25",
+        "query_count": 90,
+        "hit@1": 0.5888888888888889,
+        "hit@5": 0.8111111111111111,
+        "mrr@10": 0.6841975308641975,
+        "mean_query_ms": 0.36711158722432125
+      },
+      {
+        "method": "hybrid",
+        "query_count": 90,
+        "hit@1": 0.7,
+        "hit@5": 0.8777777777777778,
+        "mrr@10": 0.7754144620811287,
+        "mean_query_ms": 56.80935930641782
+      }
+    ],
+    "reports": {
+      "dense": {
+        "method": "dense",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7333333333333333,
+          "recall@1": 0.7333333333333333,
+          "hit@3": 0.9111111111111111,
+          "recall@3": 0.9111111111111111,
+          "hit@5": 0.9111111111111111,
+          "recall@5": 0.9111111111111111,
+          "hit@10": 0.9222222222222223,
+          "recall@10": 0.9222222222222223,
+          "mrr@10": 0.8141975308641974,
+          "mean_query_ms": 56.49645229310004
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6666666666666666,
+            "recall@1": 0.6666666666666666,
+            "hit@3": 0.8333333333333334,
+            "recall@3": 0.8333333333333334,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.8666666666666667,
+            "recall@10": 0.8666666666666667,
+            "mrr@10": 0.7425925925925926,
+            "mean_query_ms": 56.69232902970786
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.8333333333333334,
+            "recall@1": 0.8333333333333334,
+            "hit@3": 0.9666666666666667,
+            "recall@3": 0.9666666666666667,
+            "hit@5": 0.9666666666666667,
+            "recall@5": 0.9666666666666667,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.8944444444444444,
+            "mean_query_ms": 56.64984037866816
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.9333333333333333,
+            "recall@3": 0.9333333333333333,
+            "hit@5": 0.9333333333333333,
+            "recall@5": 0.9333333333333333,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.8055555555555556,
+            "mean_query_ms": 56.14718747092411
+          }
+        }
+      },
+      "bm25": {
+        "method": "bm25",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.5888888888888889,
+          "recall@1": 0.5888888888888889,
+          "hit@3": 0.7555555555555555,
+          "recall@3": 0.7555555555555555,
+          "hit@5": 0.8111111111111111,
+          "recall@5": 0.8111111111111111,
+          "hit@10": 0.8333333333333334,
+          "recall@10": 0.8333333333333334,
+          "mrr@10": 0.6841975308641975,
+          "mean_query_ms": 0.36711158722432125
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6,
+            "recall@1": 0.6,
+            "hit@3": 0.7333333333333333,
+            "recall@3": 0.7333333333333333,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8333333333333334,
+            "recall@10": 0.8333333333333334,
+            "mrr@10": 0.687037037037037,
+            "mean_query_ms": 0.42330846190452576
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.9333333333333333,
+            "recall@1": 0.9333333333333333,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9666666666666667,
+            "mean_query_ms": 0.24598465533927083
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.23333333333333334,
+            "recall@1": 0.23333333333333334,
+            "hit@3": 0.5333333333333333,
+            "recall@3": 0.5333333333333333,
+            "hit@5": 0.6333333333333333,
+            "recall@5": 0.6333333333333333,
+            "hit@10": 0.6666666666666666,
+            "recall@10": 0.6666666666666666,
+            "mrr@10": 0.3988888888888889,
+            "mean_query_ms": 0.4320416444291671
+          }
+        }
+      },
+      "hybrid": {
+        "method": "hybrid",
+        "corpus": "labor_standards_v001",
+        "annotation_statuses": [
+          "DRAFT"
+        ],
+        "overall": {
+          "query_count": 90,
+          "hit@1": 0.7,
+          "recall@1": 0.7,
+          "hit@3": 0.8222222222222222,
+          "recall@3": 0.8222222222222222,
+          "hit@5": 0.8777777777777778,
+          "recall@5": 0.8777777777777778,
+          "hit@10": 0.9333333333333333,
+          "recall@10": 0.9333333333333333,
+          "mrr@10": 0.7754144620811287,
+          "mean_query_ms": 56.80935930641782
+        },
+        "by_query_kind": {
+          "contract_clause": {
+            "query_count": 30,
+            "hit@1": 0.6333333333333333,
+            "recall@1": 0.6333333333333333,
+            "hit@3": 0.8,
+            "recall@3": 0.8,
+            "hit@5": 0.8,
+            "recall@5": 0.8,
+            "hit@10": 0.8333333333333334,
+            "recall@10": 0.8333333333333334,
+            "mrr@10": 0.7148148148148148,
+            "mean_query_ms": 57.00764306820929
+          },
+          "keyword": {
+            "query_count": 30,
+            "hit@1": 0.9,
+            "recall@1": 0.9,
+            "hit@3": 1.0,
+            "recall@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "hit@10": 1.0,
+            "recall@10": 1.0,
+            "mrr@10": 0.9444444444444444,
+            "mean_query_ms": 56.57481390129154
+          },
+          "user_question": {
+            "query_count": 30,
+            "hit@1": 0.5666666666666667,
+            "recall@1": 0.5666666666666667,
+            "hit@3": 0.6666666666666666,
+            "recall@3": 0.6666666666666666,
+            "hit@5": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "hit@10": 0.9666666666666667,
+            "recall@10": 0.9666666666666667,
+            "mrr@10": 0.666984126984127,
+            "mean_query_ms": 56.84562094975263
+          }
+        }
+      }
+    },
+    "paired_hit5_changes": [
+      {
+        "query_id": "V002_T02_KEYWORD_02",
+        "query": "중도 퇴사 계약 불이행 정액 배상 약정",
+        "change": "improved",
+        "dense_first_rank": null,
+        "hybrid_first_rank": 3
+      },
+      {
+        "query_id": "V002_T02_USER_QUESTION_02",
+        "query": "실제로 생긴 손해와 관계없이 퇴사 벌금을 미리 정해도 되나요?",
+        "change": "improved",
+        "dense_first_rank": null,
+        "hybrid_first_rank": 4
+      },
+      {
+        "query_id": "V002_T03_USER_QUESTION_01",
+        "query": "일하는 조건으로 회사에서 미리 빌린 돈을 월급과 맞계산한다는데 관련 규정이 있나요?",
+        "change": "regressed",
+        "dense_first_rank": 2,
+        "hybrid_first_rank": 7
+      },
+      {
+        "query_id": "V002_T06_USER_QUESTION_01",
+        "query": "해고 이유와 날짜를 종이에 적어 주지 않고 말로만 통보해도 되나요?",
+        "change": "regressed",
+        "dense_first_rank": 1,
+        "hybrid_first_rank": 6
+      },
+      {
+        "query_id": "V002_T07_USER_QUESTION_01",
+        "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+        "change": "regressed",
+        "dense_first_rank": 1,
+        "hybrid_first_rank": 6
+      },
+      {
+        "query_id": "V002_T07_USER_QUESTION_02",
+        "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+        "change": "regressed",
+        "dense_first_rank": 2,
+        "hybrid_first_rank": 10
+      },
+      {
+        "query_id": "V002_T08_CONTRACT_CLAUSE_02",
+        "query": "임금은 근로자 본인이 아닌 사용자가 지정한 제삼자에게 지급한다.",
+        "change": "regressed",
+        "dense_first_rank": 1,
+        "hybrid_first_rank": null
+      }
+    ],
+    "hybrid_minus_dense": {
+      "hit@1": -0.033333333333333326,
+      "hit@5": -0.033333333333333326,
+      "mrr@10": -0.0387830687830687
+    },
+    "note": "DRAFT 개발셋 단일 실행. 후보 수와 워밍업 조건은 메타데이터 참조. 미사용 테스트셋 성능 또는 시간 측정의 통계적 우열을 뜻하지 않음."
+  },
+  "next_experiments": [
+    {
+      "name": "weighted_rrf",
+      "status": "EXECUTED_ON_DEV",
+      "description": "동일 가중치 대신 BGE-M3를 더 신뢰하는 소수의 사전 지정 가중치로 개발셋 실험. 기존 결과 보존.",
+      "comparison_directory": "outputs/rag/improvements_20261019T093558069116Z"
+    },
+    {
+      "name": "union_candidates_then_rerank",
+      "status": "EXECUTED_ON_DEV",
+      "description": "dense와 BM25 후보 합집합을 RRF 최종 10개로 자르기 전에 reranker로 재정렬. 후보 Recall과 최종 순위를 구분 측정.",
+      "comparison_directory": "outputs/rag/improvements_20261019T093558069116Z"
+    },
+    {
+      "name": "bm25_query_and_fields",
+      "status": "PROPOSED_NOT_RUN",
+      "description": "불용어·질문 표현, 법률 제목/본문 가중치, 월급→임금 등 검색 확장을 개별 실험. 원문과 생성 확장을 구분 보존."
+    },
+    {
+      "name": "independent_evaluation",
+      "status": "PROPOSED_NOT_RUN",
+      "description": "현재 90개는 개발셋으로 유지. 별도로 수집·검수한 미사용 질의에서 최종 효과 확인."
+    }
+  ],
+  "improvement_comparisons": [
+    {
+      "corpus": "labor_standards_v001",
+      "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+      "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+      "runs": {
+        "dense": "outputs/rag/dense_v002_20261019T093609530988Z",
+        "hybrid_equal": "outputs/rag/hybrid_equal_v002_20261019T093620474481Z",
+        "weighted_80_20": "outputs/rag/weighted_80_20_v002_20261019T093630996850Z",
+        "weighted_70_30": "outputs/rag/weighted_70_30_v002_20261019T093641502608Z",
+        "union_rerank": "outputs/rag/union_rerank_v002_20261019T094516554047Z"
+      },
+      "overall": [
+        {
+          "scenario": "dense",
+          "query_count": 90,
+          "hit@1": 0.7333333333333333,
+          "hit@5": 0.9111111111111111,
+          "mrr@10": 0.8141975308641974,
+          "mean_query_ms": 58.3493250538595,
+          "candidate_hit_rate": 0.9222222222222223
+        },
+        {
+          "scenario": "hybrid_equal",
+          "query_count": 90,
+          "hit@1": 0.7,
+          "hit@5": 0.8777777777777778,
+          "mrr@10": 0.7754144620811287,
+          "mean_query_ms": 57.14929438221993,
+          "candidate_hit_rate": 0.9777777777777777
+        },
+        {
+          "scenario": "weighted_80_20",
+          "query_count": 90,
+          "hit@1": 0.7111111111111111,
+          "hit@5": 0.8777777777777778,
+          "mrr@10": 0.7857848324514991,
+          "mean_query_ms": 57.34195467213996,
+          "candidate_hit_rate": 0.9777777777777777
+        },
+        {
+          "scenario": "weighted_70_30",
+          "query_count": 90,
+          "hit@1": 0.6777777777777778,
+          "hit@5": 0.8777777777777778,
+          "mrr@10": 0.7693033509700177,
+          "mean_query_ms": 57.420589382915445,
+          "candidate_hit_rate": 0.9777777777777777
+        },
+        {
+          "scenario": "union_rerank",
+          "query_count": 90,
+          "hit@1": 0.8333333333333334,
+          "hit@5": 0.9333333333333333,
+          "mrr@10": 0.8712962962962963,
+          "mean_query_ms": 5596.166511618584,
+          "candidate_hit_rate": 0.9777777777777777
+        }
+      ],
+      "reports": {
+        "dense": {
+          "method": "dense",
+          "corpus": "labor_standards_v001",
+          "annotation_statuses": [
+            "DRAFT"
+          ],
+          "overall": {
+            "query_count": 90,
+            "hit@1": 0.7333333333333333,
+            "recall@1": 0.7333333333333333,
+            "hit@3": 0.9111111111111111,
+            "recall@3": 0.9111111111111111,
+            "hit@5": 0.9111111111111111,
+            "recall@5": 0.9111111111111111,
+            "hit@10": 0.9222222222222223,
+            "recall@10": 0.9222222222222223,
+            "mrr@10": 0.8141975308641974,
+            "mean_query_ms": 58.3493250538595
+          },
+          "by_query_kind": {
+            "contract_clause": {
+              "query_count": 30,
+              "hit@1": 0.6666666666666666,
+              "recall@1": 0.6666666666666666,
+              "hit@3": 0.8333333333333334,
+              "recall@3": 0.8333333333333334,
+              "hit@5": 0.8333333333333334,
+              "recall@5": 0.8333333333333334,
+              "hit@10": 0.8666666666666667,
+              "recall@10": 0.8666666666666667,
+              "mrr@10": 0.7425925925925926,
+              "mean_query_ms": 58.50041533121839
+            },
+            "keyword": {
+              "query_count": 30,
+              "hit@1": 0.8333333333333334,
+              "recall@1": 0.8333333333333334,
+              "hit@3": 0.9666666666666667,
+              "recall@3": 0.9666666666666667,
+              "hit@5": 0.9666666666666667,
+              "recall@5": 0.9666666666666667,
+              "hit@10": 0.9666666666666667,
+              "recall@10": 0.9666666666666667,
+              "mrr@10": 0.8944444444444444,
+              "mean_query_ms": 58.74718606937677
+            },
+            "user_question": {
+              "query_count": 30,
+              "hit@1": 0.7,
+              "recall@1": 0.7,
+              "hit@3": 0.9333333333333333,
+              "recall@3": 0.9333333333333333,
+              "hit@5": 0.9333333333333333,
+              "recall@5": 0.9333333333333333,
+              "hit@10": 0.9333333333333333,
+              "recall@10": 0.9333333333333333,
+              "mrr@10": 0.8055555555555556,
+              "mean_query_ms": 57.80037376098335
+            }
+          },
+          "candidate_pool": {
+            "mean_candidate_count": 10.0,
+            "representative_target_hit_rate": 0.9222222222222223,
+            "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+          }
+        },
+        "hybrid_equal": {
+          "method": "hybrid",
+          "corpus": "labor_standards_v001",
+          "annotation_statuses": [
+            "DRAFT"
+          ],
+          "overall": {
+            "query_count": 90,
+            "hit@1": 0.7,
+            "recall@1": 0.7,
+            "hit@3": 0.8222222222222222,
+            "recall@3": 0.8222222222222222,
+            "hit@5": 0.8777777777777778,
+            "recall@5": 0.8777777777777778,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.7754144620811287,
+            "mean_query_ms": 57.14929438221993
+          },
+          "by_query_kind": {
+            "contract_clause": {
+              "query_count": 30,
+              "hit@1": 0.6333333333333333,
+              "recall@1": 0.6333333333333333,
+              "hit@3": 0.8,
+              "recall@3": 0.8,
+              "hit@5": 0.8,
+              "recall@5": 0.8,
+              "hit@10": 0.8333333333333334,
+              "recall@10": 0.8333333333333334,
+              "mrr@10": 0.7148148148148148,
+              "mean_query_ms": 57.30084294530874
+            },
+            "keyword": {
+              "query_count": 30,
+              "hit@1": 0.9,
+              "recall@1": 0.9,
+              "hit@3": 1.0,
+              "recall@3": 1.0,
+              "hit@5": 1.0,
+              "recall@5": 1.0,
+              "hit@10": 1.0,
+              "recall@10": 1.0,
+              "mrr@10": 0.9444444444444444,
+              "mean_query_ms": 57.00079435482621
+            },
+            "user_question": {
+              "query_count": 30,
+              "hit@1": 0.5666666666666667,
+              "recall@1": 0.5666666666666667,
+              "hit@3": 0.6666666666666666,
+              "recall@3": 0.6666666666666666,
+              "hit@5": 0.8333333333333334,
+              "recall@5": 0.8333333333333334,
+              "hit@10": 0.9666666666666667,
+              "recall@10": 0.9666666666666667,
+              "mrr@10": 0.666984126984127,
+              "mean_query_ms": 57.146245846524835
+            }
+          },
+          "candidate_pool": {
+            "mean_candidate_count": 30.38888888888889,
+            "representative_target_hit_rate": 0.9777777777777777,
+            "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+          }
+        },
+        "weighted_80_20": {
+          "method": "weighted_rrf",
+          "corpus": "labor_standards_v001",
+          "annotation_statuses": [
+            "DRAFT"
+          ],
+          "overall": {
+            "query_count": 90,
+            "hit@1": 0.7111111111111111,
+            "recall@1": 0.7111111111111111,
+            "hit@3": 0.8444444444444444,
+            "recall@3": 0.8444444444444444,
+            "hit@5": 0.8777777777777778,
+            "recall@5": 0.8777777777777778,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.7857848324514991,
+            "mean_query_ms": 57.34195467213996
+          },
+          "by_query_kind": {
+            "contract_clause": {
+              "query_count": 30,
+              "hit@1": 0.7,
+              "recall@1": 0.7,
+              "hit@3": 0.8,
+              "recall@3": 0.8,
+              "hit@5": 0.8,
+              "recall@5": 0.8,
+              "hit@10": 0.8333333333333334,
+              "recall@10": 0.8333333333333334,
+              "mrr@10": 0.7477777777777778,
+              "mean_query_ms": 57.39824167685583
+            },
+            "keyword": {
+              "query_count": 30,
+              "hit@1": 0.8666666666666667,
+              "recall@1": 0.8666666666666667,
+              "hit@3": 0.9666666666666667,
+              "recall@3": 0.9666666666666667,
+              "hit@5": 0.9666666666666667,
+              "recall@5": 0.9666666666666667,
+              "hit@10": 1.0,
+              "recall@10": 1.0,
+              "mrr@10": 0.9222222222222223,
+              "mean_query_ms": 57.467261236160994
+            },
+            "user_question": {
+              "query_count": 30,
+              "hit@1": 0.5666666666666667,
+              "recall@1": 0.5666666666666667,
+              "hit@3": 0.7666666666666667,
+              "recall@3": 0.7666666666666667,
+              "hit@5": 0.8666666666666667,
+              "recall@5": 0.8666666666666667,
+              "hit@10": 0.9666666666666667,
+              "recall@10": 0.9666666666666667,
+              "mrr@10": 0.6873544973544974,
+              "mean_query_ms": 57.16036110340307
+            }
+          },
+          "candidate_pool": {
+            "mean_candidate_count": 30.38888888888889,
+            "representative_target_hit_rate": 0.9777777777777777,
+            "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+          }
+        },
+        "weighted_70_30": {
+          "method": "weighted_rrf",
+          "corpus": "labor_standards_v001",
+          "annotation_statuses": [
+            "DRAFT"
+          ],
+          "overall": {
+            "query_count": 90,
+            "hit@1": 0.6777777777777778,
+            "recall@1": 0.6777777777777778,
+            "hit@3": 0.8444444444444444,
+            "recall@3": 0.8444444444444444,
+            "hit@5": 0.8777777777777778,
+            "recall@5": 0.8777777777777778,
+            "hit@10": 0.9222222222222223,
+            "recall@10": 0.9222222222222223,
+            "mrr@10": 0.7693033509700177,
+            "mean_query_ms": 57.420589382915445
+          },
+          "by_query_kind": {
+            "contract_clause": {
+              "query_count": 30,
+              "hit@1": 0.6,
+              "recall@1": 0.6,
+              "hit@3": 0.8,
+              "recall@3": 0.8,
+              "hit@5": 0.8,
+              "recall@5": 0.8,
+              "hit@10": 0.8,
+              "recall@10": 0.8,
+              "mrr@10": 0.7,
+              "mean_query_ms": 57.68801530745501
+            },
+            "keyword": {
+              "query_count": 30,
+              "hit@1": 0.8666666666666667,
+              "recall@1": 0.8666666666666667,
+              "hit@3": 0.9666666666666667,
+              "recall@3": 0.9666666666666667,
+              "hit@5": 0.9666666666666667,
+              "recall@5": 0.9666666666666667,
+              "hit@10": 1.0,
+              "recall@10": 1.0,
+              "mrr@10": 0.9222222222222223,
+              "mean_query_ms": 57.22611665260047
+            },
+            "user_question": {
+              "query_count": 30,
+              "hit@1": 0.5666666666666667,
+              "recall@1": 0.5666666666666667,
+              "hit@3": 0.7666666666666667,
+              "recall@3": 0.7666666666666667,
+              "hit@5": 0.8666666666666667,
+              "recall@5": 0.8666666666666667,
+              "hit@10": 0.9666666666666667,
+              "recall@10": 0.9666666666666667,
+              "mrr@10": 0.6856878306878307,
+              "mean_query_ms": 57.34763618869086
+            }
+          },
+          "candidate_pool": {
+            "mean_candidate_count": 30.38888888888889,
+            "representative_target_hit_rate": 0.9777777777777777,
+            "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+          }
+        },
+        "union_rerank": {
+          "method": "hybrid_rerank",
+          "corpus": "labor_standards_v001",
+          "annotation_statuses": [
+            "DRAFT"
+          ],
+          "overall": {
+            "query_count": 90,
+            "hit@1": 0.8333333333333334,
+            "recall@1": 0.8333333333333334,
+            "hit@3": 0.9222222222222223,
+            "recall@3": 0.9222222222222223,
+            "hit@5": 0.9333333333333333,
+            "recall@5": 0.9333333333333333,
+            "hit@10": 0.9333333333333333,
+            "recall@10": 0.9333333333333333,
+            "mrr@10": 0.8712962962962963,
+            "mean_query_ms": 5596.166511618584
+          },
+          "by_query_kind": {
+            "contract_clause": {
+              "query_count": 30,
+              "hit@1": 0.7,
+              "recall@1": 0.7,
+              "hit@3": 0.8666666666666667,
+              "recall@3": 0.8666666666666667,
+              "hit@5": 0.8666666666666667,
+              "recall@5": 0.8666666666666667,
+              "hit@10": 0.8666666666666667,
+              "recall@10": 0.8666666666666667,
+              "mrr@10": 0.7666666666666667,
+              "mean_query_ms": 5697.205802806032
+            },
+            "keyword": {
+              "query_count": 30,
+              "hit@1": 1.0,
+              "recall@1": 1.0,
+              "hit@3": 1.0,
+              "recall@3": 1.0,
+              "hit@5": 1.0,
+              "recall@5": 1.0,
+              "hit@10": 1.0,
+              "recall@10": 1.0,
+              "mrr@10": 1.0,
+              "mean_query_ms": 5106.3851014904985
+            },
+            "user_question": {
+              "query_count": 30,
+              "hit@1": 0.8,
+              "recall@1": 0.8,
+              "hit@3": 0.9,
+              "recall@3": 0.9,
+              "hit@5": 0.9333333333333333,
+              "recall@5": 0.9333333333333333,
+              "hit@10": 0.9333333333333333,
+              "recall@10": 0.9333333333333333,
+              "mrr@10": 0.8472222222222222,
+              "mean_query_ms": 5984.908630559221
+            }
+          },
+          "candidate_pool": {
+            "mean_candidate_count": 30.38888888888889,
+            "representative_target_hit_rate": 0.9777777777777777,
+            "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+          }
+        }
+      },
+      "settings": {
+        "dense": {
+          "method": "dense",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": null,
+          "rrf_k": null,
+          "rrf_weights": null,
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": null
+        },
+        "hybrid_equal": {
+          "method": "hybrid",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            1.0,
+            1.0
+          ],
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "weighted_80_20": {
+          "method": "weighted_rrf",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            0.8,
+            0.2
+          ],
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "weighted_70_30": {
+          "method": "weighted_rrf",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            0.7,
+            0.3
+          ],
+          "reranker": null,
+          "reranker_candidate_policy": null,
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        },
+        "union_rerank": {
+          "method": "hybrid_rerank",
+          "model": {
+            "model_name": "BAAI/bge-m3",
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "dimension": 1024,
+            "max_seq_length": 8192,
+            "normalize_embeddings": true
+          },
+          "candidate_k_per_retriever": 20,
+          "rrf_k": 60,
+          "rrf_weights": [
+            0.8,
+            0.2
+          ],
+          "reranker": {
+            "model_name": "BAAI/bge-reranker-v2-m3",
+            "model_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+            "max_length": 1024,
+            "batch_size": 2,
+            "score_type": "raw_logit_not_probability",
+            "passage_format": "law_name_and_original_article_content"
+          },
+          "reranker_candidate_policy": "entire_union_before_final_topk",
+          "bm25_manifest": {
+            "status": "READY",
+            "corpus_id": "labor_standards_v001",
+            "created_at": "2026-10-19T09:18:04.227045+00:00",
+            "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+            "document_count": 131,
+            "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+            "tokenizer": {
+              "strategy": "kiwi_lexical_v1",
+              "normalization": "NFKC_lowercase",
+              "model_type": "cong",
+              "removed_pos_prefixes": [
+                "J",
+                "E"
+              ],
+              "removed_tags": [
+                "SF",
+                "SP",
+                "SS",
+                "SSO",
+                "SSC",
+                "SE",
+                "SO",
+                "SW"
+              ],
+              "keep_negation_and_numbers": true,
+              "preserve_article_references": true,
+              "kiwipiepy_version": "0.24.0",
+              "kiwipiepy_model_version": "0.24.0"
+            },
+            "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+            "algorithm": "BM25Okapi",
+            "rank_bm25_version": "0.2.2",
+            "parameters": {
+              "k1": 1.5,
+              "b": 0.75,
+              "epsilon": 0.25
+            },
+            "min_score_exclusive": 0.0,
+            "indexed_field": "embedding_text"
+          }
+        }
+      },
+      "paired_hit5_changes": {
+        "hybrid_equal": [
+          {
+            "query_id": "V002_T02_KEYWORD_02",
+            "query": "중도 퇴사 계약 불이행 정액 배상 약정",
+            "change": "improved",
+            "dense_first_rank": null,
+            "new_first_rank": 3
+          },
+          {
+            "query_id": "V002_T02_USER_QUESTION_02",
+            "query": "실제로 생긴 손해와 관계없이 퇴사 벌금을 미리 정해도 되나요?",
+            "change": "improved",
+            "dense_first_rank": null,
+            "new_first_rank": 4
+          },
+          {
+            "query_id": "V002_T03_USER_QUESTION_01",
+            "query": "일하는 조건으로 회사에서 미리 빌린 돈을 월급과 맞계산한다는데 관련 규정이 있나요?",
+            "change": "regressed",
+            "dense_first_rank": 2,
+            "new_first_rank": 7
+          },
+          {
+            "query_id": "V002_T06_USER_QUESTION_01",
+            "query": "해고 이유와 날짜를 종이에 적어 주지 않고 말로만 통보해도 되나요?",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": 6
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_01",
+            "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": 6
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_02",
+            "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+            "change": "regressed",
+            "dense_first_rank": 2,
+            "new_first_rank": 10
+          },
+          {
+            "query_id": "V002_T08_CONTRACT_CLAUSE_02",
+            "query": "임금은 근로자 본인이 아닌 사용자가 지정한 제삼자에게 지급한다.",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": null
+          }
+        ],
+        "weighted_80_20": [
+          {
+            "query_id": "V002_T02_USER_QUESTION_02",
+            "query": "실제로 생긴 손해와 관계없이 퇴사 벌금을 미리 정해도 되나요?",
+            "change": "improved",
+            "dense_first_rank": null,
+            "new_first_rank": 5
+          },
+          {
+            "query_id": "V002_T03_USER_QUESTION_01",
+            "query": "일하는 조건으로 회사에서 미리 빌린 돈을 월급과 맞계산한다는데 관련 규정이 있나요?",
+            "change": "regressed",
+            "dense_first_rank": 2,
+            "new_first_rank": 7
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_01",
+            "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": 6
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_02",
+            "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+            "change": "regressed",
+            "dense_first_rank": 2,
+            "new_first_rank": 9
+          },
+          {
+            "query_id": "V002_T08_CONTRACT_CLAUSE_02",
+            "query": "임금은 근로자 본인이 아닌 사용자가 지정한 제삼자에게 지급한다.",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": 10
+          }
+        ],
+        "weighted_70_30": [
+          {
+            "query_id": "V002_T02_USER_QUESTION_02",
+            "query": "실제로 생긴 손해와 관계없이 퇴사 벌금을 미리 정해도 되나요?",
+            "change": "improved",
+            "dense_first_rank": null,
+            "new_first_rank": 5
+          },
+          {
+            "query_id": "V002_T03_USER_QUESTION_01",
+            "query": "일하는 조건으로 회사에서 미리 빌린 돈을 월급과 맞계산한다는데 관련 규정이 있나요?",
+            "change": "regressed",
+            "dense_first_rank": 2,
+            "new_first_rank": 7
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_01",
+            "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": 6
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_02",
+            "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+            "change": "regressed",
+            "dense_first_rank": 2,
+            "new_first_rank": 9
+          },
+          {
+            "query_id": "V002_T08_CONTRACT_CLAUSE_02",
+            "query": "임금은 근로자 본인이 아닌 사용자가 지정한 제삼자에게 지급한다.",
+            "change": "regressed",
+            "dense_first_rank": 1,
+            "new_first_rank": null
+          }
+        ],
+        "union_rerank": [
+          {
+            "query_id": "V002_T02_KEYWORD_02",
+            "query": "중도 퇴사 계약 불이행 정액 배상 약정",
+            "change": "improved",
+            "dense_first_rank": null,
+            "new_first_rank": 1
+          },
+          {
+            "query_id": "V002_T12_CONTRACT_CLAUSE_01",
+            "query": "일하는 중에 쉬는 시간 없이 계속 근무한다.",
+            "change": "improved",
+            "dense_first_rank": null,
+            "new_first_rank": 3
+          }
+        ]
+      },
+      "note": "90개 DRAFT 개발셋에 사전 지정한 설정을 1회 비교. 최종 테스트 성능 아님. reranker는 최대40개 후보 전체를 채점하며 RRF 가중치는 후보 사전 순서와 동점 처리에만 영향."
+    }
+  ]
+}

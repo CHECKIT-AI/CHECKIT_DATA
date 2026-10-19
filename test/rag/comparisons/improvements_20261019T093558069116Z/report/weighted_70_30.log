@@ -1,0 +1,164 @@
+검색 방식: weighted_rrf / 평가 질의: 90개
+W1019 18:36:33.974000 83096 .venv/lib/python3.13/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 66452.16it/s]
+RAG/indexing/embeddings.py:28: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimension = int(self.model.get_sentence_embedding_dimension())
+V002_T01_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T01_KEYWORD_02 | keyword | 대표 정답 순위: 2
+V002_T01_USER_QUESTION_01 | user_question | 대표 정답 순위: 3
+V002_T01_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T01_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T01_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 2
+V002_T02_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T02_KEYWORD_02 | keyword | 대표 정답 순위: 6
+V002_T02_USER_QUESTION_01 | user_question | 대표 정답 순위: 10위 밖
+V002_T02_USER_QUESTION_02 | user_question | 대표 정답 순위: 5
+V002_T02_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 10위 밖
+V002_T02_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 10위 밖
+V002_T03_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T03_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T03_USER_QUESTION_01 | user_question | 대표 정답 순위: 7
+V002_T03_USER_QUESTION_02 | user_question | 대표 정답 순위: 5
+V002_T03_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T03_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 10위 밖
+V002_T04_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T04_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T04_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T04_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T04_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 2
+V002_T04_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T05_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T05_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T05_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T05_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T05_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T05_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T06_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T06_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T06_USER_QUESTION_01 | user_question | 대표 정답 순위: 3
+V002_T06_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T06_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T06_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T07_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T07_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T07_USER_QUESTION_01 | user_question | 대표 정답 순위: 6
+V002_T07_USER_QUESTION_02 | user_question | 대표 정답 순위: 9
+V002_T07_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 2
+V002_T07_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T08_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T08_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T08_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T08_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T08_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 2
+V002_T08_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 10위 밖
+V002_T09_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T09_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T09_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T09_USER_QUESTION_02 | user_question | 대표 정답 순위: 4
+V002_T09_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T09_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T10_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T10_KEYWORD_02 | keyword | 대표 정답 순위: 2
+V002_T10_USER_QUESTION_01 | user_question | 대표 정답 순위: 3
+V002_T10_USER_QUESTION_02 | user_question | 대표 정답 순위: 2
+V002_T10_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 2
+V002_T10_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T11_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T11_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T11_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T11_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T11_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T11_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T12_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T12_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T12_USER_QUESTION_01 | user_question | 대표 정답 순위: 2
+V002_T12_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T12_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 10위 밖
+V002_T12_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T13_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T13_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T13_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T13_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T13_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T13_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 10위 밖
+V002_T14_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T14_KEYWORD_02 | keyword | 대표 정답 순위: 2
+V002_T14_USER_QUESTION_01 | user_question | 대표 정답 순위: 2
+V002_T14_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T14_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 1
+V002_T14_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+V002_T15_KEYWORD_01 | keyword | 대표 정답 순위: 1
+V002_T15_KEYWORD_02 | keyword | 대표 정답 순위: 1
+V002_T15_USER_QUESTION_01 | user_question | 대표 정답 순위: 1
+V002_T15_USER_QUESTION_02 | user_question | 대표 정답 순위: 1
+V002_T15_CONTRACT_CLAUSE_01 | contract_clause | 대표 정답 순위: 2
+V002_T15_CONTRACT_CLAUSE_02 | contract_clause | 대표 정답 순위: 1
+{
+  "method": "weighted_rrf",
+  "corpus": "labor_standards_v001",
+  "annotation_statuses": [
+    "DRAFT"
+  ],
+  "overall": {
+    "query_count": 90,
+    "hit@1": 0.6777777777777778,
+    "recall@1": 0.6777777777777778,
+    "hit@3": 0.8444444444444444,
+    "recall@3": 0.8444444444444444,
+    "hit@5": 0.8777777777777778,
+    "recall@5": 0.8777777777777778,
+    "hit@10": 0.9222222222222223,
+    "recall@10": 0.9222222222222223,
+    "mrr@10": 0.7693033509700177,
+    "mean_query_ms": 57.420589382915445
+  },
+  "by_query_kind": {
+    "contract_clause": {
+      "query_count": 30,
+      "hit@1": 0.6,
+      "recall@1": 0.6,
+      "hit@3": 0.8,
+      "recall@3": 0.8,
+      "hit@5": 0.8,
+      "recall@5": 0.8,
+      "hit@10": 0.8,
+      "recall@10": 0.8,
+      "mrr@10": 0.7,
+      "mean_query_ms": 57.68801530745501
+    },
+    "keyword": {
+      "query_count": 30,
+      "hit@1": 0.8666666666666667,
+      "recall@1": 0.8666666666666667,
+      "hit@3": 0.9666666666666667,
+      "recall@3": 0.9666666666666667,
+      "hit@5": 0.9666666666666667,
+      "recall@5": 0.9666666666666667,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.9222222222222223,
+      "mean_query_ms": 57.22611665260047
+    },
+    "user_question": {
+      "query_count": 30,
+      "hit@1": 0.5666666666666667,
+      "recall@1": 0.5666666666666667,
+      "hit@3": 0.7666666666666667,
+      "recall@3": 0.7666666666666667,
+      "hit@5": 0.8666666666666667,
+      "recall@5": 0.8666666666666667,
+      "hit@10": 0.9666666666666667,
+      "recall@10": 0.9666666666666667,
+      "mrr@10": 0.6856878306878307,
+      "mean_query_ms": 57.34763618869086
+    }
+  },
+  "candidate_pool": {
+    "mean_candidate_count": 30.38888888888889,
+    "representative_target_hit_rate": 0.9777777777777777,
+    "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+  }
+}
+평가 결과 저장: outputs/rag/weighted_70_30_v002_20261019T093641502608Z

@@ -1,0 +1,85 @@
+{
+  "created_at": "2026-10-19T09:18:16.917266+00:00",
+  "dataset_name": "retrieval_dev_v002.jsonl",
+  "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+  "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+  "index_manifest_sha256": "05afb0d94344d81c5e4272ae19b668a96c04aa6bdacf917badf567044d8db7f2",
+  "model": null,
+  "method": "bm25",
+  "retrieval_config": {
+    "method": "bm25",
+    "model": null,
+    "candidate_k_per_retriever": null,
+    "rrf_k": null,
+    "rrf_weights": null,
+    "bm25_manifest": {
+      "status": "READY",
+      "corpus_id": "labor_standards_v001",
+      "created_at": "2026-10-19T09:18:04.227045+00:00",
+      "source_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+      "document_count": 131,
+      "documents_sha256": "cd7d1b357240c6a7a86d6aca2f86a49cb3024f202989af7b266f68e9344f198e",
+      "tokenizer": {
+        "strategy": "kiwi_lexical_v1",
+        "normalization": "NFKC_lowercase",
+        "model_type": "cong",
+        "removed_pos_prefixes": [
+          "J",
+          "E"
+        ],
+        "removed_tags": [
+          "SF",
+          "SP",
+          "SS",
+          "SSO",
+          "SSC",
+          "SE",
+          "SO",
+          "SW"
+        ],
+        "keep_negation_and_numbers": true,
+        "preserve_article_references": true,
+        "kiwipiepy_version": "0.24.0",
+        "kiwipiepy_model_version": "0.24.0"
+      },
+      "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+      "algorithm": "BM25Okapi",
+      "rank_bm25_version": "0.2.2",
+      "parameters": {
+        "k1": 1.5,
+        "b": 0.75,
+        "epsilon": 0.25
+      },
+      "min_score_exclusive": 0.0,
+      "indexed_field": "embedding_text"
+    }
+  },
+  "retrieval_depth": 10,
+  "metrics_at": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "device": "cpu",
+  "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+  "code_sha256": {
+    "RAG/indexing/embeddings.py": "edf2225ae15c328e99d945e782cc45e4978b10a8b8af6878476df9acdbb31b54",
+    "RAG/indexing/vector_store.py": "91cbe819e774d3b3ff5071f6b99202b3e7e4b7589ad077136fcf7e4920ff5032",
+    "RAG/pipelines/evaluate.py": "31eed45bb0d6b3696a737949b55ef40f85dc685c6604eee0b2330d027d297904",
+    "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+    "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+    "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+    "RAG/retrieval/hybrid.py": "6b6ca283b212c447a1d55e18eded5cdd2142b1556b7caf4789d90cae115c9771",
+    "RAG/retrieval/retriever.py": "291e0d71a775812c352918825d59e216f5231bb7580e2dae81e0c20725e95045"
+  },
+  "packages": {
+    "chromadb": "1.5.9",
+    "sentence-transformers": "5.7.0",
+    "transformers": "5.20.1",
+    "torch": "2.14.1",
+    "rank-bm25": "0.2.2",
+    "kiwipiepy": "0.24.0",
+    "kiwipiepy_model": "0.24.0"
+  }
+}

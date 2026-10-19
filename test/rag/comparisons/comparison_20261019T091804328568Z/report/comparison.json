@@ -1,0 +1,278 @@
+{
+  "corpus": "labor_standards_v001",
+  "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+  "chunks_sha256": "c470d07c7167f3a104f464c3ce27fcc00f22191623e98bbe79f3b2200da4b6f2",
+  "runs": {
+    "dense": "outputs/rag/dense_v002_20261019T091815270231Z",
+    "bm25": "outputs/rag/bm25_v002_20261019T091816916780Z",
+    "hybrid": "outputs/rag/hybrid_v002_20261019T091826986480Z"
+  },
+  "overall": [
+    {
+      "method": "dense",
+      "query_count": 90,
+      "hit@1": 0.7333333333333333,
+      "hit@5": 0.9111111111111111,
+      "mrr@10": 0.8141975308641974,
+      "mean_query_ms": 56.49645229310004
+    },
+    {
+      "method": "bm25",
+      "query_count": 90,
+      "hit@1": 0.5888888888888889,
+      "hit@5": 0.8111111111111111,
+      "mrr@10": 0.6841975308641975,
+      "mean_query_ms": 0.36711158722432125
+    },
+    {
+      "method": "hybrid",
+      "query_count": 90,
+      "hit@1": 0.7,
+      "hit@5": 0.8777777777777778,
+      "mrr@10": 0.7754144620811287,
+      "mean_query_ms": 56.80935930641782
+    }
+  ],
+  "reports": {
+    "dense": {
+      "method": "dense",
+      "corpus": "labor_standards_v001",
+      "annotation_statuses": [
+        "DRAFT"
+      ],
+      "overall": {
+        "query_count": 90,
+        "hit@1": 0.7333333333333333,
+        "recall@1": 0.7333333333333333,
+        "hit@3": 0.9111111111111111,
+        "recall@3": 0.9111111111111111,
+        "hit@5": 0.9111111111111111,
+        "recall@5": 0.9111111111111111,
+        "hit@10": 0.9222222222222223,
+        "recall@10": 0.9222222222222223,
+        "mrr@10": 0.8141975308641974,
+        "mean_query_ms": 56.49645229310004
+      },
+      "by_query_kind": {
+        "contract_clause": {
+          "query_count": 30,
+          "hit@1": 0.6666666666666666,
+          "recall@1": 0.6666666666666666,
+          "hit@3": 0.8333333333333334,
+          "recall@3": 0.8333333333333334,
+          "hit@5": 0.8333333333333334,
+          "recall@5": 0.8333333333333334,
+          "hit@10": 0.8666666666666667,
+          "recall@10": 0.8666666666666667,
+          "mrr@10": 0.7425925925925926,
+          "mean_query_ms": 56.69232902970786
+        },
+        "keyword": {
+          "query_count": 30,
+          "hit@1": 0.8333333333333334,
+          "recall@1": 0.8333333333333334,
+          "hit@3": 0.9666666666666667,
+          "recall@3": 0.9666666666666667,
+          "hit@5": 0.9666666666666667,
+          "recall@5": 0.9666666666666667,
+          "hit@10": 0.9666666666666667,
+          "recall@10": 0.9666666666666667,
+          "mrr@10": 0.8944444444444444,
+          "mean_query_ms": 56.64984037866816
+        },
+        "user_question": {
+          "query_count": 30,
+          "hit@1": 0.7,
+          "recall@1": 0.7,
+          "hit@3": 0.9333333333333333,
+          "recall@3": 0.9333333333333333,
+          "hit@5": 0.9333333333333333,
+          "recall@5": 0.9333333333333333,
+          "hit@10": 0.9333333333333333,
+          "recall@10": 0.9333333333333333,
+          "mrr@10": 0.8055555555555556,
+          "mean_query_ms": 56.14718747092411
+        }
+      }
+    },
+    "bm25": {
+      "method": "bm25",
+      "corpus": "labor_standards_v001",
+      "annotation_statuses": [
+        "DRAFT"
+      ],
+      "overall": {
+        "query_count": 90,
+        "hit@1": 0.5888888888888889,
+        "recall@1": 0.5888888888888889,
+        "hit@3": 0.7555555555555555,
+        "recall@3": 0.7555555555555555,
+        "hit@5": 0.8111111111111111,
+        "recall@5": 0.8111111111111111,
+        "hit@10": 0.8333333333333334,
+        "recall@10": 0.8333333333333334,
+        "mrr@10": 0.6841975308641975,
+        "mean_query_ms": 0.36711158722432125
+      },
+      "by_query_kind": {
+        "contract_clause": {
+          "query_count": 30,
+          "hit@1": 0.6,
+          "recall@1": 0.6,
+          "hit@3": 0.7333333333333333,
+          "recall@3": 0.7333333333333333,
+          "hit@5": 0.8,
+          "recall@5": 0.8,
+          "hit@10": 0.8333333333333334,
+          "recall@10": 0.8333333333333334,
+          "mrr@10": 0.687037037037037,
+          "mean_query_ms": 0.42330846190452576
+        },
+        "keyword": {
+          "query_count": 30,
+          "hit@1": 0.9333333333333333,
+          "recall@1": 0.9333333333333333,
+          "hit@3": 1.0,
+          "recall@3": 1.0,
+          "hit@5": 1.0,
+          "recall@5": 1.0,
+          "hit@10": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 0.9666666666666667,
+          "mean_query_ms": 0.24598465533927083
+        },
+        "user_question": {
+          "query_count": 30,
+          "hit@1": 0.23333333333333334,
+          "recall@1": 0.23333333333333334,
+          "hit@3": 0.5333333333333333,
+          "recall@3": 0.5333333333333333,
+          "hit@5": 0.6333333333333333,
+          "recall@5": 0.6333333333333333,
+          "hit@10": 0.6666666666666666,
+          "recall@10": 0.6666666666666666,
+          "mrr@10": 0.3988888888888889,
+          "mean_query_ms": 0.4320416444291671
+        }
+      }
+    },
+    "hybrid": {
+      "method": "hybrid",
+      "corpus": "labor_standards_v001",
+      "annotation_statuses": [
+        "DRAFT"
+      ],
+      "overall": {
+        "query_count": 90,
+        "hit@1": 0.7,
+        "recall@1": 0.7,
+        "hit@3": 0.8222222222222222,
+        "recall@3": 0.8222222222222222,
+        "hit@5": 0.8777777777777778,
+        "recall@5": 0.8777777777777778,
+        "hit@10": 0.9333333333333333,
+        "recall@10": 0.9333333333333333,
+        "mrr@10": 0.7754144620811287,
+        "mean_query_ms": 56.80935930641782
+      },
+      "by_query_kind": {
+        "contract_clause": {
+          "query_count": 30,
+          "hit@1": 0.6333333333333333,
+          "recall@1": 0.6333333333333333,
+          "hit@3": 0.8,
+          "recall@3": 0.8,
+          "hit@5": 0.8,
+          "recall@5": 0.8,
+          "hit@10": 0.8333333333333334,
+          "recall@10": 0.8333333333333334,
+          "mrr@10": 0.7148148148148148,
+          "mean_query_ms": 57.00764306820929
+        },
+        "keyword": {
+          "query_count": 30,
+          "hit@1": 0.9,
+          "recall@1": 0.9,
+          "hit@3": 1.0,
+          "recall@3": 1.0,
+          "hit@5": 1.0,
+          "recall@5": 1.0,
+          "hit@10": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 0.9444444444444444,
+          "mean_query_ms": 56.57481390129154
+        },
+        "user_question": {
+          "query_count": 30,
+          "hit@1": 0.5666666666666667,
+          "recall@1": 0.5666666666666667,
+          "hit@3": 0.6666666666666666,
+          "recall@3": 0.6666666666666666,
+          "hit@5": 0.8333333333333334,
+          "recall@5": 0.8333333333333334,
+          "hit@10": 0.9666666666666667,
+          "recall@10": 0.9666666666666667,
+          "mrr@10": 0.666984126984127,
+          "mean_query_ms": 56.84562094975263
+        }
+      }
+    }
+  },
+  "paired_hit5_changes": [
+    {
+      "query_id": "V002_T02_KEYWORD_02",
+      "query": "중도 퇴사 계약 불이행 정액 배상 약정",
+      "change": "improved",
+      "dense_first_rank": null,
+      "hybrid_first_rank": 3
+    },
+    {
+      "query_id": "V002_T02_USER_QUESTION_02",
+      "query": "실제로 생긴 손해와 관계없이 퇴사 벌금을 미리 정해도 되나요?",
+      "change": "improved",
+      "dense_first_rank": null,
+      "hybrid_first_rank": 4
+    },
+    {
+      "query_id": "V002_T03_USER_QUESTION_01",
+      "query": "일하는 조건으로 회사에서 미리 빌린 돈을 월급과 맞계산한다는데 관련 규정이 있나요?",
+      "change": "regressed",
+      "dense_first_rank": 2,
+      "hybrid_first_rank": 7
+    },
+    {
+      "query_id": "V002_T06_USER_QUESTION_01",
+      "query": "해고 이유와 날짜를 종이에 적어 주지 않고 말로만 통보해도 되나요?",
+      "change": "regressed",
+      "dense_first_rank": 1,
+      "hybrid_first_rank": 6
+    },
+    {
+      "query_id": "V002_T07_USER_QUESTION_01",
+      "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+      "change": "regressed",
+      "dense_first_rank": 1,
+      "hybrid_first_rank": 6
+    },
+    {
+      "query_id": "V002_T07_USER_QUESTION_02",
+      "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+      "change": "regressed",
+      "dense_first_rank": 2,
+      "hybrid_first_rank": 10
+    },
+    {
+      "query_id": "V002_T08_CONTRACT_CLAUSE_02",
+      "query": "임금은 근로자 본인이 아닌 사용자가 지정한 제삼자에게 지급한다.",
+      "change": "regressed",
+      "dense_first_rank": 1,
+      "hybrid_first_rank": null
+    }
+  ],
+  "hybrid_minus_dense": {
+    "hit@1": -0.033333333333333326,
+    "hit@5": -0.033333333333333326,
+    "mrr@10": -0.0387830687830687
+  },
+  "note": "DRAFT 개발셋 단일 실행. 후보 수와 워밍업 조건은 메타데이터 참조. 미사용 테스트셋 성능 또는 시간 측정의 통계적 우열을 뜻하지 않음."
+}
