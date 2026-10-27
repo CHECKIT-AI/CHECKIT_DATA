@@ -54,6 +54,7 @@ def main():
     parser.add_argument("--corpus", type=corpus_name, required=True)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--batch-size", type=int, default=2)
+    parser.add_argument("--revision", default="main", help="임베딩 모델 커밋. 기존 실험과 맞출 때 명시.")
     parser.add_argument(
         "--model-name",
         choices=[MODEL_NAME, QWEN_MODEL_NAME],
@@ -71,6 +72,13 @@ def main():
             "기존 결과 또는 실패 기록을 확인하고 새 corpus 버전을 사용하세요."
         )
     chunks = load_chunks(source)
+    processed_manifest = source.parent / "manifest.json"
+    if processed_manifest.exists():
+        prepared = json.loads(processed_manifest.read_text(encoding="utf-8"))
+        if prepared.get("status", "READY") != "READY":
+            raise RuntimeError("법령 corpus 가공이 완료되지 않았습니다.")
+        if prepared.get("chunks_sha256") and prepared["chunks_sha256"] != hashlib.sha256(source.read_bytes()).hexdigest():
+            raise RuntimeError("가공 manifest와 청크 해시가 다릅니다.")
     source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
     print(f"입력 청크: {len(chunks)}개", flush=True)
     # print("BGE-M3 모델 로딩 중입니다. 첫 실행은 다운로드가 필요합니다.", flush=True)
@@ -83,6 +91,7 @@ def main():
 
     embedder = create_embedder(
         model_name=args.model_name,
+        revision=args.revision,
         device=args.device,
         input_type="document",
     )
