@@ -376,6 +376,14 @@ python3 -m unittest discover -s test/rag -p 'test_*.py'
 
 직전 코드 변경 확인에서 11개 테스트가 통과했습니다. RRF, 전체 후보 재정렬, 정확 cosine 계산·동점 처리·잘못된 벡터 검증이 대상입니다. 법률 판정의 정확도를 검증하는 테스트는 아닙니다.
 
+### 5-7. 백엔드 서버에서 검색 사용
+
+`RAG/service.py`의 `LawSearchService`가 기존 BGE-M3 dense 검색을 제공합니다. Chroma 데이터와 검색 로직은 Data에 그대로 둡니다.
+
+`CheckIt_BE` 폴더에서 백엔드 가상환경에 `python -m pip install -r requirements-rag.txt`로 Data를 editable 설치하고, 백엔드 `.env`에 `CHECKIT_RAG_ENABLED=true`를 설정합니다. 이후 백엔드 서버 하나에서 `POST /api/rag/search`를 제공합니다. 별도 Data HTTP 서버는 없습니다. 인증·입력 형식·테스트 순서는 백엔드 README의 **로컬 Chroma 검색 연결**을 참고하세요.
+
+모델·청크·manifest·Chroma 인덱스가 서버를 실행하는 컴퓨터에 있어야 합니다. 기존 로컬 인덱스는 재생성하거나 덮어쓰지 않습니다. 다른 팀원은 해당 서버의 API를 호출할 경우 Data를 설치할 필요가 없습니다.
+
 ## 6. Git 공유와 재현성
 
 - 공유 대상: 소스, 의존성 목록, `.env.example`, 개발 평가셋, `test/rag/`에 보존한 비교 결과, README.
