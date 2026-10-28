@@ -45,7 +45,7 @@ def load_queries(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help="평가 인덱스 (기본값: BGE-M3 labor_standards_v001)")
+    parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help=f"평가 인덱스 (기본값: BGE-M3 {DEFAULT_CORPUS})")
     parser.add_argument("--dataset", type=Path, default=DATA_ROOT / "evaluation" / "retrieval_dev_v002.jsonl")
     parser.add_argument("--run-name", type=corpus_name)
     parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank"], default="dense")

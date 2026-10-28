@@ -5,6 +5,7 @@ METADATA_KEYS = (
     "article_id", "law_id", "version_id", "law_name", "article_key",
     "article_no", "article_title", "snapshot_effective_date",
     "article_effective_date", "source_url", "chunk_type",
+    "source_type", "valid_from", "valid_to",
 )
 
 

@@ -1,8 +1,10 @@
 """백엔드에서 호출하는 검색 인터페이스. 별도 HTTP 서버는 실행하지 않는다."""
 
+from RAG.settings import DEFAULT_CORPUS
+
 
 class LawSearchService:
-    def __init__(self, corpus="labor_standards_v001", device="cpu"):
+    def __init__(self, corpus=DEFAULT_CORPUS, device="cpu"):
         from RAG.retrieval.retriever import LawRetriever
 
         self.corpus = corpus

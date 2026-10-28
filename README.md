@@ -1,37 +1,42 @@
 # CheckIt Data
 
-근로계약서 분석 서비스 CheckIt에서 사용할 데이터를 수집·전처리하고 검색용 인덱스로 만드는 저장소입니다. **법제처 API의 법령 원문을 조문 단위로 수집·검색**하며, 기존 근로기준법 평가 인덱스와 근로관계 8개 법령의 통합 인덱스를 별도로 관리합니다.
+2026-10-28 기본 근로조건 점검을 위한 추가 원문 수집 내역은 [원문 보완 기록](BASIC_LABOR_COVERAGE.md)을 참고하세요. 추가 법령 4개·선택 별표 3개·2026년 최저임금 고시를 포함한 `employment_basic_v002`(498청크)가 현재 검색 기본값입니다. 아래 2026-10-19 실험 및 `labor_standards_v001` 명령 예시는 이전 기준선 재현용이며, 기존 성능을 새 인덱스의 성능으로 해석하지 않습니다.
 
-추가 법령 구축일: **2026-10-27**. 아래 기존 성능 비교는 **2026-10-19 근로기준법 단독 인덱스**의 저장된 평가 결과이며, 통합 인덱스의 성능을 뜻하지 않습니다.
+근로계약서 분석 서비스 CheckIt에서 사용할 법령 원문을 수집·전처리하고 검색 인덱스로 만드는 저장소입니다. 현재 기본 인덱스는 **근로관계 12개 법령 본칙 + 선택 별표 3개 + 2026년 최저임금 고시**, 총 **498개 청크**입니다. 기존 근로기준법 단독 인덱스와 8개 법령 인덱스도 별도로 보존합니다.
+
+현재 기본 인덱스 구축·백엔드 반영일: **2026-10-28**. 8개 법령 인덱스 구축일: **2026-10-27**. 아래 기존 성능 비교는 **2026-10-19 근로기준법 단독 인덱스**의 저장된 평가 결과이며, 통합 인덱스의 성능을 뜻하지 않습니다.
 
 ## 1. 현재 상태와 기본 설정
 
 | 항목 | 현재 상태 |
 | --- | --- |
-| 법령 수집 | 법제처 API 목록·본문 JSON 수집 완료 |
-| 정규화 | 근로기준법 조문 132개 생성 |
-| 청킹 | 삭제된 제 35조 제외, 조문당 청크 하나로 131개 생성 |
+| 법령 수집 | 법제처 API로 12개 법령 원문 수집, 선택 별표·고시 원문 보존 |
+| 정규화 | 12개 법령 본칙 조문 507개, 삭제 조문 13개 제외 |
+| 청킹 | 법령 본칙 494개 + 별표 3개 + 고시 1개 = **498개** |
 | 벡터 검색 | BGE-M3 임베딩과 로컬 Chroma 인덱스 구축·검색 확인 |
-| 키워드 검색 | Kiwi 형태소 분석 기반 BM25 구축·평가 완료 |
+| 키워드 검색 | 현재 498개 청크의 Kiwi BM25 구축 완료, 성능 비교는 이전 131개 인덱스 기준 |
 | 검색 결합 | 동일 가중치 RRF, BGE 비중 80:20·70:30 RRF 비교 완료 |
 | 재정렬 | dense·BM25 후보 합집합 전체에 BGE Reranker 적용·평가 완료 |
 | 인덱스 진단 | Chroma와 전체 벡터 정확 검색의 상위 20개 결과 비교 완료 |
 | 임베딩 교체 | Qwen3-Embedding-0.6B 별도 인덱스 구축·비교 완료 |
-| 평가 | 초기 12개 → 개발 질의 90개로 확장, 유형별 지표·실행 조건 기록 |
-| 기본값 | **BGE-M3 + dense 검색**, `labor_standards_v001` |
+| 평가 | 이전 인덱스의 개발 질의 90개 평가 보존. 현재 498개 인덱스는 API 검색 6건 확인, 전체 정확도 미평가 |
+| 기본값 | **BGE-M3 + dense 검색**, `employment_basic_v002` (498청크) |
 | 추가 인덱스 | `employment_laws_v001`: 근로관계 8개 법령, 조문 453개 중 삭제 9개 제외, **444개 청크** |
-| 다음 단계 | 추가 법령 평가셋·검수, 청킹·검색 표현 개선 |
+| 백엔드 연결 | `POST /api/rag/search`의 기본 corpus 반영, 인증·CSRF 포함 실제 호출 확인 |
+| 다음 단계 | 12개 법령·별표·고시 평가셋 검수, 적용 기간 처리, 검색 정확도 평가 |
 
 현재 구현 범위는 법령 데이터 준비와 검색입니다. 계약서 OCR·개인정보 마스킹·조항 분류 모델·위험 판정·검색 결과를 근거로 한 LLM 설명 생성은 이 파이프라인에 아직 연결하지 않았습니다.
 
 ### 기본 모델을 BGE-M3로 유지한 이유
+
+아래 수치는 2026-10-19의 `labor_standards_v001`(131청크) 실험 결과입니다. 현재 498개 인덱스의 성능 수치가 아닙니다.
 
 - BGE 단독 검색은 90개 개발 질의에서 **Hit@5 91.1%, MRR@10 0.8142**였습니다.
 - Qwen은 계약서 문장 검색에서 일부 개선됐지만 전체 Hit@5는 85.6%였고, 사용자 질문에서 저하됐습니다.
 - BGE·BM25 후보를 Reranker로 재정렬한 방식은 **Hit@1 83.3%, Hit@5 93.3%**로 이번 실험의 최고 점수였습니다. 다만 CPU 평균 처리시간이 약 5.6초로, 기본 검색의 약 55ms보다 길었습니다.
 - 따라서 현재는 BGE 단독을 기본으로 사용하고, 하이브리드·Reranker·Qwen은 명시적으로 선택하는 실험 기능으로 보존합니다.
 
-공통 기본 corpus는 [`RAG/settings.py`](RAG/settings.py)의 `DEFAULT_CORPUS`에서 관리합니다. 검색·평가에서 `--corpus`를 생략하면 `labor_standards_v001`을 사용합니다. 질의 모델은 선택한 인덱스의 manifest에 기록된 모델과 커밋을 따라갑니다.
+공통 기본 corpus는 [`RAG/settings.py`](RAG/settings.py)의 `DEFAULT_CORPUS`에서 관리합니다. 검색·평가에서 `--corpus`를 생략하면 `employment_basic_v002`를 사용합니다. 기존 평가를 재현하려면 `--corpus labor_standards_v001`을 명시하세요. 질의 모델은 선택한 인덱스의 manifest에 기록된 모델과 커밋을 따라갑니다.
 
 ## 2. 파이프라인 구조
 
@@ -41,6 +46,7 @@ flowchart TD
     COLLECT --> BODY[MST와 시행일로 본문 수집]
     BODY --> NORMALIZE[조문 정규화]
     NORMALIZE --> CHUNK[삭제 조문 제외 / 조문 단위 청킹]
+    ASSETS[선택 별표 / 2026년 최저임금 고시] --> CHUNK
     CHUNK --> DENSE[BGE-M3 임베딩 / Chroma]
     CHUNK --> BM25[Kiwi 토큰화 / BM25]
     QUERY[계약 조항 또는 사용자 질문] --> SEARCH[검색 방식 선택]
@@ -75,7 +81,8 @@ CheckIt_Data/
 ├── requirements.txt               # RAG 의존성
 ├── RAG/
 │   ├── settings.py                 # 루트 .env, 경로, 기본 corpus
-│   ├── config/target_laws.json     # 대상 법령 목록, 수집 코드에는 아직 미연결
+│   ├── config/target_laws.json     # collect_corpus 기본 대상 8개 법령
+│   ├── config/basic_labor_supplements.json # 추가 시행규칙·공휴일 규정 4개
 │   ├── collection/law_api.py       # 법제처 API 클라이언트
 │   ├── preprocessing/             # 조문 정규화, 청킹, Kiwi 토큰화
 │   ├── indexing/                  # BGE·Qwen 임베딩, Chroma, BM25
@@ -87,7 +94,9 @@ CheckIt_Data/
 │   ├── processed/<corpus>/        # 정규화·청크·manifest, Git 제외
 │   └── evaluation/                # 로컬 평가 데이터
 ├── storage/rag/                   # 로컬 인덱스·모델 준비 기록, Git 제외
-│   ├── labor_standards_v001/      # 기존 BGE 인덱스: chroma/, bm25/
+│   ├── employment_basic_v002/     # 현재 기본 498개: chroma/, bm25/
+│   ├── employment_laws_v001/      # 기존 8개 법령 444개
+│   ├── labor_standards_v001/      # 기존 BGE 인덱스 131개: chroma/, bm25/
 │   ├── labor_standards_qwen_v001/ # Qwen 실험 인덱스
 │   └── models/                    # Reranker 모델 커밋·준비 상태
 ├── outputs/rag/                   # 실행별 결과·메타데이터, Git 제외
@@ -100,7 +109,25 @@ CheckIt_Data/
     └── test_*.py                  # RRF·Reranker·정확 검색 단위 테스트
 ```
 
-### 현재 수집 자료
+### 현재 기본 인덱스 구성
+
+| 자료 | 청크 수 |
+| --- | ---: |
+| 기존 8개 법령 본칙 (`employment_laws_v001`) | 444 |
+| 근로기준법 시행규칙 | 21 |
+| 최저임금법 시행규칙 | 7 |
+| 근로자퇴직급여 보장법 시행규칙 | 18 |
+| 관공서의 공휴일에 관한 규정 | 4 |
+| 근로기준법 시행령 별표 1·2 | 2 |
+| 기간제법 시행령 별표 1 | 1 |
+| 2026년 적용 최저임금 고시 | 1 |
+| **합계** | **498** |
+
+고시의 적용 기간은 **2026-01-01~2026-12-31**입니다. 검색 결과는 `source_type`, `valid_from`, `valid_to` 등 자료에 존재하는 메타데이터를 보존하지만 **시행일·적용 기간을 자동 필터링하지 않습니다**. 고시의 월 환산액은 주 40시간·월 209시간 조건이며 모든 계약서에 일괄 적용하지 않습니다.
+
+현재 범위는 기본 근로조건 관련 근거 검색입니다. 비밀유지·경업금지·사회보험·용역·파견·저작권에 대한 종합 판단까지 지원하는 것은 아닙니다. 법령·별표 검수 상태는 `PENDING`입니다. 수집 버전·원본 위치·검증 내역은 [원문 보완 기록](BASIC_LABOR_COVERAGE.md)을 확인하세요.
+
+### 이전 근로기준법 기준선 수집 자료
 
 | 항목 | 값 |
 | --- | --- |
@@ -113,7 +140,7 @@ CheckIt_Data/
 | BGE 임베딩 | `BAAI/bge-m3`, 1,024차원, 벡터 정규화 |
 | 거리 | cosine distance |
 
-수집기는 `target=eflaw`의 현행 목록을 조회하고, 목록에서 선택한 MST·시행일로 본문을 요청합니다. 위 값은 이번 실험에 사용한 스냅샷이며 이후 수집에서 동일한 버전이 반환된다는 의미는 아닙니다. 현재 검색 평가는 근로기준법 본칙 조문에 한정되며 다른 법령·부칙·별표는 포함하지 않습니다.
+수집기는 `target=eflaw`의 현행 목록을 조회하고, 목록에서 선택한 MST·시행일로 본문을 요청합니다. 위 값은 이번 실험에 사용한 스냅샷이며 이후 수집에서 동일한 버전이 반환된다는 의미는 아닙니다. 2026-10-19 검색 평가는 근로기준법 본칙 조문에 한정됐습니다. 현재 기본 인덱스의 범위는 위 구성표를 따르며, 모든 부칙·별표를 포함하는 것은 아닙니다.
 
 ### 레코드와 이력 관리
 
@@ -123,9 +150,11 @@ CheckIt_Data/
 - `manifest.json`, `chunks_manifest.json`, `index_manifest.json`: 원본·입력 해시, 조문·청크 건수, 모델 커밋, 차원, 거리 설정, 패키지 버전을 기록합니다.
 - 검색 시 청크 파일 해시·DB 건수·ID·모델 설정을 확인합니다. 모델 입력 한도를 넘는 텍스트는 자동 절단하지 않고 오류로 중단합니다.
 
-BGE 인덱스의 최대 문서 길이는 838토큰으로 모델 제한 8192토큰 안에 있습니다. 항 단위 청킹은 아직 적용하지 않았습니다. 정규화 manifest의 `review_status=PENDING`은 별도 검토가 필요하다는 기록이며, 인덱싱을 자동 차단하는 조건은 아닙니다.
+현재 기본 BGE 인덱스의 최대 문서 길이는 **989토큰**으로 모델 제한 8192토큰 안에 있습니다. 이전 131개 인덱스의 최대 길이는 838토큰입니다. 항 단위 청킹은 아직 적용하지 않았습니다. 정규화 manifest의 `review_status=PENDING`은 별도 검토가 필요하다는 기록이며, 인덱싱을 자동 차단하는 조건은 아닙니다.
 
-## 4. 성능 평가 결과
+## 4. 이전 인덱스의 성능 평가 결과
+
+4-1~4-3은 `labor_standards_v001`(131청크) 기준입니다. `employment_basic_v002`(498청크)는 API 검색 6건으로 연결·조회만 확인했으며 전체 성능을 아직 평가하지 않았습니다. 기존 8개 법령 인덱스의 90개 질의 결과는 5-8절에 따로 기록합니다.
 
 ### 평가 데이터와 지표
 
@@ -238,7 +267,7 @@ cp -n .env.example .env
 LAW_API_OC=발급받은_OC_값
 ```
 
-### 5-2. 기존 BGE 인덱스로 검색
+### 5-2. 현재 기본 BGE 인덱스로 검색
 
 ```bash
 source .venv/bin/activate
@@ -248,12 +277,12 @@ python3 -m RAG.pipelines.search \
   --device cpu
 ```
 
-기본 corpus는 `labor_standards_v001`, 방식은 `dense`입니다. 결과에는 조문 원문·번호·출처·거리 등이 출력됩니다. `cosine_distance`는 낮을수록 가깝고 정확도 확률은 아닙니다. BM25·RRF·Reranker 점수 역시 확률로 해석하지 않습니다.
+기본 corpus는 `employment_basic_v002`, 방식은 `dense`입니다. 결과에는 조문 원문·번호·출처·거리 등이 출력됩니다. `cosine_distance`는 낮을수록 가깝고 정확도 확률은 아닙니다. BM25·RRF·Reranker 점수 역시 확률로 해석하지 않습니다.
 
-재정렬 검색은 해당 corpus의 BM25와 Reranker 준비가 필요합니다. 기존 작업 PC에는 준비된 자료가 있습니다. 새 환경에서는 각각 최초 한 번 실행합니다.
+현재 작업 PC에는 498개 청크의 벡터·BM25 인덱스와 Reranker 준비 기록이 있습니다. 재정렬은 실험 기능이며 새 인덱스에서의 성능은 미평가입니다. 아래 준비 명령은 해당 산출물이 없는 환경에서만 실행합니다. 새 환경은 먼저 가공 데이터와 벡터 인덱스를 준비해야 합니다.
 
 ```bash
-python3 -m RAG.pipelines.build_bm25 --corpus labor_standards_v001
+python3 -m RAG.pipelines.build_bm25 --corpus employment_basic_v002
 python3 -m RAG.pipelines.prepare_reranker --device cpu
 ```
 
@@ -268,7 +297,9 @@ python3 -m RAG.pipelines.search \
   --device cpu
 ```
 
-### 5-3. 수집부터 새 인덱스 만들기
+### 5-3. 근로기준법 단독 인덱스 구축 예시
+
+이 절은 이전 단독 인덱스의 구축 과정입니다. 현재 498개 통합 인덱스의 원문 구성을 재현하는 명령은 아닙니다.
 
 ```bash
 python3 -m RAG.pipelines.collect
@@ -304,17 +335,18 @@ python3 -m RAG.pipelines.build_bm25 --corpus "$CORPUS"
 
 ### 5-4. 검색 평가와 비교
 
-고정 개발셋으로 현재 기본 BGE를 평가합니다.
+현재 인덱스를 기존 근로기준법 중심 개발셋으로 평가하는 명령입니다. 아직 실행 결과를 보존하지 않았으며, 이 개발셋만으로 추가 법령·별표·고시의 전체 품질을 검증할 수 없습니다.
 
 ```bash
 python3 -m RAG.pipelines.evaluate \
+  --corpus employment_basic_v002 \
   --method dense \
   --dataset test/rag/datasets/retrieval_dev_v002.jsonl \
-  --run-name bge_default \
+  --run-name employment_basic_v002_dense \
   --device cpu
 ```
 
-비교 모듈은 다음처럼 실행합니다. BM25와 Reranker를 사용하는 비교는 해당 자료가 먼저 준비돼 있어야 합니다.
+이전 131개 인덱스의 비교 실험을 재현하려면 다음처럼 corpus를 명시합니다. BM25와 Reranker를 사용하는 비교는 해당 자료가 먼저 준비돼 있어야 합니다.
 
 ```bash
 # BGE dense / BM25 / 동일 가중치 RRF
@@ -385,7 +417,7 @@ python3 -m unittest discover -s test/rag -p 'test_*.py'
 
 모델·청크·manifest·Chroma 인덱스가 서버를 실행하는 컴퓨터에 있어야 합니다. 기존 로컬 인덱스는 재생성하거나 덮어쓰지 않습니다. 다른 팀원은 해당 서버의 API를 호출할 경우 Data를 설치할 필요가 없습니다.
 
-### 5-8. 여러 법령 수집·통합 인덱스
+### 5-8. 기존 8개 법령 수집·통합 인덱스
 
 대상 목록은 `RAG/config/target_laws.json`에서 관리합니다. 목록에 지정한 법령마다 정확히 일치하는 현행 버전을 선택하고, 반환된 본문의 법령 ID·법령명·시행일을 대조합니다. 선택 시행일이 기준일보다 미래이면 중단합니다. 과거 시점의 모든 법령 버전을 자동 복원하는 기능은 아닙니다.
 
@@ -407,16 +439,16 @@ python3 -m unittest discover -s test/rag -p 'test_*.py'
 
 기존 근로기준법 개발 질의 90개를 통합 인덱스에서도 실행한 결과, 대표 정답 조문 기준 Hit@1 **65.6%**, Hit@5 **85.6%**, MRR@10 **0.7509**였습니다. 기존 단독 인덱스의 Hit@5 91.1%보다 낮으므로 범위 확대가 검색 정확도 향상을 의미하지 않습니다. 새 법령의 관련 조문이 기존 단일 정답에 포함돼 있지 않을 수도 있어 결과별 검수와 새 법령을 포함한 별도 평가가 필요합니다. [요약](test/rag/comparisons/employment_laws_v001_20261027/summary.json) · [질의별 결과](test/rag/comparisons/employment_laws_v001_20261027/results.csv) · [실행 조건](test/rag/comparisons/employment_laws_v001_20261027/run_metadata.json).
 
-본칙의 조문만 포함하고 부칙·별표·시행규칙·고시·다른 계약서 유형의 법령은 포함하지 않습니다. 최저임금의 연도별 금액 등 고시 자료를 수집한 것은 아닙니다. 전문가 검수 상태는 `PENDING`이며, 별도 평가셋 검증이 필요합니다.
+기존 `employment_laws_v001`은 본칙 조문만 포함하고 부칙·별표·시행규칙·고시는 포함하지 않습니다. 현재 `employment_basic_v002`는 위 구성표의 시행규칙·선택 별표·2026년 고시를 추가로 포함합니다. 전문가 검수 상태는 `PENDING`이며, 별도 평가셋 검증이 필요합니다.
 
-현재 PC에 구축된 통합 인덱스 검색:
+이전 8개 법령 인덱스를 명시적으로 검색:
 
 ```bash
 python3 -m RAG.pipelines.search --corpus employment_laws_v001 \
   --query "최저임금보다 적게 지급하기로 한 근로계약" --top-k 5 --device cpu
 ```
 
-새 환경에서의 전체 구축 순서입니다. 이미 존재하는 corpus는 덮어쓰지 않으므로 재수집할 때는 새 버전 이름을 사용하세요.
+기존 8개 법령 인덱스의 구축 순서입니다. 현재 498개 통합 자료 전체를 만드는 명령은 아닙니다. 이미 존재하는 corpus는 덮어쓰지 않으므로 재수집할 때는 새 버전 이름을 사용하세요.
 
 ```bash
 python3 -m RAG.pipelines.collect_corpus --corpus employment_laws_v001
@@ -431,7 +463,31 @@ python3 -m RAG.pipelines.build_bm25 --corpus employment_laws_v001
 
 벡터·BM25 생성은 후속 단계입니다. 입력 해시·문서 수·ID를 검증하며, 모델 입력 제한을 넘으면 자동 절단하지 않고 중단합니다. 새 인덱스의 manifest에는 임베딩 모델 커밋이 기록됩니다.
 
-기존 평가 재현을 위해 Data 기본 corpus는 `labor_standards_v001`로 유지합니다. 백엔드에서 통합 인덱스를 사용하려면 백엔드 `.env`의 `CHECKIT_RAG_CORPUS=employment_laws_v001`로 변경하고 서버를 재시작하세요. 이번 Data 작업은 백엔드 설정을 자동 변경하지 않습니다.
+현재 기본 corpus는 `employment_basic_v002`입니다. 기존 평가 재현 시 `--corpus labor_standards_v001`을 명시합니다. 백엔드 로컬 `.env`에는 `CHECKIT_RAG_CORPUS=employment_basic_v002`를 반영했습니다. 기존 8개 법령 인덱스가 필요하면 `employment_laws_v001`을 명시하세요.
+
+### 5-9. 현재 498개 인덱스 준비와 검증
+
+현재 작업 PC에는 `employment_basic_v002`의 Chroma·BM25가 이미 있으므로 재생성할 필요가 없습니다. 다른 PC에서는 동일한 가공 데이터와 인덱스를 전달받거나, 공식 원문을 수집·병합한 뒤 인덱스를 만들어야 합니다. `collect_corpus`의 기본 설정은 8개 법령만 수집하며, 보완 설정은 추가 법령 4개만 수집합니다. 선택 별표·고시는 별도 추출·병합 단계가 필요하고, 전체 498개를 한 번에 재현하는 공용 CLI는 아직 없습니다.
+
+아래는 **498개 가공 청크가 준비됐고 인덱스는 없는 환경에서만** 실행합니다.
+
+```bash
+python3 -m RAG.pipelines.build_index --corpus employment_basic_v002 \
+  --model-name BAAI/bge-m3 \
+  --revision 5617a9f61b028005a4858fdac845db406aefb181 \
+  --device cpu --batch-size 2
+python3 -m RAG.pipelines.build_bm25 --corpus employment_basic_v002
+```
+
+2026-10-28 검증 결과:
+
+- Chroma 498개 문서·고유 ID·입력 해시, BM25 498개 문서 확인.
+- 기존 131개·444개 인덱스의 입력 청크 해시 보존 확인.
+- `/health/live`, `/health/ready` 모두 200 확인.
+- 비회원 인증·CSRF·허용 Origin을 포함한 검색 API 6건 모두 200과 새 corpus 반환 확인. 고시·별표·추가 시행규칙이 상위 5개에 포함됨.
+- Data 단위 테스트 15개, 백엔드 RAG 테스트 12개 통과.
+
+API 검증 결과는 로컬 `outputs/rag/employment_basic_v002_activation/api_smoke.json`에 있습니다. 기존 production HTTPS 보안 설정을 유지했으며, 루프백 요청에서 프록시의 쿠키 전달을 모사했습니다. 외부 HTTPS 터널 자체나 전체 검색 정확도를 검증한 결과는 아닙니다.
 
 ## 6. Git 공유와 재현성
 
@@ -449,7 +505,7 @@ python3 -m RAG.pipelines.build_bm25 --corpus employment_laws_v001
 2. **검색용 텍스트 개선**: 퇴사/퇴직, 월급/임금 등 일상어와 법률어 차이를 처리합니다. 공식 원문과 추가 설명을 분리하고 인용은 원문을 사용합니다.
 3. **긴 조문의 항 단위 청킹**: 부모 조문 ID를 유지하고 작은 청크로 검색한 뒤 조문 전체를 가져옵니다. 같은 조문의 중복 후보를 묶어 평가합니다.
 4. **재정렬 개선**: 후보에 정답이 있는데 순위가 낮은 사례를 분석하고 입력 표현·모델·후보 수와 응답시간을 비교합니다.
-5. **추가 법령 검증**: `target_laws.json` 기반 8개 법령 수집·통합 구축 후, 추가 법령의 질의·정답 조문을 검수하고 검색 누락·순위와 시행일 메타데이터를 점검합니다. 별표·부칙·고시 등은 별도 수집 설계가 필요합니다.
+5. **현재 498개 인덱스 검증**: 추가 4개 법령·선택 별표·고시를 포함한 질의와 정답을 검수하고 검색 누락·순위·적용 기간을 평가합니다. 시행일 자동 필터와 다른 연도 고시, 전체 수집·병합의 공용 CLI는 후속 과제입니다.
 6. **서비스 연결**: 계약서 OCR·조항 분류 결과를 검색에 전달하고 근거 조문을 인용해 설명을 생성합니다. 금액 비교·필수 항목 누락 판정은 검색 평가와 별도로 설계·검증합니다.
 
 다른 목적의 학습 데이터 생성·전처리는 `RAG/`와 나란히 별도 패키지로 추가하고 루트 `.env`·requirements를 공유할 수 있습니다. 판례·행정 해석처럼 구조가 다른 출처는 전용 수집기·정규화기와 스키마를 정의해야 합니다.

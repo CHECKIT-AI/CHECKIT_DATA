@@ -10,7 +10,7 @@ from RAG.settings import DEFAULT_CORPUS
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help="검색 인덱스 (기본값: BGE-M3 labor_standards_v001)")
+    parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help=f"검색 인덱스 (기본값: BGE-M3 {DEFAULT_CORPUS})")
     parser.add_argument("--query", required=True)
     parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank"], default="dense")
     parser.add_argument("--top-k", type=int, default=5)
