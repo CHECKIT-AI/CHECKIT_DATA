@@ -1,0 +1,66 @@
+{
+  "method": "dense",
+  "corpus": "employment_basic_v003",
+  "annotation_statuses": [
+    "DRAFT"
+  ],
+  "overall": {
+    "query_count": 90,
+    "hit@1": 0.6333333333333333,
+    "recall@1": 0.6333333333333333,
+    "hit@3": 0.8222222222222222,
+    "recall@3": 0.8222222222222222,
+    "hit@5": 0.8555555555555555,
+    "recall@5": 0.8555555555555555,
+    "hit@10": 0.9,
+    "recall@10": 0.9,
+    "mrr@10": 0.7359700176366843,
+    "mean_query_ms": 54.99355464514034
+  },
+  "by_query_kind": {
+    "contract_clause": {
+      "query_count": 30,
+      "hit@1": 0.6,
+      "recall@1": 0.6,
+      "hit@3": 0.7,
+      "recall@3": 0.7,
+      "hit@5": 0.7666666666666667,
+      "recall@5": 0.7666666666666667,
+      "hit@10": 0.8,
+      "recall@10": 0.8,
+      "mrr@10": 0.6649999999999999,
+      "mean_query_ms": 55.10439173667692
+    },
+    "keyword": {
+      "query_count": 30,
+      "hit@1": 0.7,
+      "recall@1": 0.7,
+      "hit@3": 0.9,
+      "recall@3": 0.9,
+      "hit@5": 0.9,
+      "recall@5": 0.9,
+      "hit@10": 0.9666666666666667,
+      "recall@10": 0.9666666666666667,
+      "mrr@10": 0.8029100529100529,
+      "mean_query_ms": 54.73823883221485
+    },
+    "user_question": {
+      "query_count": 30,
+      "hit@1": 0.6,
+      "recall@1": 0.6,
+      "hit@3": 0.8666666666666667,
+      "recall@3": 0.8666666666666667,
+      "hit@5": 0.9,
+      "recall@5": 0.9,
+      "hit@10": 0.9333333333333333,
+      "recall@10": 0.9333333333333333,
+      "mrr@10": 0.74,
+      "mean_query_ms": 55.13803336652927
+    }
+  },
+  "candidate_pool": {
+    "mean_candidate_count": 10.0,
+    "representative_target_hit_rate": 0.9,
+    "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+  }
+}

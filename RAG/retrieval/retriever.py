@@ -12,6 +12,7 @@ from RAG.pipelines.build_index import corpus_name, load_chunks
 from RAG.retrieval.hybrid import reciprocal_rank_fusion
 from RAG.settings import DATA_ROOT, STORAGE_ROOT, DEFAULT_CORPUS
 from RAG.retrieval.reranker import BGEReranker, rerank_candidates
+from RAG.retrieval.temporal import explicit_years, filter_notice_years
 
 
 class LawRetriever:
@@ -68,7 +69,7 @@ class LawRetriever:
                 raise RuntimeError("reranker 모델 준비가 완료되지 않았습니다.")
             self.reranker = BGEReranker(
                 revision=prepared["model_revision"], device=device,
-                batch_size=reranker_batch_size, max_length=prepared["max_length"],
+                batch_size=reranker_batch_size, max_length=2048,
             )
 
     def describe(self):
@@ -81,23 +82,28 @@ class LawRetriever:
             "reranker": self.reranker.describe() if self.reranker else None,
             "reranker_candidate_policy": "entire_union_before_final_topk" if self.reranker else None,
             "bm25_manifest": self.bm25.manifest if self.bm25 else None,
+            "temporal_policy": "explicit_query_years_filter_annual_notices_only_v1",
         }
 
     def search(self, text, top_k=5):
         if not isinstance(text, str) or not text.strip() or top_k < 1:
             raise ValueError("비어 있지 않은 검색 문장과 양수 top_k가 필요합니다.")
+        years = explicit_years(text)
+        # 날짜로 제외된 고시가 반환 개수나 후보 예산을 소모하지 않게 넉넉히 조회한다.
+        dense_k = len(self.chunks) if years else (top_k if self.method == "dense" else self.candidate_k)
+        lexical_k = len(self.chunks) if years else (top_k if self.method == "bm25" else self.candidate_k)
         if self.method == "dense":
             vector = self.embedder.encode([text], batch_size=1)[0]
-            self.last_candidates = self.store.search(vector, top_k=top_k)
+            self.last_candidates = filter_notice_years(self.store.search(vector, top_k=dense_k), years)[:top_k]
             return self.last_candidates
         if self.method == "bm25":
-            self.last_candidates = self.bm25.search(text, top_k=top_k)
+            self.last_candidates = filter_notice_years(self.bm25.search(text, top_k=lexical_k), years)[:top_k]
             return self.last_candidates
         if self.candidate_k < top_k:
             raise ValueError("hybrid의 candidate_k는 최종 top_k 이상이어야 합니다.")
         vector = self.embedder.encode([text], batch_size=1)[0]
-        dense_results = self.store.search(vector, top_k=self.candidate_k)
-        lexical_results = self.bm25.search(text, top_k=self.candidate_k)
+        dense_results = filter_notice_years(self.store.search(vector, top_k=dense_k), years)[:self.candidate_k]
+        lexical_results = filter_notice_years(self.bm25.search(text, top_k=lexical_k), years)[:self.candidate_k]
         union_size = len({row["chunk_id"] for row in dense_results + lexical_results})
         dense_weight, bm25_weight = (1.0, 1.0) if self.method == "hybrid" else (self.dense_weight, self.bm25_weight)
         candidates = reciprocal_rank_fusion(

@@ -6,6 +6,7 @@ METADATA_KEYS = (
     "article_no", "article_title", "snapshot_effective_date",
     "article_effective_date", "source_url", "chunk_type",
     "source_type", "valid_from", "valid_to",
+    "search_hints", "search_hints_version",
 )
 
 

@@ -144,7 +144,7 @@ def main():
         "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
         "code_sha256": {
             name: sha256(PROJECT_ROOT / name)
-            for name in ["RAG/indexing/embeddings.py", "RAG/indexing/vector_store.py", "RAG/pipelines/evaluate.py", "RAG/evaluation/retrieval_metrics.py", "RAG/preprocessing/tokenizer.py", "RAG/indexing/bm25.py", "RAG/retrieval/hybrid.py", "RAG/retrieval/retriever.py", "RAG/retrieval/reranker.py"]
+            for name in ["RAG/indexing/embeddings.py", "RAG/indexing/vector_store.py", "RAG/pipelines/evaluate.py", "RAG/evaluation/retrieval_metrics.py", "RAG/preprocessing/tokenizer.py", "RAG/indexing/bm25.py", "RAG/retrieval/hybrid.py", "RAG/retrieval/retriever.py", "RAG/retrieval/reranker.py", "RAG/retrieval/temporal.py", "RAG/preprocessing/search_text.py", "RAG/config/search_concepts.json"]
         },
         "packages": {name: version(name) for name in ["chromadb", "sentence-transformers", "transformers", "torch", "rank-bm25", "kiwipiepy", "kiwipiepy_model"]},
     }

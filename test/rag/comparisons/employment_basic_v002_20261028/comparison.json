@@ -1,0 +1,549 @@
+{
+  "runs": {
+    "current_legacy90": {
+      "query_count": 90,
+      "hit@1": 0.6333333333333333,
+      "recall@1": 0.6333333333333333,
+      "hit@3": 0.8222222222222222,
+      "recall@3": 0.8222222222222222,
+      "hit@5": 0.8555555555555555,
+      "recall@5": 0.8555555555555555,
+      "hit@10": 0.9,
+      "recall@10": 0.9,
+      "mrr@10": 0.7378218694885362,
+      "mean_query_ms": 57.15603235552812
+    },
+    "previous_8laws_legacy90": {
+      "query_count": 90,
+      "hit@1": 0.6555555555555556,
+      "recall@1": 0.6555555555555556,
+      "hit@3": 0.8222222222222222,
+      "recall@3": 0.8222222222222222,
+      "hit@5": 0.8555555555555555,
+      "recall@5": 0.8555555555555555,
+      "hit@10": 0.9111111111111111,
+      "recall@10": 0.9111111111111111,
+      "mrr@10": 0.7508774250440917,
+      "mean_query_ms": 55.151019934500155
+    },
+    "baseline_legacy90": {
+      "query_count": 90,
+      "hit@1": 0.7333333333333333,
+      "recall@1": 0.7333333333333333,
+      "hit@3": 0.9111111111111111,
+      "recall@3": 0.9111111111111111,
+      "hit@5": 0.9111111111111111,
+      "recall@5": 0.9111111111111111,
+      "hit@10": 0.9222222222222223,
+      "recall@10": 0.9222222222222223,
+      "mrr@10": 0.8141975308641974,
+      "mean_query_ms": 55.40785274481297
+    },
+    "supplements42": {
+      "query_count": 42,
+      "hit@1": 0.7619047619047619,
+      "recall@1": 0.7619047619047619,
+      "hit@3": 0.9285714285714286,
+      "recall@3": 0.9285714285714286,
+      "hit@5": 0.9761904761904762,
+      "recall@5": 0.9761904761904762,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.8531746031746033,
+      "mean_query_ms": 60.55360713937608
+    }
+  },
+  "legacy_query_deltas": {
+    "previous_8laws_legacy90": {
+      "at1": {
+        "lost": [
+          {
+            "query_id": "V002_T05_KEYWORD_02",
+            "query": "예고 없는 해고 예고수당 예외",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "version_id": "269393",
+              "law_id": "006859",
+              "article_no": "제4조",
+              "article_title": "해고 예고의 예외가 되는 근로자의 귀책사유",
+              "article_id": "006859_269393_20250223_0004001",
+              "article_effective_date": "20250223",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+              "article_key": "0004001",
+              "chunk_type": "article",
+              "snapshot_effective_date": "20250223",
+              "law_name": "근로기준법 시행규칙"
+            }
+          },
+          {
+            "query_id": "V002_T11_KEYWORD_02",
+            "query": "근로시간 연장 한도 특별연장근로 인가",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "article_title": "특별한 사정이 있는 경우의 근로시간 연장 신청 등",
+              "article_id": "006859_269393_20250223_0009001",
+              "law_name": "근로기준법 시행규칙",
+              "version_id": "269393",
+              "article_key": "0009001",
+              "article_no": "제9조",
+              "chunk_type": "article",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+              "snapshot_effective_date": "20250223",
+              "article_effective_date": "20250223",
+              "law_id": "006859"
+            }
+          }
+        ],
+        "gained": []
+      },
+      "at5": {
+        "lost": [],
+        "gained": []
+      },
+      "at10": {
+        "lost": [
+          {
+            "query_id": "V002_T01_CONTRACT_CLAUSE_02",
+            "query": "임금과 소정근로시간 등은 구두로 설명하며 별도 서면을 제공하지 않는다.",
+            "old_rank": 9,
+            "new_rank": null,
+            "new_top1": {
+              "version_id": "270551",
+              "article_key": "0023001",
+              "law_id": "003058",
+              "article_no": "제23조",
+              "article_id": "003058_270551_20251023_0023001",
+              "article_effective_date": "20251023",
+              "snapshot_effective_date": "20251023",
+              "law_name": "근로기준법 시행령",
+              "chunk_type": "article",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_title": "매월 1회 이상 지급하여야 할 임금의 예외"
+            }
+          }
+        ],
+        "gained": []
+      }
+    },
+    "baseline_legacy90": {
+      "at1": {
+        "lost": [
+          {
+            "query_id": "V002_T01_USER_QUESTION_01",
+            "query": "근로계약서에 서명한 뒤 제 사본을 받아야 하나요?",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "chunk_type": "article",
+              "article_title": "보존 대상 서류 등",
+              "law_name": "근로기준법 시행령",
+              "snapshot_effective_date": "20251023",
+              "article_key": "0022001",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_effective_date": "20251023",
+              "law_id": "003058",
+              "article_no": "제22조",
+              "article_id": "003058_270551_20251023_0022001",
+              "version_id": "270551"
+            }
+          },
+          {
+            "query_id": "V002_T05_KEYWORD_02",
+            "query": "예고 없는 해고 예고수당 예외",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "version_id": "269393",
+              "law_id": "006859",
+              "article_no": "제4조",
+              "article_title": "해고 예고의 예외가 되는 근로자의 귀책사유",
+              "article_id": "006859_269393_20250223_0004001",
+              "article_effective_date": "20250223",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+              "article_key": "0004001",
+              "chunk_type": "article",
+              "snapshot_effective_date": "20250223",
+              "law_name": "근로기준법 시행규칙"
+            }
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_01",
+            "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "article_title": "퇴직금의 지급 등",
+              "article_effective_date": "20260918",
+              "law_name": "근로자퇴직급여 보장법",
+              "snapshot_effective_date": "20260918",
+              "article_id": "009883_284455_20260918_0009001",
+              "chunk_type": "article",
+              "version_id": "284455",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+              "law_id": "009883",
+              "article_key": "0009001",
+              "article_no": "제9조"
+            }
+          },
+          {
+            "query_id": "V002_T07_CONTRACT_CLAUSE_02",
+            "query": "퇴사 후 남은 급여와 금품의 지급 시기는 근로자와 협의하지 않고 회사가 정한다.",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "law_name": "근로자퇴직급여 보장법",
+              "article_no": "제9조",
+              "law_id": "009883",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+              "snapshot_effective_date": "20260918",
+              "article_effective_date": "20260918",
+              "chunk_type": "article",
+              "article_key": "0009001",
+              "version_id": "284455",
+              "article_title": "퇴직금의 지급 등",
+              "article_id": "009883_284455_20260918_0009001"
+            }
+          },
+          {
+            "query_id": "V002_T08_KEYWORD_02",
+            "query": "임금 통화 직접 전액 지급 공제 예외",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "snapshot_effective_date": "20260324",
+              "article_title": "급여 전액지급 예외 사유",
+              "law_id": "010035",
+              "article_id": "010035_284693_20260324_0008001",
+              "version_id": "284693",
+              "article_key": "0008001",
+              "article_effective_date": "20260324",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284693",
+              "chunk_type": "article",
+              "article_no": "제8조",
+              "law_name": "근로자퇴직급여 보장법 시행령"
+            }
+          },
+          {
+            "query_id": "V002_T09_KEYWORD_01",
+            "query": "임금명세서 구성항목 계산방법 공제내역",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "article_effective_date": "20251023",
+              "law_name": "근로기준법 시행령",
+              "article_title": "임금명세서의 기재사항",
+              "article_id": "003058_270551_20251023_0027021",
+              "article_no": "제27조의2",
+              "version_id": "270551",
+              "chunk_type": "article",
+              "article_key": "0027021",
+              "snapshot_effective_date": "20251023",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "law_id": "003058"
+            }
+          },
+          {
+            "query_id": "V002_T09_USER_QUESTION_02",
+            "query": "월급에서 무엇이 빠졌는지 적힌 내역서를 받을 수 있나요?",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "article_title": "임금명세서의 기재사항",
+              "article_key": "0027021",
+              "version_id": "270551",
+              "article_effective_date": "20251023",
+              "law_name": "근로기준법 시행령",
+              "chunk_type": "article",
+              "article_id": "003058_270551_20251023_0027021",
+              "snapshot_effective_date": "20251023",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_no": "제27조의2",
+              "law_id": "003058"
+            }
+          },
+          {
+            "query_id": "V002_T09_CONTRACT_CLAUSE_02",
+            "query": "임금의 구성항목과 공제내역을 적은 서면은 근로자에게 제공하지 않는다.",
+            "old_rank": 1,
+            "new_rank": 4,
+            "new_top1": {
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_effective_date": "20251023",
+              "law_name": "근로기준법 시행령",
+              "law_id": "003058",
+              "article_id": "003058_270551_20251023_0027021",
+              "snapshot_effective_date": "20251023",
+              "article_title": "임금명세서의 기재사항",
+              "chunk_type": "article",
+              "version_id": "270551",
+              "article_no": "제27조의2",
+              "article_key": "0027021"
+            }
+          },
+          {
+            "query_id": "V002_T11_KEYWORD_02",
+            "query": "근로시간 연장 한도 특별연장근로 인가",
+            "old_rank": 1,
+            "new_rank": 2,
+            "new_top1": {
+              "article_title": "특별한 사정이 있는 경우의 근로시간 연장 신청 등",
+              "article_id": "006859_269393_20250223_0009001",
+              "law_name": "근로기준법 시행규칙",
+              "version_id": "269393",
+              "article_key": "0009001",
+              "article_no": "제9조",
+              "chunk_type": "article",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+              "snapshot_effective_date": "20250223",
+              "article_effective_date": "20250223",
+              "law_id": "006859"
+            }
+          }
+        ],
+        "gained": []
+      },
+      "at5": {
+        "lost": [
+          {
+            "query_id": "V002_T01_KEYWORD_02",
+            "query": "임금 구성항목 계산방법 지급방법 서면 교부",
+            "old_rank": 3,
+            "new_rank": 9,
+            "new_top1": {
+              "article_effective_date": "20261008",
+              "chunk_type": "article",
+              "article_key": "0048001",
+              "law_name": "근로기준법",
+              "version_id": "285279",
+              "article_id": "001872_285279_20261008_0048001",
+              "snapshot_effective_date": "20261008",
+              "law_id": "001872",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+              "article_title": "임금대장 및 임금명세서",
+              "article_no": "제48조"
+            }
+          },
+          {
+            "query_id": "V002_T01_CONTRACT_CLAUSE_01",
+            "query": "근로조건을 적은 서면은 회사만 보관하고 근로자에게는 교부하지 않는다.",
+            "old_rank": 3,
+            "new_rank": 6,
+            "new_top1": {
+              "article_id": "001872_285279_20261008_0042001",
+              "article_effective_date": "20261008",
+              "chunk_type": "article",
+              "law_name": "근로기준법",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+              "version_id": "285279",
+              "law_id": "001872",
+              "article_title": "계약 서류의 보존",
+              "snapshot_effective_date": "20261008",
+              "article_key": "0042001",
+              "article_no": "제42조"
+            }
+          },
+          {
+            "query_id": "V002_T01_CONTRACT_CLAUSE_02",
+            "query": "임금과 소정근로시간 등은 구두로 설명하며 별도 서면을 제공하지 않는다.",
+            "old_rank": 2,
+            "new_rank": null,
+            "new_top1": {
+              "version_id": "270551",
+              "article_key": "0023001",
+              "law_id": "003058",
+              "article_no": "제23조",
+              "article_id": "003058_270551_20251023_0023001",
+              "article_effective_date": "20251023",
+              "snapshot_effective_date": "20251023",
+              "law_name": "근로기준법 시행령",
+              "chunk_type": "article",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_title": "매월 1회 이상 지급하여야 할 임금의 예외"
+            }
+          },
+          {
+            "query_id": "V002_T07_KEYWORD_02",
+            "query": "퇴사 후 미지급 임금 정산 기일 연장 합의",
+            "old_rank": 2,
+            "new_rank": 7,
+            "new_top1": {
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+              "chunk_type": "article",
+              "article_effective_date": "20261008",
+              "law_id": "001872",
+              "snapshot_effective_date": "20261008",
+              "article_key": "0037001",
+              "article_no": "제37조",
+              "article_title": "미지급 임금에 대한 지연이자",
+              "article_id": "001872_285279_20261008_0037001",
+              "law_name": "근로기준법",
+              "version_id": "285279"
+            }
+          },
+          {
+            "query_id": "V002_T07_USER_QUESTION_02",
+            "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+            "old_rank": 2,
+            "new_rank": 6,
+            "new_top1": {
+              "law_id": "009883",
+              "snapshot_effective_date": "20260918",
+              "version_id": "284455",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+              "article_id": "009883_284455_20260918_0009001",
+              "article_key": "0009001",
+              "article_effective_date": "20260918",
+              "law_name": "근로자퇴직급여 보장법",
+              "article_no": "제9조",
+              "article_title": "퇴직금의 지급 등",
+              "chunk_type": "article"
+            }
+          }
+        ],
+        "gained": []
+      },
+      "at10": {
+        "lost": [
+          {
+            "query_id": "V002_T01_CONTRACT_CLAUSE_02",
+            "query": "임금과 소정근로시간 등은 구두로 설명하며 별도 서면을 제공하지 않는다.",
+            "old_rank": 2,
+            "new_rank": null,
+            "new_top1": {
+              "version_id": "270551",
+              "article_key": "0023001",
+              "law_id": "003058",
+              "article_no": "제23조",
+              "article_id": "003058_270551_20251023_0023001",
+              "article_effective_date": "20251023",
+              "snapshot_effective_date": "20251023",
+              "law_name": "근로기준법 시행령",
+              "chunk_type": "article",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_title": "매월 1회 이상 지급하여야 할 임금의 예외"
+            }
+          },
+          {
+            "query_id": "V002_T13_CONTRACT_CLAUSE_02",
+            "query": "주마다 부여하는 쉬는 날은 임금 지급 대상에서 제외한다.",
+            "old_rank": 9,
+            "new_rank": null,
+            "new_top1": {
+              "article_title": "매월 1회 이상 지급하여야 할 임금의 예외",
+              "article_id": "003058_270551_20251023_0023001",
+              "snapshot_effective_date": "20251023",
+              "law_id": "003058",
+              "article_no": "제23조",
+              "law_name": "근로기준법 시행령",
+              "article_key": "0023001",
+              "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+              "article_effective_date": "20251023",
+              "version_id": "270551",
+              "chunk_type": "article"
+            }
+          }
+        ],
+        "gained": []
+      }
+    }
+  },
+  "supplement_topics": {
+    "근로조건 위반 손해배상 신청": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "부당해고 구제 신청": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "취업규칙 신고 서류": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "특별연장근로 신청": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "최저임금 산입 제외": {
+      "count": 3,
+      "hit@1": 2,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "최저임금 적용 제외 인가": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "퇴직연금 규약 신고": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "퇴직연금 운용현황 통지": {
+      "count": 3,
+      "hit@1": 1,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "공휴일 목록": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "대체공휴일 기준": {
+      "count": 3,
+      "hit@1": 2,
+      "hit@5": 2,
+      "hit@10": 3
+    },
+    "소규모 사업장 근로기준법 적용표": {
+      "count": 3,
+      "hit@1": 1,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "단시간근로자 근로조건 기준": {
+      "count": 3,
+      "hit@1": 2,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "소규모 사업장 기간제법 적용표": {
+      "count": 3,
+      "hit@1": 0,
+      "hit@5": 3,
+      "hit@10": 3
+    },
+    "2026년 최저임금 고시": {
+      "count": 3,
+      "hit@1": 3,
+      "hit@5": 3,
+      "hit@10": 3
+    }
+  },
+  "hit5_wilson95": {
+    "legacy90": [
+      0.7684012207986421,
+      0.9136001121333921
+    ],
+    "supplements42": [
+      0.8767879842623334,
+      0.9957845958655673
+    ]
+  },
+  "interpretation": "DRAFT synthetic development sets; topic paraphrases are correlated; Wilson intervals do not measure domain generalization or annotation uncertainty."
+}

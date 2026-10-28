@@ -1,0 +1,3717 @@
+{
+  "runs": {
+    "before90": {
+      "query_count": 90,
+      "hit@1": 0.6333333333333333,
+      "recall@1": 0.6333333333333333,
+      "hit@3": 0.8222222222222222,
+      "recall@3": 0.8222222222222222,
+      "hit@5": 0.8555555555555555,
+      "recall@5": 0.8555555555555555,
+      "hit@10": 0.9,
+      "recall@10": 0.9,
+      "mrr@10": 0.7378218694885362,
+      "mean_query_ms": 57.15603235552812
+    },
+    "before42": {
+      "query_count": 42,
+      "hit@1": 0.7619047619047619,
+      "recall@1": 0.7619047619047619,
+      "hit@3": 0.9285714285714286,
+      "recall@3": 0.9285714285714286,
+      "hit@5": 0.9761904761904762,
+      "recall@5": 0.9761904761904762,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.8531746031746033,
+      "mean_query_ms": 60.55360713937608
+    },
+    "cleanup90": {
+      "query_count": 90,
+      "hit@1": 0.6333333333333333,
+      "recall@1": 0.6333333333333333,
+      "hit@3": 0.8222222222222222,
+      "recall@3": 0.8222222222222222,
+      "hit@5": 0.8555555555555555,
+      "recall@5": 0.8555555555555555,
+      "hit@10": 0.9,
+      "recall@10": 0.9,
+      "mrr@10": 0.7359700176366843,
+      "mean_query_ms": 54.99355464514034
+    },
+    "cleanup42": {
+      "query_count": 42,
+      "hit@1": 0.7619047619047619,
+      "recall@1": 0.7619047619047619,
+      "hit@3": 0.9523809523809523,
+      "recall@3": 0.9523809523809523,
+      "hit@5": 0.9761904761904762,
+      "recall@5": 0.9761904761904762,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.8551587301587301,
+      "mean_query_ms": 60.15977985987861
+    },
+    "after90": {
+      "query_count": 90,
+      "hit@1": 0.7222222222222222,
+      "recall@1": 0.7222222222222222,
+      "hit@3": 0.9,
+      "recall@3": 0.9,
+      "hit@5": 0.9555555555555556,
+      "recall@5": 0.9555555555555556,
+      "hit@10": 0.9666666666666667,
+      "recall@10": 0.9666666666666667,
+      "mrr@10": 0.8177777777777777,
+      "mean_query_ms": 55.070043024412975
+    },
+    "after42": {
+      "query_count": 42,
+      "hit@1": 0.7857142857142857,
+      "recall@1": 0.7857142857142857,
+      "hit@3": 0.9761904761904762,
+      "recall@3": 0.9761904761904762,
+      "hit@5": 1.0,
+      "recall@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.875,
+      "mean_query_ms": 60.16914495072948
+    },
+    "before14": {
+      "query_count": 14,
+      "hit@1": 0.2857142857142857,
+      "recall@1": 0.2857142857142857,
+      "hit@3": 0.42857142857142855,
+      "recall@3": 0.42857142857142855,
+      "hit@5": 0.42857142857142855,
+      "recall@5": 0.42857142857142855,
+      "hit@10": 0.5714285714285714,
+      "recall@10": 0.5714285714285714,
+      "mrr@10": 0.35416666666666663,
+      "mean_query_ms": 55.93048200535122
+    },
+    "after14": {
+      "query_count": 14,
+      "hit@1": 0.42857142857142855,
+      "recall@1": 0.42857142857142855,
+      "hit@3": 0.6428571428571429,
+      "recall@3": 0.6428571428571429,
+      "hit@5": 0.6428571428571429,
+      "recall@5": 0.6428571428571429,
+      "hit@10": 0.6428571428571429,
+      "recall@10": 0.6428571428571429,
+      "mrr@10": 0.5357142857142857,
+      "mean_query_ms": 55.83347328813813
+    }
+  },
+  "changes": {
+    "90": {
+      "gained_hit5": 9,
+      "lost_hit5": 0,
+      "queries": [
+        {
+          "query_id": "V002_T01_KEYWORD_01",
+          "query": "근로조건 서면 명시 근로계약서 교부",
+          "expected": [
+            "제17조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "search_hints": "근로계약서 작성 서면 교부 사본 제공 전달 근로자가 받는 계약서 구두 설명만 하는 경우",
+            "law_name": "근로기준법",
+            "law_id": "001872",
+            "version_id": "285279",
+            "article_id": "001872_285279_20261008_0017001",
+            "article_key": "0017001",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_title": "근로조건의 명시",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_no": "제17조"
+          }
+        },
+        {
+          "query_id": "V002_T01_KEYWORD_02",
+          "query": "임금 구성항목 계산방법 지급방법 서면 교부",
+          "expected": [
+            "제17조"
+          ],
+          "before_rank": 9,
+          "after_rank": 6,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "article_title": "임금대장 및 임금명세서",
+            "version_id": "285279",
+            "article_no": "제48조",
+            "law_id": "001872",
+            "article_key": "0048001",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0048001",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T01_USER_QUESTION_01",
+          "query": "근로계약서에 서명한 뒤 제 사본을 받아야 하나요?",
+          "expected": [
+            "제17조"
+          ],
+          "before_rank": 2,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제17조",
+            "article_title": "근로조건의 명시",
+            "law_id": "001872",
+            "version_id": "285279",
+            "article_key": "0017001",
+            "article_effective_date": "20261008",
+            "chunk_type": "article",
+            "search_hints": "근로계약서 작성 서면 교부 사본 제공 전달 근로자가 받는 계약서 구두 설명만 하는 경우",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0017001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T01_USER_QUESTION_02",
+          "query": "월급과 일하는 시간을 말로만 정했는데 문서로 받을 수 있나요?",
+          "expected": [
+            "제17조"
+          ],
+          "before_rank": 5,
+          "after_rank": 3,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "article_title": "임금 지급",
+            "article_key": "0043001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "article_no": "제43조",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0043001",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T01_CONTRACT_CLAUSE_01",
+          "query": "근로조건을 적은 서면은 회사만 보관하고 근로자에게는 교부하지 않는다.",
+          "expected": [
+            "제17조"
+          ],
+          "before_rank": 6,
+          "after_rank": 3,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_id": "001872_285279_20261008_0042001",
+            "article_title": "계약 서류의 보존",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0042001",
+            "article_no": "제42조",
+            "version_id": "285279",
+            "chunk_type": "article",
+            "law_id": "001872",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T01_CONTRACT_CLAUSE_02",
+          "query": "임금과 소정근로시간 등은 구두로 설명하며 별도 서면을 제공하지 않는다.",
+          "expected": [
+            "제17조"
+          ],
+          "before_rank": null,
+          "after_rank": 5,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20251023",
+            "law_id": "003058",
+            "article_key": "0023001",
+            "law_name": "근로기준법 시행령",
+            "article_effective_date": "20251023",
+            "article_no": "제23조",
+            "article_title": "매월 1회 이상 지급하여야 할 임금의 예외",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "version_id": "270551",
+            "article_id": "003058_270551_20251023_0023001"
+          }
+        },
+        {
+          "query_id": "V002_T02_KEYWORD_01",
+          "query": "근로계약 위약금 손해배상액 예정 금지",
+          "expected": [
+            "제20조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "article_key": "0020001",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0020001",
+            "search_hints_version": "labor_search_concepts_v1",
+            "search_hints": "중도 퇴사 계약기간 불이행 위약금 퇴사 벌금 정액 배상 실제 손해와 무관하게 미리 정한 손해배상액 약정",
+            "article_no": "제20조",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "article_title": "위약 예정의 금지"
+          }
+        },
+        {
+          "query_id": "V002_T02_KEYWORD_02",
+          "query": "중도 퇴사 계약 불이행 정액 배상 약정",
+          "expected": [
+            "제20조"
+          ],
+          "before_rank": null,
+          "after_rank": 1,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0020001",
+            "version_id": "285279",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0020001",
+            "snapshot_effective_date": "20261008",
+            "search_hints": "중도 퇴사 계약기간 불이행 위약금 퇴사 벌금 정액 배상 실제 손해와 무관하게 미리 정한 손해배상액 약정",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_no": "제20조",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "article_title": "위약 예정의 금지"
+          }
+        },
+        {
+          "query_id": "V002_T02_USER_QUESTION_01",
+          "query": "그만두면 무조건 백만 원을 내라는데 어떤 규정을 찾아봐야 하나요?",
+          "expected": [
+            "제20조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0093001",
+            "chunk_type": "article",
+            "article_no": "제93조",
+            "article_key": "0093001",
+            "law_id": "001872",
+            "article_title": "취업규칙의 작성ㆍ신고",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T02_USER_QUESTION_02",
+          "query": "실제로 생긴 손해와 관계없이 퇴사 벌금을 미리 정해도 되나요?",
+          "expected": [
+            "제20조"
+          ],
+          "before_rank": null,
+          "after_rank": 1,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints": "중도 퇴사 계약기간 불이행 위약금 퇴사 벌금 정액 배상 실제 손해와 무관하게 미리 정한 손해배상액 약정",
+            "article_key": "0020001",
+            "article_title": "위약 예정의 금지",
+            "snapshot_effective_date": "20261008",
+            "search_hints_version": "labor_search_concepts_v1",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "article_no": "제20조",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0020001",
+            "law_name": "근로기준법",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T02_CONTRACT_CLAUSE_01",
+          "query": "중도 퇴사하면 위약금 50만 원을 지급한다.",
+          "expected": [
+            "제20조"
+          ],
+          "before_rank": null,
+          "after_rank": 5,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0080001",
+            "article_no": "제80조",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_key": "0080001",
+            "law_id": "001872",
+            "article_title": "장해보상"
+          }
+        },
+        {
+          "query_id": "V002_T02_CONTRACT_CLAUSE_02",
+          "query": "약속한 기간을 채우지 않고 일을 그만두는 경우 실제 손해와 무관하게 100만 원을 납부한다.",
+          "expected": [
+            "제20조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "article_title": "일시보상",
+            "article_no": "제84조",
+            "article_key": "0084001",
+            "article_id": "001872_285279_20261008_0084001",
+            "law_name": "근로기준법",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T03_KEYWORD_01",
+          "query": "전차금 전대채권 임금 상계 금지",
+          "expected": [
+            "제21조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "001872",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_id": "001872_285279_20261008_0021001",
+            "article_key": "0021001",
+            "article_no": "제21조",
+            "article_title": "전차금 상계의 금지",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "search_hints": "전차금 대여금 선급금 빚 월급 차감 급여 공제 임금 상계 계속 근무를 조건으로 빌린 돈 정산",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T03_KEYWORD_02",
+          "query": "근로 조건으로 빌려준 선대금 급여 상계",
+          "expected": [
+            "제21조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제21조",
+            "version_id": "285279",
+            "article_title": "전차금 상계의 금지",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_id": "001872_285279_20261008_0021001",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0021001",
+            "search_hints": "전차금 대여금 선급금 빚 월급 차감 급여 공제 임금 상계 계속 근무를 조건으로 빌린 돈 정산",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T03_USER_QUESTION_01",
+          "query": "일하는 조건으로 회사에서 미리 빌린 돈을 월급과 맞계산한다는데 관련 규정이 있나요?",
+          "expected": [
+            "제21조"
+          ],
+          "before_rank": 2,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "chunk_type": "article",
+            "article_key": "0021001",
+            "search_hints": "전차금 대여금 선급금 빚 월급 차감 급여 공제 임금 상계 계속 근무를 조건으로 빌린 돈 정산",
+            "article_title": "전차금 상계의 금지",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_no": "제21조",
+            "article_id": "001872_285279_20261008_0021001"
+          }
+        },
+        {
+          "query_id": "V002_T03_USER_QUESTION_02",
+          "query": "입사 때 선불로 빌려준 돈을 갚을 때까지 급여에서 빼겠다고 합니다. 어떤 조문을 봐야 하나요?",
+          "expected": [
+            "제21조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "article_no": "제21조",
+            "article_title": "전차금 상계의 금지",
+            "search_hints": "전차금 대여금 선급금 빚 월급 차감 급여 공제 임금 상계 계속 근무를 조건으로 빌린 돈 정산",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872",
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0021001",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "article_key": "0021001",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T03_CONTRACT_CLAUSE_01",
+          "query": "근로할 것을 조건으로 지급한 전차금은 매월 임금과 상계한다.",
+          "expected": [
+            "제21조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0021001",
+            "chunk_type": "article",
+            "article_no": "제21조",
+            "article_title": "전차금 상계의 금지",
+            "version_id": "285279",
+            "law_name": "근로기준법",
+            "search_hints": "전차금 대여금 선급금 빚 월급 차감 급여 공제 임금 상계 계속 근무를 조건으로 빌린 돈 정산",
+            "article_key": "0021001",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T03_CONTRACT_CLAUSE_02",
+          "query": "회사가 계속 근무하는 조건으로 대여한 금액은 근로자의 월급에서 매달 차감하여 정산한다.",
+          "expected": [
+            "제21조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "snapshot_effective_date": "20251023",
+            "law_name": "근로기준법 시행령",
+            "version_id": "270551",
+            "article_id": "003058_270551_20251023_0007021",
+            "article_key": "0007021",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "article_title": "상시 사용하는 근로자 수의 산정 방법",
+            "law_id": "003058",
+            "article_no": "제7조의2",
+            "article_effective_date": "20251023"
+          }
+        },
+        {
+          "query_id": "V002_T04_KEYWORD_01",
+          "query": "해고 정직 전직 감봉 정당한 이유",
+          "expected": [
+            "제23조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "해고 등의 제한",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "article_key": "0023001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_id": "001872_285279_20261008_0023001",
+            "article_no": "제23조",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T04_KEYWORD_02",
+          "query": "정당한 사유 없는 징벌 부당해고 제한",
+          "expected": [
+            "제23조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "해고 등의 제한",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0023001",
+            "article_no": "제23조",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "law_id": "001872",
+            "article_key": "0023001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279"
+          }
+        },
+        {
+          "query_id": "V002_T04_USER_QUESTION_01",
+          "query": "잘못한 일이 없어도 사장님 마음대로 직원을 자를 수 있나요?",
+          "expected": [
+            "제23조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "article_title": "해고 등의 제한",
+            "article_id": "001872_285279_20261008_0023001",
+            "article_no": "제23조",
+            "article_key": "0023001",
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T04_USER_QUESTION_02",
+          "query": "징계 이유 없이 저만 정직시키겠다고 하는데 어떤 규정을 확인하나요?",
+          "expected": [
+            "제23조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_no": "제23조",
+            "article_key": "0023001",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0023001",
+            "article_title": "해고 등의 제한"
+          }
+        },
+        {
+          "query_id": "V002_T04_CONTRACT_CLAUSE_01",
+          "query": "회사는 정당한 사유가 없는 경우에도 근로자를 해고할 수 있다.",
+          "expected": [
+            "제23조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0023001",
+            "article_no": "제23조",
+            "article_key": "0023001",
+            "law_id": "001872",
+            "article_title": "해고 등의 제한",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T04_CONTRACT_CLAUSE_02",
+          "query": "사용자는 별도의 사유 없이 근로자에게 정직 또는 감봉 처분을 할 수 있다.",
+          "expected": [
+            "제23조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "285279",
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_title": "해고 등의 제한",
+            "article_key": "0023001",
+            "article_no": "제23조",
+            "article_id": "001872_285279_20261008_0023001",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279"
+          }
+        },
+        {
+          "query_id": "V002_T05_KEYWORD_01",
+          "query": "해고 예고 30일 통상임금",
+          "expected": [
+            "제26조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872",
+            "article_title": "해고의 예고",
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "article_id": "001872_285279_20261008_0026001",
+            "article_effective_date": "20261008",
+            "article_key": "0026001",
+            "article_no": "제26조"
+          }
+        },
+        {
+          "query_id": "V002_T05_KEYWORD_02",
+          "query": "예고 없는 해고 예고수당 예외",
+          "expected": [
+            "제26조"
+          ],
+          "before_rank": 2,
+          "after_rank": 3,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20250223",
+            "chunk_type": "law_appendix",
+            "law_name": "근로기준법 시행규칙",
+            "version_id": "269393",
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=149281817",
+            "snapshot_effective_date": "20250223",
+            "article_key": "000100E",
+            "law_id": "006859",
+            "article_id": "006859_269393_20250223_annex_000100E",
+            "article_title": "해고 예고의 예외가 되는 근로자의 귀책사유(제4조 관련)",
+            "source_type": "law_appendix",
+            "article_no": "별표 1"
+          }
+        },
+        {
+          "query_id": "V002_T05_USER_QUESTION_01",
+          "query": "계속 일한 지 일 년인데 미리 알리지 않고 내일부터 나오지 말라고 합니다. 해고 예고 규정은 어디 있나요?",
+          "expected": [
+            "제26조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제26조",
+            "article_effective_date": "20261008",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0026001",
+            "article_key": "0026001",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872",
+            "version_id": "285279",
+            "law_name": "근로기준법",
+            "article_title": "해고의 예고"
+          }
+        },
+        {
+          "query_id": "V002_T05_USER_QUESTION_02",
+          "query": "회사가 직원을 그만두게 할 때 며칠 전에 알려야 하나요?",
+          "expected": [
+            "제26조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0026001",
+            "chunk_type": "article",
+            "article_title": "해고의 예고",
+            "article_key": "0026001",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "article_no": "제26조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T05_CONTRACT_CLAUSE_01",
+          "query": "회사는 해고를 사전에 예고하지 않으며 예고에 갈음하는 금품도 지급하지 않는다.",
+          "expected": [
+            "제26조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제26조",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_title": "해고의 예고",
+            "article_key": "0026001",
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0026001"
+          }
+        },
+        {
+          "query_id": "V002_T05_CONTRACT_CLAUSE_02",
+          "query": "근로자를 해고할 때에는 사흘 전에만 예고하고 별도의 해고예고수당은 지급하지 않는다.",
+          "expected": [
+            "제26조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "article_key": "0026001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_no": "제26조",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0026001",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "article_title": "해고의 예고",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T06_KEYWORD_01",
+          "query": "해고사유 해고시기 서면통지",
+          "expected": [
+            "제27조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "article_no": "제27조",
+            "article_id": "001872_285279_20261008_0027001",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "article_title": "해고사유 등의 서면통지",
+            "article_key": "0027001"
+          }
+        },
+        {
+          "query_id": "V002_T06_KEYWORD_02",
+          "query": "서면 해고 통지 효력",
+          "expected": [
+            "제27조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "285279",
+            "article_no": "제27조",
+            "chunk_type": "article",
+            "article_title": "해고사유 등의 서면통지",
+            "article_effective_date": "20261008",
+            "article_key": "0027001",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0027001"
+          }
+        },
+        {
+          "query_id": "V002_T06_USER_QUESTION_01",
+          "query": "해고 이유와 날짜를 종이에 적어 주지 않고 말로만 통보해도 되나요?",
+          "expected": [
+            "제27조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_id": "001872_285279_20261008_0027001",
+            "article_no": "제27조",
+            "law_id": "001872",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "law_name": "근로기준법",
+            "article_effective_date": "20261008",
+            "article_key": "0027001",
+            "article_title": "해고사유 등의 서면통지",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T06_USER_QUESTION_02",
+          "query": "잘렸다는 말을 들었는데 해고 사유를 적은 문서를 받아야 하나요?",
+          "expected": [
+            "제27조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_title": "해고사유 등의 서면통지",
+            "article_key": "0027001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0027001",
+            "article_no": "제27조",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T06_CONTRACT_CLAUSE_01",
+          "query": "해고사유와 해고일은 구두로만 통보하고 서면으로 알리지 않는다.",
+          "expected": [
+            "제27조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "해고사유 등의 서면통지",
+            "article_key": "0027001",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_no": "제27조",
+            "law_id": "001872",
+            "chunk_type": "article",
+            "version_id": "285279",
+            "article_id": "001872_285279_20261008_0027001",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T06_CONTRACT_CLAUSE_02",
+          "query": "회사는 해고를 말로 통지하는 것으로 갈음하며 별도의 서면통지 의무를 부담하지 않는다.",
+          "expected": [
+            "제27조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "article_title": "해고사유 등의 서면통지",
+            "article_key": "0027001",
+            "article_id": "001872_285279_20261008_0027001",
+            "chunk_type": "article",
+            "article_no": "제27조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T07_KEYWORD_01",
+          "query": "퇴직 금품 청산 14일 임금 보상금",
+          "expected": [
+            "제36조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "article_no": "제36조",
+            "chunk_type": "article",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0036001",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0036001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "search_hints": "퇴사 퇴직 후 마지막 급여 미지급 임금 정산 지급 기한 정산일 연장 합의",
+            "search_hints_version": "labor_search_concepts_v1",
+            "law_id": "001872",
+            "article_title": "금품 청산"
+          }
+        },
+        {
+          "query_id": "V002_T07_KEYWORD_02",
+          "query": "퇴사 후 미지급 임금 정산 기일 연장 합의",
+          "expected": [
+            "제36조"
+          ],
+          "before_rank": 7,
+          "after_rank": 1,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints": "퇴사 퇴직 후 마지막 급여 미지급 임금 정산 지급 기한 정산일 연장 합의",
+            "article_effective_date": "20261008",
+            "article_no": "제36조",
+            "snapshot_effective_date": "20261008",
+            "chunk_type": "article",
+            "search_hints_version": "labor_search_concepts_v1",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_title": "금품 청산",
+            "article_id": "001872_285279_20261008_0036001",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "article_key": "0036001",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T07_USER_QUESTION_01",
+          "query": "퇴사한 뒤 남은 월급은 언제까지 받아야 하나요?",
+          "expected": [
+            "제36조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_id": "009883_284455_20260918_0009001",
+            "article_key": "0009001",
+            "article_effective_date": "20260918",
+            "version_id": "284455",
+            "chunk_type": "article",
+            "article_title": "퇴직금의 지급 등",
+            "snapshot_effective_date": "20260918",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+            "law_id": "009883",
+            "law_name": "근로자퇴직급여 보장법",
+            "article_no": "제9조"
+          }
+        },
+        {
+          "query_id": "V002_T07_USER_QUESTION_02",
+          "query": "그만둔 지 한 달이 지났는데 마지막 급여를 못 받았습니다. 지급 기한 규정을 찾고 싶어요.",
+          "expected": [
+            "제36조"
+          ],
+          "before_rank": 6,
+          "after_rank": 1,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0036001",
+            "article_no": "제36조",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0036001",
+            "article_title": "금품 청산",
+            "chunk_type": "article",
+            "search_hints": "퇴사 퇴직 후 마지막 급여 미지급 임금 정산 지급 기한 정산일 연장 합의",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "search_hints_version": "labor_search_concepts_v1"
+          }
+        },
+        {
+          "query_id": "V002_T07_CONTRACT_CLAUSE_01",
+          "query": "퇴직 시 미지급 임금은 별도 합의 없이 퇴직일로부터 60일 후에 정산한다.",
+          "expected": [
+            "제36조"
+          ],
+          "before_rank": 3,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제9조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+            "chunk_type": "article",
+            "article_title": "퇴직금의 지급 등",
+            "version_id": "284455",
+            "law_name": "근로자퇴직급여 보장법",
+            "article_key": "0009001",
+            "law_id": "009883",
+            "snapshot_effective_date": "20260918",
+            "article_id": "009883_284455_20260918_0009001",
+            "article_effective_date": "20260918"
+          }
+        },
+        {
+          "query_id": "V002_T07_CONTRACT_CLAUSE_02",
+          "query": "퇴사 후 남은 급여와 금품의 지급 시기는 근로자와 협의하지 않고 회사가 정한다.",
+          "expected": [
+            "제36조"
+          ],
+          "before_rank": 2,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "search_hints": "퇴사 퇴직 후 마지막 급여 미지급 임금 정산 지급 기한 정산일 연장 합의",
+            "version_id": "285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_no": "제36조",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0036001",
+            "article_title": "금품 청산",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0036001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T08_KEYWORD_01",
+          "query": "임금 매월 일정한 날짜 지급",
+          "expected": [
+            "제43조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_key": "0043001",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0043001",
+            "article_title": "임금 지급",
+            "version_id": "285279",
+            "article_no": "제43조",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T08_KEYWORD_02",
+          "query": "임금 통화 직접 전액 지급 공제 예외",
+          "expected": [
+            "제43조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_id": "010035_284693_20260324_0008001",
+            "law_id": "010035",
+            "article_effective_date": "20260324",
+            "snapshot_effective_date": "20260324",
+            "version_id": "284693",
+            "article_no": "제8조",
+            "article_key": "0008001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284693",
+            "law_name": "근로자퇴직급여 보장법 시행령",
+            "article_title": "급여 전액지급 예외 사유",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T08_USER_QUESTION_01",
+          "query": "월급 지급 날짜를 정하지 않아도 되나요?",
+          "expected": [
+            "제43조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제43조",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0043001",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0043001",
+            "version_id": "285279",
+            "chunk_type": "article",
+            "article_title": "임금 지급"
+          }
+        },
+        {
+          "query_id": "V002_T08_USER_QUESTION_02",
+          "query": "급여를 제 통장 대신 가족에게 주겠다고 하는데 직접 지급 원칙을 확인하고 싶어요.",
+          "expected": [
+            "제43조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "임금 지급",
+            "article_effective_date": "20261008",
+            "article_no": "제43조",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_id": "001872_285279_20261008_0043001",
+            "article_key": "0043001"
+          }
+        },
+        {
+          "query_id": "V002_T08_CONTRACT_CLAUSE_01",
+          "query": "급여 지급일은 따로 정하지 않고 회사 자금 사정에 따라 지급한다.",
+          "expected": [
+            "제43조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0043001",
+            "article_no": "제43조",
+            "law_id": "001872",
+            "chunk_type": "article",
+            "article_title": "임금 지급",
+            "version_id": "285279",
+            "article_key": "0043001"
+          }
+        },
+        {
+          "query_id": "V002_T08_CONTRACT_CLAUSE_02",
+          "query": "임금은 근로자 본인이 아닌 사용자가 지정한 제삼자에게 지급한다.",
+          "expected": [
+            "제43조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "article_title": "임금 지급",
+            "article_id": "001872_285279_20261008_0043001",
+            "article_key": "0043001",
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_no": "제43조",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T09_KEYWORD_01",
+          "query": "임금명세서 구성항목 계산방법 공제내역",
+          "expected": [
+            "제48조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "chunk_type": "article",
+            "article_no": "제27조의2",
+            "snapshot_effective_date": "20251023",
+            "law_id": "003058",
+            "law_name": "근로기준법 시행령",
+            "article_id": "003058_270551_20251023_0027021",
+            "article_effective_date": "20251023",
+            "article_title": "임금명세서의 기재사항",
+            "article_key": "0027021",
+            "version_id": "270551"
+          }
+        },
+        {
+          "query_id": "V002_T09_KEYWORD_02",
+          "query": "임금대장 작성 급여명세서 서면 교부",
+          "expected": [
+            "제48조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0048001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0048001",
+            "chunk_type": "article",
+            "article_no": "제48조",
+            "version_id": "285279",
+            "article_title": "임금대장 및 임금명세서"
+          }
+        },
+        {
+          "query_id": "V002_T09_USER_QUESTION_01",
+          "query": "월급만 입금되고 급여명세서는 안 주는데 관련 규정이 있나요?",
+          "expected": [
+            "제48조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "미지급 임금에 대한 지연이자",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "article_no": "제37조",
+            "article_key": "0037001",
+            "law_name": "근로기준법",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_id": "001872_285279_20261008_0037001",
+            "article_effective_date": "20261008",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T09_USER_QUESTION_02",
+          "query": "월급에서 무엇이 빠졌는지 적힌 내역서를 받을 수 있나요?",
+          "expected": [
+            "제48조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0027021",
+            "article_effective_date": "20251023",
+            "article_id": "003058_270551_20251023_0027021",
+            "snapshot_effective_date": "20251023",
+            "chunk_type": "article",
+            "law_id": "003058",
+            "article_title": "임금명세서의 기재사항",
+            "law_name": "근로기준법 시행령",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "article_no": "제27조의2",
+            "version_id": "270551"
+          }
+        },
+        {
+          "query_id": "V002_T09_CONTRACT_CLAUSE_01",
+          "query": "회사는 급여 입금으로 지급 의무를 마치며 임금명세서를 교부하지 않는다.",
+          "expected": [
+            "제48조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제48조",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0048001",
+            "chunk_type": "article",
+            "article_title": "임금대장 및 임금명세서",
+            "article_key": "0048001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T09_CONTRACT_CLAUSE_02",
+          "query": "임금의 구성항목과 공제내역을 적은 서면은 근로자에게 제공하지 않는다.",
+          "expected": [
+            "제48조"
+          ],
+          "before_rank": 4,
+          "after_rank": 4,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법 시행령",
+            "snapshot_effective_date": "20251023",
+            "version_id": "270551",
+            "article_id": "003058_270551_20251023_0027021",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "article_key": "0027021",
+            "article_title": "임금명세서의 기재사항",
+            "article_effective_date": "20251023",
+            "article_no": "제27조의2",
+            "law_id": "003058"
+          }
+        },
+        {
+          "query_id": "V002_T10_KEYWORD_01",
+          "query": "주 40시간 일 8시간 휴게시간 제외",
+          "expected": [
+            "제50조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0050001",
+            "article_key": "0050001",
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "article_title": "근로시간",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "article_no": "제50조",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T10_KEYWORD_02",
+          "query": "사용자 지휘 감독 대기시간 근로시간 산정",
+          "expected": [
+            "제50조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "law_id": "001872",
+            "article_key": "0058001",
+            "snapshot_effective_date": "20261008",
+            "article_no": "제58조",
+            "article_id": "001872_285279_20261008_0058001",
+            "article_title": "근로시간 계산의 특례",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279"
+          }
+        },
+        {
+          "query_id": "V002_T10_USER_QUESTION_01",
+          "query": "보통 하루와 일주일에 일하는 시간의 기본 한도는 어떻게 정해져 있나요?",
+          "expected": [
+            "제50조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0069001",
+            "version_id": "285279",
+            "article_title": "근로시간",
+            "article_no": "제69조",
+            "chunk_type": "article",
+            "article_key": "0069001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "article_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T10_USER_QUESTION_02",
+          "query": "사장님 지시로 손님을 기다리는 시간도 일한 시간에 들어가나요?",
+          "expected": [
+            "제50조"
+          ],
+          "before_rank": 3,
+          "after_rank": 3,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0058001",
+            "version_id": "285279",
+            "law_id": "001872",
+            "article_title": "근로시간 계산의 특례",
+            "article_key": "0058001",
+            "chunk_type": "article",
+            "article_no": "제58조"
+          }
+        },
+        {
+          "query_id": "V002_T10_CONTRACT_CLAUSE_01",
+          "query": "사용자의 지휘와 감독 아래에 있는 업무 대기시간은 근로시간에서 제외한다.",
+          "expected": [
+            "제50조"
+          ],
+          "before_rank": 5,
+          "after_rank": 5,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제10조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "law_name": "근로기준법 시행규칙",
+            "article_effective_date": "20250223",
+            "article_id": "006859_269393_20250223_0010001",
+            "version_id": "269393",
+            "article_key": "0010001",
+            "article_title": "근로시간 등의 적용제외 승인 신청 등",
+            "law_id": "006859",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20250223"
+          }
+        },
+        {
+          "query_id": "V002_T10_CONTRACT_CLAUSE_02",
+          "query": "휴게시간을 제외한 기본 근로시간은 하루 9시간, 일주일 45시간으로 정한다.",
+          "expected": [
+            "제50조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0050001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_key": "0050001",
+            "law_id": "001872",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "article_title": "근로시간",
+            "article_no": "제50조"
+          }
+        },
+        {
+          "query_id": "V002_T11_KEYWORD_01",
+          "query": "연장근로 주 12시간 당사자 합의",
+          "expected": [
+            "제53조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "연장 근로의 제한",
+            "article_key": "0053001",
+            "article_no": "제53조",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0053001",
+            "version_id": "285279",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "article_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T11_KEYWORD_02",
+          "query": "근로시간 연장 한도 특별연장근로 인가",
+          "expected": [
+            "제53조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제9조",
+            "law_id": "006859",
+            "law_name": "근로기준법 시행규칙",
+            "version_id": "269393",
+            "article_effective_date": "20250223",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "article_id": "006859_269393_20250223_0009001",
+            "snapshot_effective_date": "20250223",
+            "article_key": "0009001",
+            "chunk_type": "article",
+            "article_title": "특별한 사정이 있는 경우의 근로시간 연장 신청 등"
+          }
+        },
+        {
+          "query_id": "V002_T11_USER_QUESTION_01",
+          "query": "회사와 합의해도 추가로 일하는 시간에는 주당 한도가 있나요?",
+          "expected": [
+            "제53조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0053001",
+            "article_title": "연장 근로의 제한",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0053001",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "article_no": "제53조",
+            "law_id": "001872",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T11_USER_QUESTION_02",
+          "query": "일주일에 하는 연장근로의 한도를 다루는 조문을 찾고 싶어요.",
+          "expected": [
+            "제53조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "연장 근로의 제한",
+            "article_key": "0053001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_id": "001872_285279_20261008_0053001",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "article_no": "제53조",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T11_CONTRACT_CLAUSE_01",
+          "query": "연장근로는 당사자 간 합의 여부와 관계없이 회사가 정한다.",
+          "expected": [
+            "제53조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0053001",
+            "article_title": "연장 근로의 제한",
+            "article_id": "001872_285279_20261008_0053001",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "article_no": "제53조"
+          }
+        },
+        {
+          "query_id": "V002_T11_CONTRACT_CLAUSE_02",
+          "query": "근로자는 회사가 요구하는 경우 주당 한도 없이 연장근로를 수행한다.",
+          "expected": [
+            "제53조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "연장 근로의 제한",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0053001",
+            "article_no": "제53조",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0053001",
+            "article_effective_date": "20261008",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T12_KEYWORD_01",
+          "query": "휴게시간 근로시간 도중 자유 이용",
+          "expected": [
+            "제54조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0054001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "article_title": "휴게",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0054001",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "article_no": "제54조",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T12_KEYWORD_02",
+          "query": "4시간 30분 8시간 1시간 휴게",
+          "expected": [
+            "제54조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "article_key": "0054001",
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "article_no": "제54조",
+            "article_effective_date": "20261008",
+            "article_title": "휴게",
+            "law_name": "근로기준법",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_id": "001872_285279_20261008_0054001",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T12_USER_QUESTION_01",
+          "query": "하루 여덟 시간 일하는데 중간에 쉬는 시간을 따로 줘야 하나요?",
+          "expected": [
+            "제54조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0054001",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0054001",
+            "article_title": "휴게",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "law_id": "001872",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_no": "제54조",
+            "article_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T12_USER_QUESTION_02",
+          "query": "쉬는 시간이라고 해놓고 계속 업무를 시키는데 휴게시간 규정은 어디 있나요?",
+          "expected": [
+            "제54조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints_version": "labor_search_concepts_v1",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "article_key": "0054001",
+            "snapshot_effective_date": "20261008",
+            "chunk_type": "article",
+            "article_title": "휴게",
+            "article_id": "001872_285279_20261008_0054001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "law_id": "001872",
+            "article_no": "제54조",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T12_CONTRACT_CLAUSE_01",
+          "query": "일하는 중에 쉬는 시간 없이 계속 근무한다.",
+          "expected": [
+            "제54조"
+          ],
+          "before_rank": null,
+          "after_rank": 1,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "001872",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_title": "휴게",
+            "version_id": "285279",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "article_no": "제54조",
+            "article_effective_date": "20261008",
+            "article_key": "0054001",
+            "article_id": "001872_285279_20261008_0054001",
+            "search_hints_version": "labor_search_concepts_v1"
+          }
+        },
+        {
+          "query_id": "V002_T12_CONTRACT_CLAUSE_02",
+          "query": "휴게시간에도 근로자는 회사가 지정한 업무를 계속 수행하여야 한다.",
+          "expected": [
+            "제54조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "001872",
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "article_title": "휴게",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "chunk_type": "article",
+            "article_no": "제54조",
+            "article_key": "0054001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_id": "001872_285279_20261008_0054001"
+          }
+        },
+        {
+          "query_id": "V002_T13_KEYWORD_01",
+          "query": "주휴일 유급휴일 보장",
+          "expected": [
+            "제55조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints_version": "labor_search_concepts_v1",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "chunk_type": "article",
+            "search_hints": "매주 쉬는 날 주휴일 유급 휴일 주휴수당 휴일 임금 지급 무급 처리",
+            "article_title": "휴일",
+            "law_id": "001872",
+            "article_id": "001872_285279_20261008_0055001",
+            "version_id": "285279",
+            "article_key": "0055001",
+            "law_name": "근로기준법",
+            "article_no": "제55조",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T13_KEYWORD_02",
+          "query": "주 평균 1회 유급휴일 휴일 대체 서면합의",
+          "expected": [
+            "제55조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "article_title": "휴일",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0055001",
+            "search_hints": "매주 쉬는 날 주휴일 유급 휴일 주휴수당 휴일 임금 지급 무급 처리",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_no": "제55조",
+            "law_id": "001872",
+            "chunk_type": "article",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_key": "0055001"
+          }
+        },
+        {
+          "query_id": "V002_T13_USER_QUESTION_01",
+          "query": "매주 쉬는 날을 유급으로 보장해야 하나요?",
+          "expected": [
+            "제55조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "001872",
+            "chunk_type": "article",
+            "search_hints": "매주 쉬는 날 주휴일 유급 휴일 주휴수당 휴일 임금 지급 무급 처리",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0055001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "article_key": "0055001",
+            "snapshot_effective_date": "20261008",
+            "article_title": "휴일",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_no": "제55조"
+          }
+        },
+        {
+          "query_id": "V002_T13_USER_QUESTION_02",
+          "query": "일주일마다 하루 쉬는 날에도 돈을 받는 휴일 규정을 찾아주세요.",
+          "expected": [
+            "제55조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "law_name": "근로기준법",
+            "article_no": "제55조",
+            "article_id": "001872_285279_20261008_0055001",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "search_hints": "매주 쉬는 날 주휴일 유급 휴일 주휴수당 휴일 임금 지급 무급 처리",
+            "article_title": "휴일",
+            "article_key": "0055001"
+          }
+        },
+        {
+          "query_id": "V002_T13_CONTRACT_CLAUSE_01",
+          "query": "매주 정한 휴일은 무급으로 하며 유급휴일은 두지 않는다.",
+          "expected": [
+            "제55조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints": "매주 쉬는 날 주휴일 유급 휴일 주휴수당 휴일 임금 지급 무급 처리",
+            "article_id": "001872_285279_20261008_0055001",
+            "chunk_type": "article",
+            "version_id": "285279",
+            "article_key": "0055001",
+            "law_id": "001872",
+            "article_title": "휴일",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "article_no": "제55조"
+          }
+        },
+        {
+          "query_id": "V002_T13_CONTRACT_CLAUSE_02",
+          "query": "주마다 부여하는 쉬는 날은 임금 지급 대상에서 제외한다.",
+          "expected": [
+            "제55조"
+          ],
+          "before_rank": null,
+          "after_rank": 4,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제23조",
+            "law_id": "003058",
+            "version_id": "270551",
+            "article_effective_date": "20251023",
+            "article_title": "매월 1회 이상 지급하여야 할 임금의 예외",
+            "snapshot_effective_date": "20251023",
+            "chunk_type": "article",
+            "article_id": "003058_270551_20251023_0023001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "article_key": "0023001",
+            "law_name": "근로기준법 시행령"
+          }
+        },
+        {
+          "query_id": "V002_T14_KEYWORD_01",
+          "query": "연장 야간 휴일근로 가산임금 통상임금",
+          "expected": [
+            "제56조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "article_key": "0056001",
+            "article_id": "001872_285279_20261008_0056001",
+            "law_name": "근로기준법",
+            "article_title": "연장ㆍ야간 및 휴일 근로",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "law_id": "001872",
+            "article_no": "제56조"
+          }
+        },
+        {
+          "query_id": "V002_T14_KEYWORD_02",
+          "query": "오후 10시 오전 6시 야간근로 가산",
+          "expected": [
+            "제56조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제70조",
+            "article_title": "야간근로와 휴일근로의 제한",
+            "law_name": "근로기준법",
+            "law_id": "001872",
+            "article_key": "0070001",
+            "article_effective_date": "20261008",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_id": "001872_285279_20261008_0070001",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T14_USER_QUESTION_01",
+          "query": "밤 열한 시에 일해도 낮에 일한 것과 같은 돈만 받나요?",
+          "expected": [
+            "제56조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "야간근로와 휴일근로의 제한",
+            "article_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0070001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0070001",
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "article_no": "제70조",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T14_USER_QUESTION_02",
+          "query": "추가로 일한 시간이나 휴일에 일한 시간의 수당 규정을 찾고 싶어요.",
+          "expected": [
+            "제56조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제56조",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0056001",
+            "version_id": "285279",
+            "law_id": "001872",
+            "snapshot_effective_date": "20261008",
+            "article_effective_date": "20261008",
+            "article_title": "연장ㆍ야간 및 휴일 근로",
+            "article_id": "001872_285279_20261008_0056001",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "V002_T14_CONTRACT_CLAUSE_01",
+          "query": "연장근로와 야간근로를 하더라도 가산임금은 지급하지 않는다.",
+          "expected": [
+            "제56조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제56조",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "article_key": "0056001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0056001",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "article_title": "연장ㆍ야간 및 휴일 근로",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T14_CONTRACT_CLAUSE_02",
+          "query": "휴일에 근무한 시간에 대해서는 별도의 가산 없이 기본 시급만 지급한다.",
+          "expected": [
+            "제56조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제56조",
+            "article_id": "001872_285279_20261008_0056001",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "chunk_type": "article",
+            "article_key": "0056001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_title": "연장ㆍ야간 및 휴일 근로",
+            "snapshot_effective_date": "20261008",
+            "law_name": "근로기준법",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T15_KEYWORD_01",
+          "query": "연차 유급휴가 출근율",
+          "expected": [
+            "제60조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "article_title": "연차 유급휴가",
+            "law_id": "001872",
+            "article_no": "제60조",
+            "article_id": "001872_285279_20261008_0060001",
+            "article_effective_date": "20261008",
+            "article_key": "0060001",
+            "version_id": "285279",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "snapshot_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "V002_T15_KEYWORD_02",
+          "query": "1년 미만 1개월 개근 유급휴가",
+          "expected": [
+            "제60조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "article_no": "제60조",
+            "article_effective_date": "20261008",
+            "snapshot_effective_date": "20261008",
+            "version_id": "285279",
+            "article_title": "연차 유급휴가",
+            "article_key": "0060001",
+            "article_id": "001872_285279_20261008_0060001",
+            "law_id": "001872"
+          }
+        },
+        {
+          "query_id": "V002_T15_USER_QUESTION_01",
+          "query": "일 년 동안 일하면 유급으로 쉴 수 있는 휴가는 얼마나 생기나요?",
+          "expected": [
+            "제60조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0060001",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_title": "연차 유급휴가",
+            "version_id": "285279",
+            "article_no": "제60조",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20261008",
+            "article_id": "001872_285279_20261008_0060001",
+            "article_effective_date": "20261008",
+            "law_name": "근로기준법"
+          }
+        },
+        {
+          "query_id": "V002_T15_USER_QUESTION_02",
+          "query": "입사한 지 일 년이 안 됐어도 한 달을 빠짐없이 일하면 쓸 수 있는 휴가가 있나요?",
+          "expected": [
+            "제60조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0060001",
+            "law_id": "001872",
+            "chunk_type": "article",
+            "article_title": "연차 유급휴가",
+            "version_id": "285279",
+            "article_no": "제60조",
+            "article_effective_date": "20261008",
+            "article_key": "0060001"
+          }
+        },
+        {
+          "query_id": "V002_T15_CONTRACT_CLAUSE_01",
+          "query": "연차에 해당하는 휴가를 사용한 날은 무급으로 처리한다.",
+          "expected": [
+            "제60조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_id": "001872_285279_20261008_0061001",
+            "snapshot_effective_date": "20261008",
+            "article_title": "연차 유급휴가의 사용 촉진",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "article_no": "제61조",
+            "law_name": "근로기준법",
+            "article_key": "0061001",
+            "law_id": "001872",
+            "version_id": "285279"
+          }
+        },
+        {
+          "query_id": "V002_T15_CONTRACT_CLAUSE_02",
+          "query": "회사는 근속기간 및 출근율과 관계없이 연차유급휴가를 부여하지 않는다.",
+          "expected": [
+            "제60조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_title": "연차 유급휴가",
+            "article_id": "001872_285279_20261008_0060001",
+            "snapshot_effective_date": "20261008",
+            "article_no": "제60조",
+            "article_key": "0060001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "article_effective_date": "20261008"
+          }
+        }
+      ]
+    },
+    "42": {
+      "gained_hit5": 1,
+      "lost_hit5": 0,
+      "queries": [
+        {
+          "query_id": "SUP_V001_T01_01",
+          "query": "근로조건 위반 손해배상 청구 신청 첨부 자료",
+          "expected": [
+            "근로기준법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0002001",
+            "article_title": "손해배상 청구의 신청",
+            "version_id": "269393",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20250223",
+            "article_no": "제2조",
+            "law_id": "006859",
+            "article_effective_date": "20250223",
+            "article_id": "006859_269393_20250223_0002001",
+            "law_name": "근로기준법 시행규칙",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T01_02",
+          "query": "약속한 근무 조건을 회사가 지키지 않아 배상을 신청하려는데 어떤 서류를 내야 하나요?",
+          "expected": [
+            "근로기준법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "269393",
+            "law_name": "근로기준법 시행규칙",
+            "article_title": "손해배상 청구의 신청",
+            "article_key": "0002001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "article_no": "제2조",
+            "snapshot_effective_date": "20250223",
+            "article_effective_date": "20250223",
+            "law_id": "006859",
+            "chunk_type": "article",
+            "article_id": "006859_269393_20250223_0002001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T01_03",
+          "query": "근로자가 약정 근로조건 위반을 이유로 지방노동위원회에 배상을 청구할 때 계약서와 위반 증빙을 준비하는 절차를 찾는다.",
+          "expected": [
+            "근로기준법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "article_key": "0002001",
+            "version_id": "269393",
+            "article_title": "손해배상 청구의 신청",
+            "snapshot_effective_date": "20250223",
+            "article_no": "제2조",
+            "chunk_type": "article",
+            "law_id": "006859",
+            "law_name": "근로기준법 시행규칙",
+            "article_effective_date": "20250223",
+            "article_id": "006859_269393_20250223_0002001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T02_01",
+          "query": "부당해고 구제신청서 제출 관할 지방노동위원회",
+          "expected": [
+            "근로기준법 시행규칙 제5조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "snapshot_effective_date": "20250223",
+            "law_id": "006859",
+            "law_name": "근로기준법 시행규칙",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "article_title": "부당해고등의 구제신청",
+            "version_id": "269393",
+            "article_effective_date": "20250223",
+            "article_no": "제5조",
+            "article_id": "006859_269393_20250223_0005001",
+            "article_key": "0005001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T02_02",
+          "query": "부당하게 해고됐다고 생각하는데 구제 신청서를 어디에 제출하나요?",
+          "expected": [
+            "근로기준법 시행규칙 제5조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "law_name": "근로기준법 시행규칙",
+            "version_id": "269393",
+            "article_effective_date": "20250223",
+            "article_key": "0005001",
+            "article_no": "제5조",
+            "article_id": "006859_269393_20250223_0005001",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20250223",
+            "law_id": "006859",
+            "article_title": "부당해고등의 구제신청"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T02_03",
+          "query": "해고된 직원이 구제를 요청하기 위해 제출할 신청서 서식과 제출 기관을 확인하려 한다.",
+          "expected": [
+            "근로기준법 시행규칙 제5조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "269393",
+            "snapshot_effective_date": "20250223",
+            "article_title": "부당해고등의 구제신청",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "law_id": "006859",
+            "article_key": "0005001",
+            "article_effective_date": "20250223",
+            "law_name": "근로기준법 시행규칙",
+            "article_no": "제5조",
+            "article_id": "006859_269393_20250223_0005001",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T03_01",
+          "query": "취업규칙 변경신고 첨부서류 근로자 동의 의견",
+          "expected": [
+            "근로기준법 시행규칙 제15조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20250223",
+            "law_id": "006859",
+            "article_effective_date": "20250223",
+            "article_title": "취업규칙의 신고 등",
+            "version_id": "269393",
+            "article_key": "0015001",
+            "chunk_type": "article",
+            "article_id": "006859_269393_20250223_0015001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "article_no": "제15조",
+            "law_name": "근로기준법 시행규칙"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T03_02",
+          "query": "취업규칙을 불리하게 바꿔 신고할 때 직원 동의 증명도 내야 하나요?",
+          "expected": [
+            "근로기준법 시행규칙 제15조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "version_id": "269393",
+            "article_no": "제15조",
+            "chunk_type": "article",
+            "snapshot_effective_date": "20250223",
+            "article_effective_date": "20250223",
+            "law_name": "근로기준법 시행규칙",
+            "law_id": "006859",
+            "article_key": "0015001",
+            "article_title": "취업규칙의 신고 등",
+            "article_id": "006859_269393_20250223_0015001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T03_03",
+          "query": "회사가 취업규칙 변경 전후 비교 자료와 근로자 동의 자료를 함께 제출해야 하는 신고 절차를 확인한다.",
+          "expected": [
+            "근로기준법 시행규칙 제15조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "006859",
+            "article_title": "취업규칙의 신고 등",
+            "snapshot_effective_date": "20250223",
+            "chunk_type": "article",
+            "article_key": "0015001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "article_no": "제15조",
+            "version_id": "269393",
+            "article_effective_date": "20250223",
+            "law_name": "근로기준법 시행규칙",
+            "article_id": "006859_269393_20250223_0015001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T04_01",
+          "query": "특별한 사정 근로시간 연장 인가 승인 신청 동의서",
+          "expected": [
+            "근로기준법 시행규칙 제9조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20250223",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "version_id": "269393",
+            "article_title": "특별한 사정이 있는 경우의 근로시간 연장 신청 등",
+            "law_id": "006859",
+            "article_effective_date": "20250223",
+            "law_name": "근로기준법 시행규칙",
+            "article_key": "0009001",
+            "article_id": "006859_269393_20250223_0009001",
+            "chunk_type": "article",
+            "article_no": "제9조"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T04_02",
+          "query": "갑작스러운 설비 고장으로 특별연장근로를 신청하려면 무엇을 첨부하나요?",
+          "expected": [
+            "근로기준법 시행규칙 제9조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0009001",
+            "article_title": "특별한 사정이 있는 경우의 근로시간 연장 신청 등",
+            "article_effective_date": "20250223",
+            "version_id": "269393",
+            "article_no": "제9조",
+            "chunk_type": "article",
+            "article_id": "006859_269393_20250223_0009001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393",
+            "law_name": "근로기준법 시행규칙",
+            "snapshot_effective_date": "20250223",
+            "law_id": "006859"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T04_03",
+          "query": "돌발적인 시설 장애로 연장근로 인가를 신청하면서 직원 동의서와 긴급 상황 증빙을 준비하려 한다.",
+          "expected": [
+            "근로기준법 시행규칙 제9조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법 시행규칙",
+            "article_key": "0009001",
+            "article_effective_date": "20250223",
+            "version_id": "269393",
+            "article_id": "006859_269393_20250223_0009001",
+            "snapshot_effective_date": "20250223",
+            "chunk_type": "article",
+            "article_no": "제9조",
+            "article_title": "특별한 사정이 있는 경우의 근로시간 연장 신청 등",
+            "law_id": "006859",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269393"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T05_01",
+          "query": "최저임금 산입 제외 연장 야간 휴일 가산임금 미사용 연차수당",
+          "expected": [
+            "최저임금법 시행규칙 제2조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0056001",
+            "law_name": "근로기준법",
+            "chunk_type": "article",
+            "article_title": "연장ㆍ야간 및 휴일 근로",
+            "version_id": "285279",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_id": "001872",
+            "article_no": "제56조",
+            "article_id": "001872_285279_20261008_0056001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T05_02",
+          "query": "최저임금에 포함하면 안 되는 수당의 구체적인 종류를 어디서 확인하나요?",
+          "expected": [
+            "최저임금법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20260102",
+            "article_title": "최저임금의 범위",
+            "law_id": "008480",
+            "law_name": "최저임금법 시행규칙",
+            "version_id": "282351",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282351",
+            "article_effective_date": "20260102",
+            "chunk_type": "article",
+            "article_no": "제2조",
+            "article_key": "0002001",
+            "article_id": "008480_282351_20260102_0002001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T05_03",
+          "query": "기본급에 야근 가산수당과 미사용 연차수당을 합쳐 최저임금 충족 여부를 계산하려 할 때 제외 항목을 확인한다.",
+          "expected": [
+            "최저임금법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20260102",
+            "article_key": "0002001",
+            "law_name": "최저임금법 시행규칙",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282351",
+            "article_title": "최저임금의 범위",
+            "version_id": "282351",
+            "article_no": "제2조",
+            "law_id": "008480",
+            "article_effective_date": "20260102",
+            "chunk_type": "article",
+            "article_id": "008480_282351_20260102_0002001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T06_01",
+          "query": "최저임금 적용 제외 인가 신청 임금대장 증명서류",
+          "expected": [
+            "최저임금법 시행규칙 제3조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "최저임금법 시행규칙",
+            "version_id": "282351",
+            "article_id": "008480_282351_20260102_0003001",
+            "article_effective_date": "20260102",
+            "article_no": "제3조",
+            "article_title": "최저임금 적용 제외의 인가",
+            "chunk_type": "article",
+            "law_id": "008480",
+            "snapshot_effective_date": "20260102",
+            "article_key": "0003001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282351"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T06_02",
+          "query": "최저임금 적용 제외 인가 신청서에 어떤 증빙 서류를 붙이나요?",
+          "expected": [
+            "최저임금법 시행규칙 제3조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제3조",
+            "article_key": "0003001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282351",
+            "article_effective_date": "20260102",
+            "article_id": "008480_282351_20260102_0003001",
+            "chunk_type": "article",
+            "version_id": "282351",
+            "article_title": "최저임금 적용 제외의 인가",
+            "law_name": "최저임금법 시행규칙",
+            "law_id": "008480",
+            "snapshot_effective_date": "20260102"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T06_03",
+          "query": "사용자가 최저임금 적용 제외 인가를 신청하며 전월 임금대장 사본과 장애 관련 증빙의 제출 기준을 확인한다.",
+          "expected": [
+            "최저임금법 시행규칙 제3조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20260102",
+            "article_id": "008480_282351_20260102_0003001",
+            "article_no": "제3조",
+            "article_title": "최저임금 적용 제외의 인가",
+            "article_key": "0003001",
+            "chunk_type": "article",
+            "law_name": "최저임금법 시행규칙",
+            "version_id": "282351",
+            "article_effective_date": "20260102",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282351",
+            "law_id": "008480"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T07_01",
+          "query": "퇴직연금규약 신고 변경 통보 첨부서류 근로자대표",
+          "expected": [
+            "근로자퇴직급여 보장법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "243903",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=243903",
+            "law_id": "010043",
+            "article_key": "0002001",
+            "article_no": "제2조",
+            "article_effective_date": "20220712",
+            "snapshot_effective_date": "20220712",
+            "article_id": "010043_243903_20220712_0002001",
+            "chunk_type": "article",
+            "article_title": "퇴직연금규약의 신고 등",
+            "law_name": "근로자퇴직급여 보장법 시행규칙"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T07_02",
+          "query": "퇴직연금 규약을 신고하거나 바꿀 때 직원 대표의 동의 자료가 필요한지 확인하고 싶어요.",
+          "expected": [
+            "근로자퇴직급여 보장법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "243903",
+            "article_title": "퇴직연금규약의 신고 등",
+            "law_name": "근로자퇴직급여 보장법 시행규칙",
+            "article_no": "제2조",
+            "article_id": "010043_243903_20220712_0002001",
+            "chunk_type": "article",
+            "article_key": "0002001",
+            "snapshot_effective_date": "20220712",
+            "article_effective_date": "20220712",
+            "law_id": "010043",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=243903"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T07_03",
+          "query": "회사가 확정기여형 퇴직연금 규약 변경을 통보하면서 변경 전후 규약과 의견 청취 자료를 준비하는 절차를 찾는다.",
+          "expected": [
+            "근로자퇴직급여 보장법 시행규칙 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "퇴직연금규약의 신고 등",
+            "law_id": "010043",
+            "article_effective_date": "20220712",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=243903",
+            "article_key": "0002001",
+            "article_no": "제2조",
+            "version_id": "243903",
+            "snapshot_effective_date": "20220712",
+            "chunk_type": "article",
+            "article_id": "010043_243903_20220712_0002001",
+            "law_name": "근로자퇴직급여 보장법 시행규칙"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T08_01",
+          "query": "퇴직연금 운용현황 통지 방법 미납 10일",
+          "expected": [
+            "근로자퇴직급여 보장법 시행규칙 제7조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "010043",
+            "law_name": "근로자퇴직급여 보장법 시행규칙",
+            "chunk_type": "article",
+            "article_id": "010043_243903_20220712_0007001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=243903",
+            "snapshot_effective_date": "20220712",
+            "article_title": "운용현황의 통지",
+            "article_no": "제7조",
+            "version_id": "243903",
+            "article_key": "0007001",
+            "article_effective_date": "20220712"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T08_02",
+          "query": "퇴직연금 부담금이 한 달 넘게 미납되면 가입자에게 언제 어떻게 알려야 하나요?",
+          "expected": [
+            "근로자퇴직급여 보장법 시행규칙 제7조"
+          ],
+          "before_rank": 3,
+          "after_rank": 3,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "snapshot_effective_date": "20260918",
+            "article_key": "0023071",
+            "article_no": "제23조의7",
+            "law_id": "009883",
+            "law_name": "근로자퇴직급여 보장법",
+            "article_effective_date": "20260918",
+            "article_id": "009883_284455_20260918_0023071",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+            "version_id": "284455",
+            "article_title": "부담금의 부담수준 및 납입 등"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T08_03",
+          "query": "퇴직연금사업자가 가입자에게 적립금과 수익률을 전자 방식으로 통지하고 부담금 미납 시 추가 통지하는 규정을 찾는다.",
+          "expected": [
+            "근로자퇴직급여 보장법 시행규칙 제7조"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제18조",
+            "version_id": "284455",
+            "chunk_type": "article",
+            "article_id": "009883_284455_20260918_0018001",
+            "snapshot_effective_date": "20260918",
+            "article_effective_date": "20260918",
+            "law_name": "근로자퇴직급여 보장법",
+            "article_key": "0018001",
+            "law_id": "009883",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+            "article_title": "운용현황의 통지"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T09_01",
+          "query": "관공서 공휴일 설날 추석 어린이날 성탄절 목록",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "공휴일",
+            "version_id": "285779",
+            "article_id": "002404_285779_20260511_0002001",
+            "article_no": "제2조",
+            "law_id": "002404",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "article_effective_date": "20260511",
+            "chunk_type": "article",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "snapshot_effective_date": "20260511",
+            "article_key": "0002001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T09_02",
+          "query": "관공서가 쉬는 공휴일에는 어떤 날들이 있나요?",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "article_no": "제2조",
+            "version_id": "285779",
+            "article_key": "0002001",
+            "snapshot_effective_date": "20260511",
+            "article_effective_date": "20260511",
+            "law_id": "002404",
+            "article_id": "002404_285779_20260511_0002001",
+            "article_title": "공휴일",
+            "chunk_type": "article",
+            "law_name": "관공서의 공휴일에 관한 규정"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T09_03",
+          "query": "근무 일정표에서 설날과 추석 연휴 및 어린이날을 공휴일로 표시하기 위한 공식 목록을 확인한다.",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제2조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "285779",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "article_title": "공휴일",
+            "article_id": "002404_285779_20260511_0002001",
+            "article_key": "0002001",
+            "chunk_type": "article",
+            "article_no": "제2조",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "article_effective_date": "20260511",
+            "law_id": "002404",
+            "snapshot_effective_date": "20260511"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T10_01",
+          "query": "대체공휴일 토요일 일요일 중복 첫 번째 비공휴일",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제3조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_id": "002404",
+            "version_id": "285779",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "snapshot_effective_date": "20260511",
+            "article_no": "제3조",
+            "article_id": "002404_285779_20260511_0003001",
+            "article_title": "대체공휴일",
+            "article_key": "0003001",
+            "search_hints": "공휴일이 토요일 일요일 주말과 겹침 대체로 쉬는 날 어린이날 설날 추석 대체 휴일",
+            "search_hints_version": "labor_search_concepts_v1",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "article_effective_date": "20260511"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T10_02",
+          "query": "어린이날이 일요일과 겹치면 대체로 쉬는 날을 어떻게 정하나요?",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제3조"
+          ],
+          "before_rank": 6,
+          "after_rank": 1,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "대체공휴일",
+            "version_id": "285779",
+            "search_hints": "공휴일이 토요일 일요일 주말과 겹침 대체로 쉬는 날 어린이날 설날 추석 대체 휴일",
+            "article_key": "0003001",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "chunk_type": "article",
+            "search_hints_version": "labor_search_concepts_v1",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "snapshot_effective_date": "20260511",
+            "article_no": "제3조",
+            "article_id": "002404_285779_20260511_0003001",
+            "article_effective_date": "20260511",
+            "law_id": "002404"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T10_03",
+          "query": "둘 이상의 대체공휴일이 같은 날짜에 겹치거나 토요일이 되는 상황에서 다음 휴일을 정하는 기준을 찾는다.",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제3조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "대체공휴일",
+            "snapshot_effective_date": "20260511",
+            "version_id": "285779",
+            "article_id": "002404_285779_20260511_0003001",
+            "law_id": "002404",
+            "search_hints": "공휴일이 토요일 일요일 주말과 겹침 대체로 쉬는 날 어린이날 설날 추석 대체 휴일",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "article_effective_date": "20260511",
+            "chunk_type": "article",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_key": "0003001",
+            "article_no": "제3조"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T11_01",
+          "query": "근로기준법 4명 이하 사업장 적용법규정 별표",
+          "expected": [
+            "근로기준법 시행령 별표 1"
+          ],
+          "before_rank": 3,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "article_key": "0007001",
+            "snapshot_effective_date": "20251023",
+            "chunk_type": "article",
+            "law_id": "003058",
+            "article_title": "적용범위",
+            "article_id": "003058_270551_20251023_0007001",
+            "version_id": "270551",
+            "article_effective_date": "20251023",
+            "article_no": "제7조",
+            "law_name": "근로기준법 시행령"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T11_02",
+          "query": "직원 네 명인 사업장에 적용되는 근로기준법 조항을 정리한 표가 있나요?",
+          "expected": [
+            "근로기준법 시행령 별표 1"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법 시행령",
+            "article_key": "000100E",
+            "source_type": "law_appendix",
+            "version_id": "270551",
+            "article_effective_date": "20251023",
+            "chunk_type": "law_appendix",
+            "article_title": "상시 4명 이하의 근로자를 사용하는 사업 또는 사업장에 적용하는 법 규정(제7조 관련)",
+            "article_id": "003058_270551_20251023_annex_000100E",
+            "article_no": "별표 1",
+            "snapshot_effective_date": "20251023",
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=150839753",
+            "law_id": "003058"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T11_03",
+          "query": "근로계약 점검 전 상시근로자 4명인 사업장에 적용되는 임금과 휴게 규정의 범위를 표에서 확인한다.",
+          "expected": [
+            "근로기준법 시행령 별표 1"
+          ],
+          "before_rank": 4,
+          "after_rank": 3,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "적용범위",
+            "article_no": "제7조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "law_name": "근로기준법 시행령",
+            "article_key": "0007001",
+            "law_id": "003058",
+            "snapshot_effective_date": "20251023",
+            "article_id": "003058_270551_20251023_0007001",
+            "chunk_type": "article",
+            "version_id": "270551",
+            "article_effective_date": "20251023"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T12_01",
+          "query": "단시간근로자 일급 통상임금 연차휴가 시간 환산 결정기준",
+          "expected": [
+            "근로기준법 시행령 별표 2"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20251023",
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=150839759",
+            "article_no": "별표 2",
+            "article_key": "000200E",
+            "article_title": "단시간근로자의 근로조건 결정기준 등에 관한 사항(제9조제1항 관련)",
+            "article_id": "003058_270551_20251023_annex_000200E",
+            "law_id": "003058",
+            "snapshot_effective_date": "20251023",
+            "version_id": "270551",
+            "source_type": "law_appendix",
+            "law_name": "근로기준법 시행령",
+            "chunk_type": "law_appendix"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T12_02",
+          "query": "시간제로 일하는 사람의 하루 소정근로시간과 연차휴가 시간을 계산하는 기준을 찾고 싶어요.",
+          "expected": [
+            "근로기준법 시행령 별표 2"
+          ],
+          "before_rank": 2,
+          "after_rank": 3,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_id": "001872_285279_20261008_0058001",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0058001",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "version_id": "285279",
+            "article_no": "제58조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "chunk_type": "article",
+            "article_effective_date": "20261008",
+            "article_title": "근로시간 계산의 특례"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T12_03",
+          "query": "단시간근로자의 근로계약 작성, 시간급의 일급 환산, 휴일과 연차 적용을 함께 설명하는 별표를 찾는다.",
+          "expected": [
+            "근로기준법 시행령 별표 2"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "law_name": "근로기준법 시행령",
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=150839759",
+            "article_no": "별표 2",
+            "article_title": "단시간근로자의 근로조건 결정기준 등에 관한 사항(제9조제1항 관련)",
+            "chunk_type": "law_appendix",
+            "snapshot_effective_date": "20251023",
+            "source_type": "law_appendix",
+            "article_effective_date": "20251023",
+            "article_id": "003058_270551_20251023_annex_000200E",
+            "version_id": "270551",
+            "law_id": "003058",
+            "article_key": "000200E"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T13_01",
+          "query": "기간제법 상시 4명 이하 적용 조문 서면명시 별표",
+          "expected": [
+            "기간제 및 단시간근로자 보호 등에 관한 법률 시행령 별표 1"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20210408",
+            "article_title": "적용 범위",
+            "law_id": "010461",
+            "article_no": "제2조",
+            "article_id": "010461_230833_20210408_0002001",
+            "chunk_type": "article",
+            "law_name": "기간제 및 단시간근로자 보호 등에 관한 법률 시행령",
+            "snapshot_effective_date": "20210408",
+            "version_id": "230833",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=230833",
+            "article_key": "0002001"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T13_02",
+          "query": "직원이 네 명 이하인 곳에서 기간제법의 어떤 규정이 적용되는지 표로 확인하고 싶어요.",
+          "expected": [
+            "기간제 및 단시간근로자 보호 등에 관한 법률 시행령 별표 1"
+          ],
+          "before_rank": 2,
+          "after_rank": 2,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20210408",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=230833",
+            "article_title": "적용 범위",
+            "chunk_type": "article",
+            "law_id": "010461",
+            "snapshot_effective_date": "20210408",
+            "article_no": "제2조",
+            "law_name": "기간제 및 단시간근로자 보호 등에 관한 법률 시행령",
+            "article_id": "010461_230833_20210408_0002001",
+            "article_key": "0002001",
+            "version_id": "230833"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T13_03",
+          "query": "소규모 사업장의 기간제 및 단시간 근로계약을 검토하며 해당 법률의 서면명시 조항 중 적용 범위를 확인한다.",
+          "expected": [
+            "기간제 및 단시간근로자 보호 등에 관한 법률 시행령 별표 1"
+          ],
+          "before_rank": 4,
+          "after_rank": 4,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "snapshot_effective_date": "20210518",
+            "chunk_type": "article",
+            "version_id": "232201",
+            "law_name": "기간제 및 단시간근로자 보호 등에 관한 법률",
+            "article_key": "0017001",
+            "law_id": "010356",
+            "article_effective_date": "20210518",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=232201",
+            "article_no": "제17조",
+            "article_id": "010356_232201_20210518_0017001",
+            "article_title": "근로조건의 서면명시"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T14_01",
+          "query": "2026년 최저임금 고시 시간급 적용기간 월 환산액",
+          "expected": [
+            "2026년 적용 최저임금 고시 고시 전문"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?bylClsCd=&flSeq=155278071",
+            "source_type": "administrative_notice",
+            "law_name": "2026년 적용 최저임금 고시",
+            "article_title": "2026년 적용 최저임금",
+            "article_no": "고시 전문",
+            "version_id": "2025-47",
+            "article_effective_date": "20260101",
+            "chunk_type": "administrative_notice",
+            "article_id": "moel_notice_2025_47_2026_full",
+            "law_id": "moel_notice_2025_47",
+            "valid_from": "20260101",
+            "snapshot_effective_date": "20260101",
+            "valid_to": "20261231",
+            "article_key": "full"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T14_02",
+          "query": "2026년에 적용하는 최저시급과 적용 시작일 끝나는 날을 알려주는 고시를 찾고 싶어요.",
+          "expected": [
+            "2026년 적용 최저임금 고시 고시 전문"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "source_type": "administrative_notice",
+            "article_key": "full",
+            "chunk_type": "administrative_notice",
+            "article_title": "2026년 적용 최저임금",
+            "snapshot_effective_date": "20260101",
+            "article_id": "moel_notice_2025_47_2026_full",
+            "valid_from": "20260101",
+            "law_name": "2026년 적용 최저임금 고시",
+            "article_no": "고시 전문",
+            "valid_to": "20261231",
+            "version_id": "2025-47",
+            "article_effective_date": "20260101",
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?bylClsCd=&flSeq=155278071",
+            "law_id": "moel_notice_2025_47"
+          }
+        },
+        {
+          "query_id": "SUP_V001_T14_03",
+          "query": "2026년 근로계약의 시급을 검토하며 해당 연도 고시 금액과 주 40시간 기준 월 환산액의 근거를 찾는다.",
+          "expected": [
+            "2026년 적용 최저임금 고시 고시 전문"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20260101",
+            "version_id": "2025-47",
+            "law_id": "moel_notice_2025_47",
+            "article_no": "고시 전문",
+            "source_url": "https://www.law.go.kr/LSW/flDownload.do?bylClsCd=&flSeq=155278071",
+            "article_id": "moel_notice_2025_47_2026_full",
+            "article_key": "full",
+            "source_type": "administrative_notice",
+            "article_title": "2026년 적용 최저임금",
+            "valid_to": "20261231",
+            "law_name": "2026년 적용 최저임금 고시",
+            "valid_from": "20260101",
+            "chunk_type": "administrative_notice",
+            "snapshot_effective_date": "20260101"
+          }
+        }
+      ]
+    },
+    "14": {
+      "gained_hit5": 3,
+      "lost_hit5": 0,
+      "queries": [
+        {
+          "query_id": "PARA_V001_01",
+          "query": "사장님이 서명한 계약서를 가져가고 제 몫은 주지 않았어요.",
+          "expected": [
+            "근로기준법 제17조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_key": "0020001",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "search_hints": "중도 퇴사 계약기간 불이행 위약금 퇴사 벌금 정액 배상 실제 손해와 무관하게 미리 정한 손해배상액 약정",
+            "article_id": "001872_285279_20261008_0020001",
+            "chunk_type": "article",
+            "article_title": "위약 예정의 금지",
+            "snapshot_effective_date": "20261008",
+            "article_no": "제20조",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279"
+          }
+        },
+        {
+          "query_id": "PARA_V001_02",
+          "query": "입사하면서 급여 조건을 말로만 들었고 적힌 문서는 받지 못했습니다.",
+          "expected": [
+            "근로기준법 제17조"
+          ],
+          "before_rank": 8,
+          "after_rank": 2,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20200526",
+            "article_title": "최저임금 산입을 위한 취업규칙 변경절차의 특례",
+            "version_id": "218303",
+            "article_key": "0006021",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=218303",
+            "law_name": "최저임금법",
+            "snapshot_effective_date": "20200526",
+            "article_id": "000129_218303_20200526_0006021",
+            "law_id": "000129",
+            "article_no": "제6조의2",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "PARA_V001_03",
+          "query": "알바를 약속한 날짜보다 일찍 관두면 정해 둔 돈을 물어내래요.",
+          "expected": [
+            "근로기준법 제20조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "article_title": "해고의 예고",
+            "version_id": "285279",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_key": "0026001",
+            "article_effective_date": "20261008",
+            "article_no": "제26조",
+            "article_id": "001872_285279_20261008_0026001",
+            "snapshot_effective_date": "20261008",
+            "law_id": "001872",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "PARA_V001_04",
+          "query": "직원이 계약을 어기면 손해를 따지지 않고 일정 금액을 내기로 한 약정을 검토한다.",
+          "expected": [
+            "근로기준법 제20조"
+          ],
+          "before_rank": 3,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제20조",
+            "law_id": "001872",
+            "article_title": "위약 예정의 금지",
+            "search_hints_version": "labor_search_concepts_v1",
+            "search_hints": "중도 퇴사 계약기간 불이행 위약금 퇴사 벌금 정액 배상 실제 손해와 무관하게 미리 정한 손해배상액 약정",
+            "chunk_type": "article",
+            "version_id": "285279",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "law_name": "근로기준법",
+            "article_id": "001872_285279_20261008_0020001",
+            "article_key": "0020001",
+            "article_effective_date": "20261008"
+          }
+        },
+        {
+          "query_id": "PARA_V001_05",
+          "query": "계속 일하는 조건으로 빌린 생활비를 매달 받는 보수에서 빼고 있어요.",
+          "expected": [
+            "근로기준법 제21조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "law_id": "003058",
+            "article_id": "003058_270551_20251023_0023001",
+            "chunk_type": "article",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=270551",
+            "law_name": "근로기준법 시행령",
+            "snapshot_effective_date": "20251023",
+            "version_id": "270551",
+            "article_title": "매월 1회 이상 지급하여야 할 임금의 예외",
+            "article_key": "0023001",
+            "article_no": "제23조",
+            "article_effective_date": "20251023"
+          }
+        },
+        {
+          "query_id": "PARA_V001_06",
+          "query": "사용자가 근무 약정을 담보로 준 돈을 근로자의 급여와 맞계산하는 조건을 검토한다.",
+          "expected": [
+            "근로기준법 제21조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0047001",
+            "article_title": "도급 근로자",
+            "article_no": "제47조",
+            "law_id": "001872",
+            "article_effective_date": "20261008",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0047001",
+            "version_id": "285279",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279"
+          }
+        },
+        {
+          "query_id": "PARA_V001_07",
+          "query": "직장을 떠난 다음 남아 있는 급료를 언제까지 줘야 하는지 궁금해요.",
+          "expected": [
+            "근로기준법 제36조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "version_id": "285279",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_key": "0036001",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "law_id": "001872",
+            "search_hints": "퇴사 퇴직 후 마지막 급여 미지급 임금 정산 지급 기한 정산일 연장 합의",
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0036001",
+            "article_no": "제36조",
+            "article_title": "금품 청산"
+          }
+        },
+        {
+          "query_id": "PARA_V001_08",
+          "query": "퇴직자의 잔여 보수 지급일을 당사자끼리 늦추는 약속에 관한 근거를 찾는다.",
+          "expected": [
+            "근로기준법 제36조"
+          ],
+          "before_rank": null,
+          "after_rank": null,
+          "before_hit5": 0.0,
+          "after_hit5": 0.0,
+          "after_top1": {
+            "version_id": "284455",
+            "law_name": "근로자퇴직급여 보장법",
+            "chunk_type": "article",
+            "article_id": "009883_284455_20260918_0009001",
+            "snapshot_effective_date": "20260918",
+            "article_key": "0009001",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284455",
+            "article_effective_date": "20260918",
+            "article_title": "퇴직금의 지급 등",
+            "article_no": "제9조",
+            "law_id": "009883"
+          }
+        },
+        {
+          "query_id": "PARA_V001_09",
+          "query": "근무 중 잠깐 쉴 틈도 없이 일만 시킵니다.",
+          "expected": [
+            "근로기준법 제54조"
+          ],
+          "before_rank": null,
+          "after_rank": 2,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "chunk_type": "article",
+            "article_id": "001872_285279_20261008_0071001",
+            "version_id": "285279",
+            "article_title": "시간외근로",
+            "law_name": "근로기준법",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_effective_date": "20261008",
+            "snapshot_effective_date": "20261008",
+            "article_no": "제71조",
+            "law_id": "001872",
+            "article_key": "0071001"
+          }
+        },
+        {
+          "query_id": "PARA_V001_10",
+          "query": "중간에 쉬는 시간을 직원이 자유롭게 사용할 수 있어야 한다는 규정을 찾는다.",
+          "expected": [
+            "근로기준법 제54조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "search_hints_version": "labor_search_concepts_v1",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_id": "001872_285279_20261008_0054001",
+            "article_title": "휴게",
+            "snapshot_effective_date": "20261008",
+            "article_no": "제54조",
+            "article_effective_date": "20261008",
+            "version_id": "285279",
+            "law_id": "001872",
+            "law_name": "근로기준법",
+            "search_hints": "일하는 도중 쉬는 시간 휴식 시간 없이 계속 근무 자유롭게 이용하는 휴게시간",
+            "article_key": "0054001",
+            "chunk_type": "article"
+          }
+        },
+        {
+          "query_id": "PARA_V001_11",
+          "query": "일주일에 한 번 쉬는 날에는 돈을 안 준다고 합니다.",
+          "expected": [
+            "근로기준법 제55조"
+          ],
+          "before_rank": 6,
+          "after_rank": 2,
+          "before_hit5": 0.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_no": "제60조",
+            "article_title": "연차 유급휴가",
+            "article_id": "001872_285279_20261008_0060001",
+            "law_id": "001872",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "version_id": "285279",
+            "article_effective_date": "20261008",
+            "snapshot_effective_date": "20261008",
+            "chunk_type": "article",
+            "law_name": "근로기준법",
+            "article_key": "0060001"
+          }
+        },
+        {
+          "query_id": "PARA_V001_12",
+          "query": "매주 정기적으로 쉬는 하루를 무급으로 정한 근로조건을 검토한다.",
+          "expected": [
+            "근로기준법 제55조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_title": "휴일",
+            "chunk_type": "article",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_effective_date": "20261008",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285279",
+            "article_id": "001872_285279_20261008_0055001",
+            "law_name": "근로기준법",
+            "snapshot_effective_date": "20261008",
+            "article_key": "0055001",
+            "search_hints": "매주 쉬는 날 주휴일 유급 휴일 주휴수당 휴일 임금 지급 무급 처리",
+            "version_id": "285279",
+            "law_id": "001872",
+            "article_no": "제55조"
+          }
+        },
+        {
+          "query_id": "PARA_V001_13",
+          "query": "어린이날이 토요일이면 평일에 대신 쉬는 날짜를 어떻게 잡나요?",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제3조"
+          ],
+          "before_rank": 3,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_key": "0003001",
+            "law_id": "002404",
+            "search_hints": "공휴일이 토요일 일요일 주말과 겹침 대체로 쉬는 날 어린이날 설날 추석 대체 휴일",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "snapshot_effective_date": "20260511",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_no": "제3조",
+            "chunk_type": "article",
+            "article_effective_date": "20260511",
+            "article_title": "대체공휴일",
+            "version_id": "285779",
+            "article_id": "002404_285779_20260511_0003001"
+          }
+        },
+        {
+          "query_id": "PARA_V001_14",
+          "query": "대신 쉬기로 한 공휴일끼리 같은 날짜로 겹치면 어떻게 되나요?",
+          "expected": [
+            "관공서의 공휴일에 관한 규정 제3조"
+          ],
+          "before_rank": 1,
+          "after_rank": 1,
+          "before_hit5": 1.0,
+          "after_hit5": 1.0,
+          "after_top1": {
+            "article_effective_date": "20260511",
+            "article_id": "002404_285779_20260511_0003001",
+            "snapshot_effective_date": "20260511",
+            "chunk_type": "article",
+            "article_key": "0003001",
+            "law_id": "002404",
+            "article_no": "제3조",
+            "search_hints": "공휴일이 토요일 일요일 주말과 겹침 대체로 쉬는 날 어린이날 설날 추석 대체 휴일",
+            "law_name": "관공서의 공휴일에 관한 규정",
+            "version_id": "285779",
+            "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=285779",
+            "search_hints_version": "labor_search_concepts_v1",
+            "article_title": "대체공휴일"
+          }
+        }
+      ]
+    }
+  },
+  "method": "dense",
+  "status": "DRAFT development evaluation; annotations created after error analysis; not an independent final test"
+}

@@ -1,0 +1,23 @@
+{
+  "corpus": "employment_basic_v004",
+  "checks": {
+    "503_unique_records": true,
+    "498_original_contents_preserved": true,
+    "search_cleanup_reproducible": true,
+    "input_hashes_match": true,
+    "bm25_documents_hash_count": true,
+    "five_appendix_sources_preserved": true,
+    "five_appendix_contents_match_raw": true,
+    "curated_terms_config_hash": true,
+    "seven_annotations_separate_from_original": true,
+    "chroma_count_and_ids": true,
+    "chroma_official_text_and_metadata": true,
+    "vectors_finite_1024d_normalized": true,
+    "employment_basic_v002_input_preserved": true,
+    "employment_laws_v001_input_preserved": true,
+    "labor_standards_v001_input_preserved": true
+  },
+  "passed": 15,
+  "total": 15,
+  "expert_review_status": "PENDING"
+}

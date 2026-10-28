@@ -1,0 +1,54 @@
+{
+  "corpus": "employment_basic_v003",
+  "checks": {
+    "503_unique_records": true,
+    "previous_498_official_content_preserved": true,
+    "search_text_reproducible": true,
+    "processed_and_index_hash_match": true,
+    "503_bm25_documents": true,
+    "five_appendix_sources_have_original_hash": true,
+    "five_appendix_official_text_matches": true,
+    "chroma_count_and_ids": true,
+    "chroma_official_content_and_metadata": true,
+    "all_vectors_finite_and_normalized": true,
+    "employment_basic_v002_input_preserved": true,
+    "employment_laws_v001_input_preserved": true,
+    "labor_standards_v001_input_preserved": true
+  },
+  "passed": 13,
+  "total": 13,
+  "appendices": [
+    {
+      "article_id": "006859_269393_20250223_annex_000100E",
+      "raw_file": "data/rag/raw/20261028T043748103663Z/law_01_006859_269393_20250223_body.json",
+      "raw_sha256": "f3ea5858556f8450925a4f08c3eb0ec9bf9860d5c278b8ae77663a9fa1ead899",
+      "title": "해고 예고의 예외가 되는 근로자의 귀책사유(제4조 관련)"
+    },
+    {
+      "article_id": "006859_269393_20250223_annex_000200E",
+      "raw_file": "data/rag/raw/20261028T043748103663Z/law_01_006859_269393_20250223_body.json",
+      "raw_sha256": "f3ea5858556f8450925a4f08c3eb0ec9bf9860d5c278b8ae77663a9fa1ead899",
+      "title": "임신 중인 여성 및 18세 미만인 자의 사용 금지 직종(제11조의2 관련)"
+    },
+    {
+      "article_id": "006859_269393_20250223_annex_000300E",
+      "raw_file": "data/rag/raw/20261028T043748103663Z/law_01_006859_269393_20250223_body.json",
+      "raw_sha256": "f3ea5858556f8450925a4f08c3eb0ec9bf9860d5c278b8ae77663a9fa1ead899",
+      "title": "유산, 조산 등 위험이 있는 여성 근로자의 질환(제12조의3 관련)"
+    },
+    {
+      "article_id": "008480_282351_20260102_annex_000300E",
+      "raw_file": "data/rag/raw/20261028T043748103663Z/law_02_008480_282351_20260102_body.json",
+      "raw_sha256": "41def7fc01f4c35d8a61aa282722ee4fc582eab0c9dc8afd0dba340496cb7be4",
+      "title": "최저임금 적용 제외의 인가 기준(제3조제1항 관련)"
+    },
+    {
+      "article_id": "010043_243903_20220712_annex_000000E",
+      "raw_file": "data/rag/raw/20261028T043748103663Z/law_03_010043_243903_20220712_body.json",
+      "raw_sha256": "9b4cbc8de9e4a0de423374e6ff05aa1734c9840272c8d637f2e74be2485457cf",
+      "title": "퇴직연금사업자 등록취소 등의 기준(제9조 관련)"
+    }
+  ],
+  "review_status": "PENDING",
+  "notice_filter": "explicit year only; historical general-law versions not restored"
+}

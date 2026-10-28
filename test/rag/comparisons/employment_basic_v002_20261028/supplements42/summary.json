@@ -1,0 +1,66 @@
+{
+  "method": "dense",
+  "corpus": "employment_basic_v002",
+  "annotation_statuses": [
+    "DRAFT"
+  ],
+  "overall": {
+    "query_count": 42,
+    "hit@1": 0.7619047619047619,
+    "recall@1": 0.7619047619047619,
+    "hit@3": 0.9285714285714286,
+    "recall@3": 0.9285714285714286,
+    "hit@5": 0.9761904761904762,
+    "recall@5": 0.9761904761904762,
+    "hit@10": 1.0,
+    "recall@10": 1.0,
+    "mrr@10": 0.8531746031746033,
+    "mean_query_ms": 60.55360713937608
+  },
+  "by_query_kind": {
+    "keyword": {
+      "query_count": 14,
+      "hit@1": 0.7857142857142857,
+      "recall@1": 0.7857142857142857,
+      "hit@3": 1.0,
+      "recall@3": 1.0,
+      "hit@5": 1.0,
+      "recall@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.880952380952381,
+      "mean_query_ms": 55.73859814571084
+    },
+    "scenario": {
+      "query_count": 14,
+      "hit@1": 0.7857142857142857,
+      "recall@1": 0.7857142857142857,
+      "hit@3": 0.8571428571428571,
+      "recall@3": 0.8571428571428571,
+      "hit@5": 1.0,
+      "recall@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.8571428571428571,
+      "mean_query_ms": 69.85644935048185
+    },
+    "user_question": {
+      "query_count": 14,
+      "hit@1": 0.7142857142857143,
+      "recall@1": 0.7142857142857143,
+      "hit@3": 0.9285714285714286,
+      "recall@3": 0.9285714285714286,
+      "hit@5": 0.9285714285714286,
+      "recall@5": 0.9285714285714286,
+      "hit@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.8214285714285714,
+      "mean_query_ms": 56.06577392193555
+    }
+  },
+  "candidate_pool": {
+    "mean_candidate_count": 10.0,
+    "representative_target_hit_rate": 1.0,
+    "note": "dense 후보 깊이는 최종10개, hybrid 계열은 각 검색기 candidate-k의 합집합. 서로 다른 후보 예산임."
+  }
+}

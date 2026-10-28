@@ -2,6 +2,7 @@
 
 import math
 import re
+from RAG.preprocessing.search_text import clean_search_text
 
 MODEL_NAME = "BAAI/bge-reranker-v2-m3"
 MAX_LENGTH = 1024
@@ -16,7 +17,8 @@ def rerank_candidates(query, candidates, scorer, top_k):
     if len(ids) != len(set(ids)):
         raise ValueError("재정렬 후보는 중복 없이 전달해야 합니다.")
     passages = [
-        f"법령명: {row['metadata'].get('law_name', '')}\n{row['content']}"
+        f"법령명: {row['metadata'].get('law_name', '')}\n"
+        f"제목: {row['metadata'].get('article_title', '')}\n{clean_search_text(row['content'])}"
         for row in candidates
     ]
     # 최종 top_k로 자르기 전에 모든 후보를 채점한다.
@@ -60,7 +62,7 @@ class BGEReranker:
             "model_name": MODEL_NAME, "model_revision": self.revision,
             "max_length": self.max_length, "batch_size": self.batch_size,
             "score_type": "raw_logit_not_probability",
-            "passage_format": "law_name_and_original_article_content",
+            "passage_format": "law_name_title_and_clean_search_text_v1_original_content_preserved",
         }
 
     def score(self, query, passages):

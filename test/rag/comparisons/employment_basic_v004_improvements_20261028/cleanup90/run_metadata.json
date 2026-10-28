@@ -1,0 +1,61 @@
+{
+  "created_at": "2026-10-28T05:33:09.943552+00:00",
+  "dataset_name": "retrieval_dev_v002.jsonl",
+  "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+  "chunks_sha256": "922fb3644d05ba0dc06f10b54bc236413a1996969841e4e9efa681c2f88b4e33",
+  "index_manifest_sha256": "97dc7f7b2e81ba63b12a18e8a7a267dc7f2ac45e74e71123941918f4a0640987",
+  "model": {
+    "model_name": "BAAI/bge-m3",
+    "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "max_seq_length": 8192,
+    "normalize_embeddings": true
+  },
+  "method": "dense",
+  "retrieval_config": {
+    "method": "dense",
+    "model": {
+      "model_name": "BAAI/bge-m3",
+      "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "dimension": 1024,
+      "max_seq_length": 8192,
+      "normalize_embeddings": true
+    },
+    "candidate_k_per_retriever": null,
+    "rrf_k": null,
+    "rrf_weights": null,
+    "reranker": null,
+    "reranker_candidate_policy": null,
+    "bm25_manifest": null,
+    "temporal_policy": "explicit_query_years_filter_annual_notices_only_v1"
+  },
+  "retrieval_depth": 10,
+  "metrics_at": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "device": "cpu",
+  "timing": "warm retriever: query preparation + search + optional fusion; excludes startup, warmup, DB copy and metrics",
+  "code_sha256": {
+    "RAG/indexing/embeddings.py": "2de1c795289773b5a6f29b2ebd6b1d220085f668171ba49a8d3a9648c719d4ba",
+    "RAG/indexing/vector_store.py": "524c330b963dbef62645538d5120eac6fa949aaf5a45b00ccf217d3f52651c3b",
+    "RAG/pipelines/evaluate.py": "4e1988d88698ab85669bff0d785874cc73a419f2077e3ad0e7977b3a15168d5c",
+    "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a",
+    "RAG/preprocessing/tokenizer.py": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+    "RAG/indexing/bm25.py": "adf8d1d9a3cd44e88b6b52d5d3ae601f00edbfdefa305f694870f115d66d6437",
+    "RAG/retrieval/hybrid.py": "8150fecedf5ea34cbe1e2081587c66f66aaa170d1ddd8513e708be24af70af2b",
+    "RAG/retrieval/retriever.py": "d45016e8ce08c3f477a2f83ebc4b38a7c52cd0e48a994d880284adc9baaaec5c",
+    "RAG/retrieval/reranker.py": "bf8aa5699f5690116bca54a0074c35d591aba74dbfa477ac851e2531609cd213"
+  },
+  "packages": {
+    "chromadb": "1.5.9",
+    "sentence-transformers": "5.7.0",
+    "transformers": "5.20.1",
+    "torch": "2.14.1",
+    "rank-bm25": "0.2.2",
+    "kiwipiepy": "0.24.0",
+    "kiwipiepy_model": "0.24.0"
+  }
+}

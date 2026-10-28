@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-10-28T05:51:57.425158+00:00",
+  "corpus": "employment_basic_v004",
+  "method": "dense",
+  "policy": "labels_soft_priority_v1",
+  "dataset_sha256": "3100bcaa8a01406f0e03ac82a38eb85ecb4e1c32e84314f382d167af21992f28",
+  "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+  "label_source": "manual_topic_mapping_not_classifier_output",
+  "status": "DRAFT",
+  "code_sha256": {
+    "RAG/retrieval/label_hints.py": "17c129ae56e601d7cf9961ce8772859b791d4c12eeebe26a1a076fa29c8350e6",
+    "RAG/service.py": "9434cce2c7c4ea39881c222871767a99332e49797e8ffee0dfccb07e0166c065",
+    "RAG/pipelines/evaluate_clauses.py": "9f8d882bcdcee70c32c61828141f948537b3f155391c7a2051fd4ae9b2c6a1a3"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "corpus": "employment_basic_v002",
+  "checks": {
+    "articles_511_chunks_498_deleted_13": true,
+    "unique_article_and_chunk_ids": true,
+    "processed_and_index_chunks_hash": true,
+    "index_ready_model_and_count": true,
+    "input_manifest_hashes": true,
+    "bm25_ready_count_and_input": true,
+    "all_12_raw_sources_versions_and_normalization": true,
+    "all_chunks_reproduce_from_articles": true,
+    "all_4_pdf_hashes": true,
+    "notice_text_and_validity": true,
+    "labor_standards_v001_input_preserved": true,
+    "employment_laws_v001_input_preserved": true,
+    "all_existing_444_records_preserved": true,
+    "chroma_count_and_ids": true,
+    "chroma_official_content_matches": true,
+    "chroma_metadata_matches_including_notice_dates": true,
+    "all_498_vectors_finite_1024d_normalized": true
+  },
+  "passed_checks": 17,
+  "total_checks": 17,
+  "raw_sources": [
+    {
+      "law": "근로기준법",
+      "passed": true,
+      "article_count": 132
+    },
+    {
+      "law": "근로기준법 시행령",
+      "passed": true,
+      "article_count": 80
+    },
+    {
+      "law": "최저임금법",
+      "passed": true,
+      "article_count": 34
+    },
+    {
+      "law": "최저임금법 시행령",
+      "passed": true,
+      "article_count": 27
+    },
+    {
+      "law": "기간제 및 단시간근로자 보호 등에 관한 법률",
+      "passed": true,
+      "article_count": 26
+    },
+    {
+      "law": "기간제 및 단시간근로자 보호 등에 관한 법률 시행령",
+      "passed": true,
+      "article_count": 7
+    },
+    {
+      "law": "근로자퇴직급여 보장법",
+      "passed": true,
+      "article_count": 68
+    },
+    {
+      "law": "근로자퇴직급여 보장법 시행령",
+      "passed": true,
+      "article_count": 79
+    },
+    {
+      "law": "근로기준법 시행규칙",
+      "passed": true,
+      "article_count": 23
+    },
+    {
+      "law": "최저임금법 시행규칙",
+      "passed": true,
+      "article_count": 8
+    },
+    {
+      "law": "근로자퇴직급여 보장법 시행규칙",
+      "passed": true,
+      "article_count": 19
+    },
+    {
+      "law": "관공서의 공휴일에 관한 규정",
+      "passed": true,
+      "article_count": 4
+    }
+  ],
+  "max_vector_squared_norm_error": 4.149509664763684e-07,
+  "quality_warnings": {
+    "html_image_markup_records": [
+      {
+        "article_id": "010035_284693_20260324_0008001",
+        "law": "근로자퇴직급여 보장법 시행령",
+        "article_no": "제8조",
+        "new_record": false
+      },
+      {
+        "article_id": "008480_282351_20260102_0002001",
+        "law": "최저임금법 시행규칙",
+        "article_no": "제2조",
+        "new_record": true
+      }
+    ],
+    "date_filter_implemented": false,
+    "expert_review_status": "PENDING",
+    "scope_note": "Storage integrity is distinct from legal correctness, missing referenced appendices and retrieval accuracy."
+  }
+}

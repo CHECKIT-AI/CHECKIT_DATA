@@ -15,7 +15,7 @@ STORAGE_ROOT = PROJECT_ROOT / "storage" / "rag"
 OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "rag"
 
 # 기본 검색·평가는 기본 근로조건 보완 자료를 포함한 BGE-M3 인덱스를 사용한다.
-DEFAULT_CORPUS = "employment_basic_v002"
+DEFAULT_CORPUS = "employment_basic_v004"
 
 
 def relative_path(path):
