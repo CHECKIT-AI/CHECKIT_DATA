@@ -13,7 +13,8 @@ def hit(identifier, rank, article, distance):
 class LabelHintTests(unittest.TestCase):
     def test_only_ten_unique_known_labels(self):
         self.assertEqual(len(LABELS), 10)
-        for bad in [[], "임금", ["임대차"], ["임금", "임금"], [1]]:
+        self.assertEqual(validate_labels([]), [])
+        for bad in ["임금", ["임대차"], ["임금", "임금"], [1]]:
             with self.assertRaises(ValueError):
                 validate_labels(bad)
 
@@ -53,6 +54,18 @@ class LabelHintTests(unittest.TestCase):
         self.assertEqual(result["retrieval_policy"], "labels_soft_priority_v1")
         with self.assertRaises(ValueError):
             service.search_clause("c-7", text, ["임금"], top_k=True)
+
+    def test_empty_labels_keep_original_search_order_without_priority_policy(self):
+        rows = [hit("first", 1, "제54조", .10), hit("second", 2, "제43조", .11)]
+        service = LawSearchService.__new__(LawSearchService)
+        service.corpus, service.method = "test", "dense"
+        service.retriever = SimpleNamespace(chunks=[], search=lambda *_args, **_kwargs: rows)
+
+        result = service.search_clause("c-empty", "분류되지 않은 조항", [], top_k=2)
+
+        self.assertEqual(result["labels"], [])
+        self.assertIsNone(result["retrieval_policy"])
+        self.assertEqual(result["results"], rows)
 
 
 if __name__ == "__main__":

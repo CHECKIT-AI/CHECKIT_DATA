@@ -19,8 +19,8 @@ LABOR_ARTICLES = {
 
 
 def validate_labels(labels):
-    if not isinstance(labels, list) or not 1 <= len(labels) <= len(LABELS):
-        raise ValueError("분류 라벨은 1~10개의 목록이어야 합니다.")
+    if not isinstance(labels, list) or len(labels) > len(LABELS):
+        raise ValueError("분류 라벨은 0~10개의 목록이어야 합니다.")
     if any(not isinstance(label, str) or label not in LABELS for label in labels):
         raise ValueError("지원하지 않는 분류 라벨입니다.")
     if len(set(labels)) != len(labels):

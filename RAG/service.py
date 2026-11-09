@@ -38,6 +38,12 @@ class LawSearchService:
             raise ValueError("조항 원문과 1~10의 반환 개수가 필요합니다.")
         # 라벨을 원문 문자열에 섞지 않는다. 숫자·날짜·부정 표현을 그대로 검색한다.
         response = self.search(text, top_k=max(20, top_k))
-        response["results"] = prioritize(response["results"], labels)[:top_k]
-        response.update(clause_id=clause_id, labels=labels, retrieval_policy=POLICY_VERSION)
+        if labels:
+            response["results"] = prioritize(response["results"], labels)[:top_k]
+            policy = POLICY_VERSION
+        else:
+            # 빈 모델 결과를 임의의 라벨로 바꾸지 않고 원문 검색 순서를 유지한다.
+            response["results"] = response["results"][:top_k]
+            policy = None
+        response.update(clause_id=clause_id, labels=labels, retrieval_policy=policy)
         return response

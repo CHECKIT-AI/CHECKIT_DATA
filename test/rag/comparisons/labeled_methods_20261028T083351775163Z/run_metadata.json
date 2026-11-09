@@ -1,0 +1,150 @@
+{
+  "created_at": "2026-10-28T08:34:02.487088+00:00",
+  "corpus": "employment_basic_v004",
+  "chunk_count": 503,
+  "dataset": "test/rag/datasets/retrieval_labeled_clauses_v001.jsonl",
+  "dataset_sha256": "3100bcaa8a01406f0e03ac82a38eb85ecb4e1c32e84314f382d167af21992f28",
+  "index_manifest_sha256": "7fa0374173aeeda0d466bec8d1f3c672f4d43c1e811a86f5fdc8a5980ac38306",
+  "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+  "label_source": "manual_topic_mapping_not_classifier_output",
+  "status": "DRAFT",
+  "policy": "experimental_rank_bonus_1_5_v1",
+  "policy_description": "score=-base_rank +1.5 on label match; at most one-place promotion; no tuning",
+  "production_policy_modified": false,
+  "configs": {
+    "dense": {
+      "method": "dense",
+      "model": {
+        "model_name": "BAAI/bge-m3",
+        "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "dimension": 1024,
+        "max_seq_length": 8192,
+        "normalize_embeddings": true
+      },
+      "candidate_k_per_retriever": null,
+      "rrf_k": null,
+      "rrf_weights": null,
+      "reranker": null,
+      "reranker_candidate_policy": null,
+      "bm25_manifest": null,
+      "temporal_policy": "explicit_query_years_filter_annual_notices_only_v1"
+    },
+    "bm25": {
+      "method": "bm25",
+      "model": null,
+      "candidate_k_per_retriever": null,
+      "rrf_k": null,
+      "rrf_weights": null,
+      "reranker": null,
+      "reranker_candidate_policy": null,
+      "bm25_manifest": {
+        "status": "READY",
+        "corpus_id": "employment_basic_v004",
+        "created_at": "2026-10-28T05:38:09.525218+00:00",
+        "source_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+        "document_count": 503,
+        "documents_sha256": "69e9759024358d5375556595d87d04634b63b8cb20135494c558edf79bf36031",
+        "tokenizer": {
+          "strategy": "kiwi_lexical_v1",
+          "normalization": "NFKC_lowercase",
+          "model_type": "cong",
+          "removed_pos_prefixes": [
+            "J",
+            "E"
+          ],
+          "removed_tags": [
+            "SF",
+            "SP",
+            "SS",
+            "SSO",
+            "SSC",
+            "SE",
+            "SO",
+            "SW"
+          ],
+          "keep_negation_and_numbers": true,
+          "preserve_article_references": true,
+          "kiwipiepy_version": "0.24.0",
+          "kiwipiepy_model_version": "0.24.0"
+        },
+        "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+        "algorithm": "BM25Okapi",
+        "rank_bm25_version": "0.2.2",
+        "parameters": {
+          "k1": 1.5,
+          "b": 0.75,
+          "epsilon": 0.25
+        },
+        "min_score_exclusive": 0.0,
+        "indexed_field": "embedding_text"
+      },
+      "temporal_policy": "explicit_query_years_filter_annual_notices_only_v1"
+    },
+    "hybrid": {
+      "method": "hybrid",
+      "model": {
+        "model_name": "BAAI/bge-m3",
+        "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "dimension": 1024,
+        "max_seq_length": 8192,
+        "normalize_embeddings": true
+      },
+      "candidate_k_per_retriever": 20,
+      "rrf_k": 60,
+      "rrf_weights": [
+        1.0,
+        1.0
+      ],
+      "reranker": null,
+      "reranker_candidate_policy": null,
+      "bm25_manifest": {
+        "status": "READY",
+        "corpus_id": "employment_basic_v004",
+        "created_at": "2026-10-28T05:38:09.525218+00:00",
+        "source_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+        "document_count": 503,
+        "documents_sha256": "69e9759024358d5375556595d87d04634b63b8cb20135494c558edf79bf36031",
+        "tokenizer": {
+          "strategy": "kiwi_lexical_v1",
+          "normalization": "NFKC_lowercase",
+          "model_type": "cong",
+          "removed_pos_prefixes": [
+            "J",
+            "E"
+          ],
+          "removed_tags": [
+            "SF",
+            "SP",
+            "SS",
+            "SSO",
+            "SSC",
+            "SE",
+            "SO",
+            "SW"
+          ],
+          "keep_negation_and_numbers": true,
+          "preserve_article_references": true,
+          "kiwipiepy_version": "0.24.0",
+          "kiwipiepy_model_version": "0.24.0"
+        },
+        "tokenizer_code_sha256": "f1724c8596695a34048e3be7483096f6401763469fb84ce0ab6abd302371083a",
+        "algorithm": "BM25Okapi",
+        "rank_bm25_version": "0.2.2",
+        "parameters": {
+          "k1": 1.5,
+          "b": 0.75,
+          "epsilon": 0.25
+        },
+        "min_score_exclusive": 0.0,
+        "indexed_field": "embedding_text"
+      },
+      "temporal_policy": "explicit_query_years_filter_annual_notices_only_v1"
+    }
+  },
+  "code_sha256": {
+    "test/rag/compare_labeled_methods.py": "f0fd4cb3e74d519d0d642644c205b345e959443e5b5e65d94b20937cdcb01a17",
+    "RAG/retrieval/label_hints.py": "17c129ae56e601d7cf9961ce8772859b791d4c12eeebe26a1a076fa29c8350e6",
+    "RAG/retrieval/retriever.py": "d45016e8ce08c3f477a2f83ebc4b38a7c52cd0e48a994d880284adc9baaaec5c",
+    "RAG/evaluation/retrieval_metrics.py": "014f89a54f3ec18375d2368568f2ad2116e1d09c568b66847a571a95bca9502a"
+  }
+}
