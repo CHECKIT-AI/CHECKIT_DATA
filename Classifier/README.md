@@ -45,3 +45,16 @@ core+합성 모델을 같은 설정으로 학습한다. validation macro F1으�
 `outputs/classifier/core_comparison_*/`에 저장된다. 이 test는 Drive의
 기존 `test.jsonl`이나 별도 잠금 합성 테스트셋과 다른 새 분할이다.
 이번 실행의 집계 결과는 `Classifier/reports/processed_core_clean_plus_synthetic_2026_v001.json`에 보존했다.
+
+### 테스트 결과
+
+두 모델 모두 `klue/roberta-base`의 같은 revision에서 시작해 2 epoch 학습했다.
+validation macro F1으로 epoch를 선택한 뒤, 같은 core test 446개로 평가했다.
+
+| 학습 데이터 | Micro F1 | Macro F1 | Exact match |
+| --- | ---: | ---: | ---: |
+| core 3,470개 | 0.838 | 0.762 | 80.5% |
+| core 3,470개 + 합성 240개 | 0.858 | 0.829 | 83.6% |
+
+이 분할에서 합성 자료 추가 후 점수가 높았다. 합성 라벨은 미검수이고 일부
+라벨의 test 표본이 적어 운영 성능이나 법률 판단 정확도로 해석하지 않는다.
