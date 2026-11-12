@@ -16,3 +16,4 @@ outputs/
 # 계약서 전처리 학습 데이터: 로컬/팀 드라이브에서만 관리
 /processed_all/
 /processed_core/
+/data/classifier/processed_core_clean/
