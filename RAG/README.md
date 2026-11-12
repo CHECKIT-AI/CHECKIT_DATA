@@ -82,6 +82,7 @@ flowchart TD
 | `hybrid` | dense와 BM25 후보를 동일 가중치 RRF로 결합 |
 | `weighted_rrf` | 기본 dense 0.8 / BM25 0.2 기여도로 RRF 결합 |
 | `hybrid_rerank` | dense·BM25 후보 합집합 전체를 Reranker로 채점한 뒤 최종 결과 선택 |
+| `dense_bm25_top5` | dense 상위 5개를 BM25 순위로 재정렬하고 누락된 BM25 1위 후보를 5위에 추가하는 실험 옵션 |
 
 RRF는 원래 검색 점수 대신 `가중치 / (rrf_k + 순위)`를 합산합니다. 기본 `candidate-k=20`은 각 검색기별 후보 수이며, 합집합은 최대 40개입니다. `rrf-k=60`은 후보 수가 아닌 RRF 계산 상수입니다. Reranker 방식은 최종 10개로 자르기 전에 전체 합집합을 채점합니다. 이때 가중치 RRF는 사전 순서와 Reranker 점수 동점 처리에 사용됩니다.
 
@@ -585,3 +586,7 @@ python3 test/rag/audit_search_improvements.py
 6. **서비스 연결 검증**: 백엔드 규칙·Gemini 분석을 실제 계약서와 전문가 검토 결과로 평가합니다. 업로드·OCR·텍스트 확정 경로를 연결하고, 금액 비교·필수 항목 누락 후보의 오탐·누락을 검색 평가와 별도로 측정합니다.
 
 조항 분류 학습 자료와 실험은 [Classifier README](../Classifier/README.md)에 정리합니다. 판례·행정 해석처럼 구조가 다른 출처는 전용 수집기·정규화기와 스키마가 필요합니다.
+
+## 8. 현재 인덱스 순위 개선 실험 (2026-11-12)
+
+기본 corpus의 dense 상위 5개를 BM25 순위로 재정렬하고 BM25 1위가 없으면 5위에 추가하는 `dense_bm25_top5` 실험 옵션을 추가했습니다. 기존 90개 개발 질의 Hit@1은 72.2%→78.9%, Hit@5는 95.6%→97.8%였습니다. 현재 파일의 별도 계약 조항 50개에서는 Hit@1 56.0%→62.0%, Hit@5 80.0%→84.0%였습니다. 현재 corpus의 Reranker와 가중치 RRF는 두 지표를 함께 개선하지 못했습니다. 운영 기본값은 `dense`입니다. 평가 조건·해시·한계는 [순위 개선 보고서](../test/rag/comparisons/dense_bm25_top5_20261112/REPORT.md)에 기록했습니다.

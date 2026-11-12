@@ -4,6 +4,7 @@ import argparse
 import json
 import random
 from datetime import datetime, timezone
+from pathlib import Path
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
@@ -21,20 +22,21 @@ def evaluate_rows(model, tokenizer, rows, labels, thresholds, device):
                     labels, thresholds, device)
 
 
-def train_one(name, train_rows, validation, test, labels, tokenizer, output, device):
+def train_one(name, train_rows, validation, test, labels, tokenizer, output, device,
+              epochs, learning_rate):
     torch.manual_seed(42)
     random.seed(42)
     model = AutoModelForSequenceClassification.from_pretrained(
         BASE_MODEL, revision=BASE_REVISION, num_labels=len(labels),
         problem_type="multi_label_classification", trust_remote_code=False,
     ).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     loss_fn = torch.nn.BCEWithLogitsLoss()
     thresholds = {label: 0.5 for label in labels}
     best = None
     history = []
     model_dir = output / f"{name}_model"
-    for epoch in range(1, 3):
+    for epoch in range(1, epochs + 1):
         model.train()
         shuffled = train_rows[:]
         random.shuffle(shuffled)
@@ -80,7 +82,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", type=Path, default=SPLIT)
     parser.add_argument("--device", choices=("cpu", "mps", "cuda"), default="cpu")
+    parser.add_argument("--epochs", type=int, default=2)
+    parser.add_argument("--learning-rate", type=float, default=2e-5)
+    parser.add_argument("--train-set", choices=("both", "core_plus_synthetic"), default="both")
     args = parser.parse_args()
+    if args.epochs < 1 or not 0 < args.learning_rate < 1:
+        parser.error("epochs는 1 이상, learning-rate는 0과 1 사이여야 합니다.")
     if args.device == "mps" and not torch.backends.mps.is_available():
         parser.error("MPS를 사용할 수 없습니다.")
     if args.device == "cuda" and not torch.cuda.is_available():
@@ -108,18 +115,19 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(
         BASE_MODEL, revision=BASE_REVISION, trust_remote_code=False)
     core = [row for row in rows["train"] if row["source"] == "core"]
-    results = {
-        "core_only": train_one("core_only", core, rows["validation"], rows["test"],
-                               labels, tokenizer, output, device),
-        "core_plus_synthetic": train_one(
-            "core_plus_synthetic", rows["train"], rows["validation"], rows["test"],
-            labels, tokenizer, output, device),
-    }
+    results = {}
+    if args.train_set == "both":
+        results["core_only"] = train_one(
+            "core_only", core, rows["validation"], rows["test"], labels,
+            tokenizer, output, device, args.epochs, args.learning_rate)
+    results["core_plus_synthetic"] = train_one(
+        "core_plus_synthetic", rows["train"], rows["validation"], rows["test"],
+        labels, tokenizer, output, device, args.epochs, args.learning_rate)
     report = {
         "base_model": BASE_MODEL, "base_revision": BASE_REVISION,
         "split_manifest_sha256": sha256(args.split / "manifest.json"),
         "split_counts": manifest["counts"], "device": args.device,
-        "settings": {"epochs": 2, "batch_size": 16, "learning_rate": 2e-5,
+        "settings": {"epochs": args.epochs, "batch_size": 16, "learning_rate": args.learning_rate,
                      "loss": "BCEWithLogitsLoss", "threshold": 0.5, "seed": 42,
                      "selection": "highest validation macro F1"},
         "results": results,

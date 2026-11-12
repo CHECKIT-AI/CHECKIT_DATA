@@ -32,3 +32,20 @@ def reciprocal_rank_fusion(dense_results, bm25_results, top_k=10, rrf_k=60, dens
             item[field] = result.get(field)
     ordered = sorted(combined.values(), key=lambda row: (-row["rrf_score"], row["chunk_id"]))
     return [{**row, "rank": rank} for rank, row in enumerate(ordered[:top_k], 1)]
+
+
+def rerank_dense_top_five(dense_results, bm25_results):
+    """Reorder dense top five, then place a missing BM25 first hit in fifth place."""
+    bm25_ranks = {row["metadata"]["article_id"]: rank
+                  for rank, row in enumerate(bm25_results, 1)}
+    first = sorted(dense_results[:5], key=lambda row: row["rank"] -
+                   (5 / bm25_ranks[row["metadata"]["article_id"]]
+                    if row["metadata"]["article_id"] in bm25_ranks else 0))
+    tail = dense_results[5:]
+    if bm25_results and bm25_results[0]["metadata"]["article_id"] not in {
+            row["metadata"]["article_id"] for row in first}:
+        lexical = {**bm25_results[0], "dense_rank": None}
+        tail = [row for row in tail if row["metadata"]["article_id"] != lexical["metadata"]["article_id"]]
+        first = first[:4] + [lexical]
+    return [{**row, "dense_rank": row["dense_rank"] if "dense_rank" in row else row["rank"], "rank": rank}
+            for rank, row in enumerate(first + tail, 1)]

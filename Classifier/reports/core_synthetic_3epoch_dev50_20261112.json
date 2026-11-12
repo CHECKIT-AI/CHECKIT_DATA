@@ -1,0 +1,21 @@
+{
+  "dataset": "test/rag/datasets/retrieval_contract_2026_dev_v001.jsonl",
+  "dataset_sha256": "50fe2a484b5ae91bc14d8f68e55018eb6efefe9ef54b3aca756124ecf5957fe6",
+  "count": 50,
+  "status": "DRAFT_UNREVIEWED; post-training exploratory evaluation",
+  "baseline": {
+    "model_sha256": "c26922dbdaeb56093bbb2568c1d799d4b9433e275bfb7d67f8ccc474b405e261",
+    "micro_f1": 0.7115384615384616,
+    "macro_f1": 0.6283333333333333,
+    "exact_match": 0.58
+  },
+  "three_epoch": {
+    "model_sha256": "794f89f38a4e4f8c8683feba4185d57001e2d354b381d03fbb6c56b31db67b87",
+    "micro_f1": 0.8545454545454545,
+    "macro_f1": 0.7909920634920635,
+    "exact_match": 0.74
+  },
+  "threshold": 0.5,
+  "input_field": "query",
+  "labels_field": "model_labels"
+}

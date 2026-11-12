@@ -7,7 +7,8 @@ import unittest
 
 from RAG.indexing.bm25 import BM25Retriever, build_bm25_index
 from RAG.preprocessing.tokenizer import KoreanTokenizer
-from RAG.retrieval.hybrid import reciprocal_rank_fusion
+from RAG.retrieval.hybrid import reciprocal_rank_fusion, rerank_dense_top_five
+from RAG.service import LawSearchService
 
 
 def result(key):
@@ -30,6 +31,26 @@ class HybridTests(unittest.TestCase):
 
     def test_missing_lexical_results_preserve_dense_order(self):
         self.assertEqual([r["chunk_id"] for r in reciprocal_rank_fusion([result("b"), result("a")], [])], ["b", "a"])
+
+    def test_top_five_rerank_preserves_candidate_set_and_tail(self):
+        dense = [{**result(str(i)), "rank": i} for i in range(1, 7)]
+        reranked = rerank_dense_top_five(dense, [result("3"), result("6")])
+        self.assertEqual([row["chunk_id"] for row in reranked], ["3", "1", "2", "4", "5", "6"])
+        self.assertEqual([row["dense_rank"] for row in reranked], [3, 1, 2, 4, 5, 6])
+
+    def test_top_five_adds_missing_lexical_first_hit_once(self):
+        dense = [{**result(str(i)), "rank": i} for i in range(1, 8)]
+        reranked = rerank_dense_top_five(dense, [result("6")])
+        self.assertEqual([row["chunk_id"] for row in reranked], ["1", "2", "3", "4", "6", "7"])
+        self.assertIsNone(reranked[4]["dense_rank"])
+
+    def test_experimental_clause_search_does_not_mix_priority_score_types(self):
+        service = object.__new__(LawSearchService)
+        service.method = "dense_bm25_top5"
+        service.search = lambda text, top_k: {"results": [dict(result("a"), rank=1)]}
+        response = service.search_clause("clause-1", "임금은 월말에 지급한다", ["임금"], top_k=1)
+        self.assertEqual(response["results"][0]["chunk_id"], "a")
+        self.assertIsNone(response["retrieval_policy"])
 
     def test_tokenizer_and_index_integrity(self):
         tokenizer = KoreanTokenizer()

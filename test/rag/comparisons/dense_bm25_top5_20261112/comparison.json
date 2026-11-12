@@ -1,0 +1,82 @@
+{
+  "corpus": "employment_basic_v004",
+  "model": {
+    "model_name": "BAAI/bge-m3",
+    "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "max_seq_length": 8192,
+    "normalize_embeddings": true
+  },
+  "index_manifest_sha256": "7fa0374173aeeda0d466bec8d1f3c672f4d43c1e811a86f5fdc8a5980ac38306",
+  "policy": "rerank dense top five by rank minus 5/BM25 rank; insert BM25 first at fifth if absent; no label priority",
+  "comparisons": {
+    "dev90": {
+      "dataset_sha256": "0e0130fd892bc43d4eef282dd333b8cd689acf4c5ba1b19259c13a456dba79fd",
+      "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+      "count": 90,
+      "dense": {
+        "hit@1": 0.7222222222222222,
+        "hit@5": 0.9555555555555556,
+        "mrr@10": 0.8177777777777777,
+        "mean_query_ms": 57.44198568766782
+      },
+      "dense_bm25_top5": {
+        "hit@1": 0.7888888888888889,
+        "hit@5": 0.9777777777777777,
+        "mrr@10": 0.8692592592592593,
+        "mean_query_ms": 89.61551664457754
+      }
+    },
+    "dev50_current": {
+      "dataset_sha256": "50fe2a484b5ae91bc14d8f68e55018eb6efefe9ef54b3aca756124ecf5957fe6",
+      "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+      "count": 50,
+      "dense": {
+        "hit@1": 0.56,
+        "hit@5": 0.8,
+        "mrr@10": 0.6766031746031745,
+        "mean_query_ms": 90.86722668027505
+      },
+      "dense_bm25_top5": {
+        "hit@1": 0.62,
+        "hit@5": 0.84,
+        "mrr@10": 0.7164126984126985,
+        "mean_query_ms": 117.22060092062748
+      }
+    },
+    "supplements42": {
+      "dataset_sha256": "d2c8e47c07985b6c37be1229a75e2aa7748131ab3ce3ed75c4fc842c6fb2697c",
+      "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+      "count": 42,
+      "dense": {
+        "hit@1": 0.7857142857142857,
+        "hit@5": 1.0,
+        "mrr@10": 0.875,
+        "mean_query_ms": 60.16914495072948
+      },
+      "dense_bm25_top5": {
+        "hit@1": 0.8333333333333334,
+        "hit@5": 1.0,
+        "mrr@10": 0.9027777777777777,
+        "mean_query_ms": 126.81081245266667
+      }
+    },
+    "paraphrases14": {
+      "dataset_sha256": "697ad1df598170fe14a548c46b4c3bc2e3ac8f9d945fc299123fdabd010f70f7",
+      "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+      "count": 14,
+      "dense": {
+        "hit@1": 0.42857142857142855,
+        "hit@5": 0.6428571428571429,
+        "mrr@10": 0.5357142857142857,
+        "mean_query_ms": 55.83347328813813
+      },
+      "dense_bm25_top5": {
+        "hit@1": 0.6428571428571429,
+        "hit@5": 0.7857142857142857,
+        "mrr@10": 0.6714285714285715,
+        "mean_query_ms": 136.12786299979365
+      }
+    }
+  }
+}

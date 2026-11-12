@@ -71,6 +71,25 @@ Drive `processed_core_clean`의 `train.jsonl`, `test.jsonl`, `labels.json`을 `d
 
 이 분할에서는 합성 자료 추가 후 점수가 높았습니다. 라벨별 점수와 실험 설정은 [집계 보고서](reports/processed_core_clean_plus_synthetic_2026_v001.json)에 있습니다. 합성 라벨은 미검수이고 일부 라벨은 test 표본이 적어 실제 계약서 성능이나 법률 판단 정확도로 확대 해석하지 않습니다.
 
+### 학습 설정 추가 비교 (2026-11-12)
+
+같은 `combined_split_v004`와 합성 240개를 유지하고, `klue/roberta-base`의 같은 revision에서 core+합성 모델을 다시 학습했습니다. validation macro F1로 epoch를 선택했습니다. 임계값은 모든 라벨 0.5로 고정했습니다.
+
+| 학습률 / 최대 epoch | 선택 epoch | validation Macro F1 | core test Micro F1 | core test Macro F1 | Exact match |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 기존 2×10⁻⁵ / 2 | 2 | 0.769 | 0.858 | 0.829 | 83.6% |
+| 1×10⁻⁵ / 3 | 3 | 0.779 | 0.851 | 0.831 | 83.0% |
+| **2×10⁻⁵ / 3** | **3** | **0.814** | **0.860** | **0.849** | **83.9%** |
+
+추가 3 epoch 모델은 [가중치와 실행 보고서](../models/classifier/core_synthetic_3epoch_20261112/report.json)에 보존했습니다. 손해배상·위약금 test F1은 0.429→0.632였고, 임금·근로시간·계약 종료 등 일부 라벨은 하락했습니다. 별도 **현재 파일**의 미검수 개발 조항 50개를 학습 후 평가했을 때 기존 2 epoch 모델 대비 Micro F1 0.712→0.855, Macro F1 0.628→0.791, exact match 58%→74%였습니다. [50개 평가 기록](reports/core_synthetic_3epoch_dev50_20261112.json)에 입력·모델 해시를 남겼습니다. 이 50개는 이전 시점의 검색 평가 파일과 해시가 달라 두 시점의 점수를 직접 비교하지 않습니다.
+
+```bash
+../CheckIt_BE/.venv/bin/python -m Classifier.train_core \
+  --train-set core_plus_synthetic --epochs 3 --learning-rate 2e-5 --device mps
+```
+
+기존 core test 446개는 앞선 실험에서도 확인한 자료이므로 위 변화는 탐색 결과입니다. 별도 잠금 테스트셋 100개는 미검수 상태로 평가에 사용하지 않았습니다. 실제 계약서와 독립 검수 정답으로 최종 확인하기 전에는 백엔드 기본 모델을 변경하지 않습니다. 추가 합성 문장을 만들 경우에는 손해배상·위약금 등 오류 유형을 우선 분석하고 기존 train/validation/test와 동일·유사 문장이 겹치지 않는지 확인해야 합니다.
+
 ## 배포와 백엔드 연결
 
 현재 백엔드 기본 설정은 공개 [Hugging Face 모델 `hur03/checkit-contract-classifier-core-synthetic-v1`](https://huggingface.co/hur03/checkit-contract-classifier-core-synthetic-v1)의 revision `7fb6bc333b01919d7e59c1937e9457266d574cbe`를 참조합니다. 설정은 [백엔드 `app/config.py`](../../CheckIt_BE/app/config.py)와 `.env.example`의 `CHECKIT_CLASSIFIER_MODEL_ID`, `CHECKIT_CLASSIFIER_REVISION`에서 확인할 수 있습니다. 환경변수로 다른 값을 지정하면 기본값을 덮어씁니다. 이 모델 사용과 실제 계약서에서의 분류·판정 품질 검증은 별개입니다.
