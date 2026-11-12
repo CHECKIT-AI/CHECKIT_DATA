@@ -4,6 +4,7 @@ BM25 통합 전 BGE-M3 검색의 비교 기준 자료입니다. 원래 데이터
 
 ## 구성
 
+- [2026년 계약 조항 검색 평가 초안](datasets/retrieval_contract_2026_v001.README.md): 새로 작성한 조항 150개(개발 50·잠금 테스트 100), 독립 검수 양식. 전문가 검수 전 잠정 정답.
 - datasets/retrieval_dev_v002.jsonl: 15개 주제, 키워드·사용자 질문·계약 문구 각 30개, 총 90개
 - baseline/bge_m3_v002/results.csv: 질의별 정답 후보 순위와 검색 상위 결과
 - baseline/bge_m3_v002/results.jsonl: 각 질의의 상위 10개 검색 결과 전문

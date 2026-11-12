@@ -33,7 +33,6 @@ def main():
             "--corpus", args.corpus, "--dataset", str(args.dataset.resolve()),
             "--method", method, "--device", args.device,
             "--candidate-k", str(args.candidate_k), "--rrf-k", str(args.rrf_k),
-            "--run-name", f"{method}_v002",
         ]
         process = subprocess.run(command, cwd=PROJECT_ROOT, text=True, capture_output=True)
         (output / f"{method}.log").write_text(relative_log(process.stdout + "\n" + process.stderr), encoding="utf-8")
@@ -86,7 +85,7 @@ def main():
             key: reports["hybrid"]["overall"][key] - reports["dense"]["overall"][key]
             for key in ["hit@1", "hit@5", "mrr@10"]
         },
-        "note": "DRAFT 개발셋 단일 실행. 후보 수와 워밍업 조건은 메타데이터 참조. 미사용 테스트셋 성능 또는 시간 측정의 통계적 우열을 뜻하지 않음.",
+        "note": "평가셋 검수 상태는 각 summary의 annotation_statuses 참조. 후보 수와 워밍업 조건은 메타데이터 참조. 단일 실행의 시간 차이는 통계적 우열을 뜻하지 않음.",
     }
     (output / "comparison.json").write_text(json.dumps(comparison, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(table, ensure_ascii=False, indent=2))

@@ -1,0 +1,45 @@
+{
+  "dataset": "train_synthetic_contract_2026_v001",
+  "file": "train_synthetic_contract_2026_v001.jsonl",
+  "sha256": "b4ad8a604d30cd7dfe3fceb2df51589c0814bad8160eb2e4bc69168f49366b2f",
+  "as_of": "2026-10-28",
+  "annotation_status": "DRAFT_UNREVIEWED",
+  "source_type": "authored_synthetic_standard_form_style",
+  "source_urls": [
+    "https://www.moel.go.kr/mainpop2.do",
+    "https://www.moel.go.kr/info/etc/dataroom/view.do?bbs_seq=20250300356"
+  ],
+  "row_count": 240,
+  "single_label_rows": 200,
+  "multi_label_rows": 40,
+  "labels": [
+    "임금",
+    "근로시간",
+    "휴일",
+    "휴가",
+    "근무 장소·업무",
+    "계약기간",
+    "계약 종료",
+    "손해배상·위약금",
+    "기타 근로조건",
+    "그 외"
+  ],
+  "label_counts": {
+    "임금": 38,
+    "근로시간": 30,
+    "휴일": 29,
+    "휴가": 27,
+    "근무 장소·업무": 26,
+    "계약기간": 28,
+    "계약 종료": 28,
+    "손해배상·위약금": 26,
+    "기타 근로조건": 28,
+    "그 외": 20
+  },
+  "exact_overlap_with_evaluation": 0,
+  "evaluation_files_sha256": {
+    "retrieval_contract_2026_dev_v001.jsonl": "50fe2a484b5ae91bc14d8f68e55018eb6efefe9ef54b3aca756124ecf5957fe6",
+    "retrieval_contract_2026_test_v001.jsonl": "068c3f27219154a9d662421198ffe45bcfddac5b0277b9a98744aec2b8b4545e",
+    "clauses.jsonl": "1d29b59f3fcbfe8779357c739b25bd1237ebc06383a8bd07c9b7bbb0486dc263"
+  }
+}
