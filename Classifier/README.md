@@ -14,6 +14,8 @@ Mac의 MPS가 없으면 `--device cpu`를 사용한다. 백엔드의 분류 모�
 원본 모델 revision, 학습 데이터 해시, 학습 설정과 개발셋 전후 지표가 남는다.
 이번 실행의 모델과 보고서는 `models/classifier/synthetic_2026_v001/`에도
 보존했다. 가중치 파일은 Git LFS로 관리한다.
+백엔드에서 사용하는 공개 배포본은
+[Hugging Face 모델 저장소](https://huggingface.co/hur03/checkit-contract-classifier-core-synthetic-v1)에 있다.
 
 학습 입력은 합성 240개뿐이다. 개발셋 50개는 전후 평가에만 사용하고
 잠금 테스트셋 100개는 읽지 않는다. 두 데이터의 정답은 아직 독립 검수 전이다.
