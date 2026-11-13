@@ -38,7 +38,7 @@ class LawSearchService:
             raise ValueError("조항 원문과 1~10의 반환 개수가 필요합니다.")
         # 라벨을 원문 문자열에 섞지 않는다. 숫자·날짜·부정 표현을 그대로 검색한다.
         response = self.search(text, top_k=max(20, top_k))
-        if labels and self.method != "dense_bm25_top5":
+        if labels and self.method not in {"dense_bm25_top5", "dense_bm25_top5_rerank"}:
             response["results"] = prioritize(response["results"], labels)[:top_k]
             policy = POLICY_VERSION
         else:

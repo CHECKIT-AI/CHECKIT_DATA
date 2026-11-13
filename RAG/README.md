@@ -83,6 +83,7 @@ flowchart TD
 | `weighted_rrf` | 기본 dense 0.8 / BM25 0.2 기여도로 RRF 결합 |
 | `hybrid_rerank` | dense·BM25 후보 합집합 전체를 Reranker로 채점한 뒤 최종 결과 선택 |
 | `dense_bm25_top5` | **기본값.** dense 상위 5개를 BM25 순위로 재정렬하고 누락된 BM25 1위 후보를 5위에 추가 |
+| `dense_bm25_top5_rerank` | 실험용. 위 방식의 상위 5개를 BGE Reranker로 다시 정렬 |
 
 RRF는 원래 검색 점수 대신 `가중치 / (rrf_k + 순위)`를 합산합니다. 기본 `candidate-k=20`은 각 검색기별 후보 수이며, 합집합은 최대 40개입니다. `rrf-k=60`은 후보 수가 아닌 RRF 계산 상수입니다. Reranker 방식은 최종 10개로 자르기 전에 전체 합집합을 채점합니다. 이때 가중치 RRF는 사전 순서와 Reranker 점수 동점 처리에 사용됩니다.
 

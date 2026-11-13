@@ -1,0 +1,191 @@
+{
+  "corpus": "employment_basic_v004",
+  "benchmark": "CheckIt_Eval_Benchmark synthetic 40 contracts",
+  "query_source_sha256": "3791e11c1443302b1ab108c3f44e5b23273699982e7eadce2486bacbde6b881c",
+  "query_count_with_gold": 92,
+  "excluded_without_gold": 4,
+  "contract50": {
+    "baseline": {
+      "query_count": 50,
+      "hit@1": 0.62,
+      "hit@5": 0.84,
+      "recall@5": 0.81,
+      "mean_query_ms": 117.22060092062748
+    },
+    "top5_rerank": {
+      "query_count": 50,
+      "hit@1": 0.56,
+      "hit@5": 0.84,
+      "recall@5": 0.81,
+      "mean_query_ms": 359.31071745959343
+    }
+  },
+  "benchmark40": {
+    "baseline": {
+      "query_count": 92,
+      "hit@1": 0.32608695652173914,
+      "hit@5": 0.4673913043478261,
+      "recall@5": 0.4673913043478261,
+      "mean_query_ms": 23.766684782932987
+    },
+    "top5_rerank": {
+      "query_count": 92,
+      "hit@1": 0.20652173913043478,
+      "hit@5": 0.4673913043478261,
+      "recall@5": 0.4673913043478261,
+      "mean_query_ms": 357.17516488100796
+    }
+  },
+  "selection": {
+    "model": "gemini-3.1-flash-lite",
+    "failed_contracts": {
+      "CHK_SYN_031": "LLMUnavailable"
+    },
+    "by_split": {
+      "all": {
+        "query_count": 92,
+        "valid_selection_count": 88,
+        "search_top1": 28,
+        "search_top5": 40,
+        "selected_gold_match": 39,
+        "abstained": 21,
+        "selected_without_gold_match": 28,
+        "rescued_from_non_top1": 11,
+        "citation_count": 81,
+        "citation_gold_match_count": 49,
+        "backend_verified": 13,
+        "backend_verified_gold_match": 7
+      },
+      "dev": {
+        "query_count": 37,
+        "valid_selection_count": 37,
+        "search_top1": 13,
+        "search_top5": 17,
+        "selected_gold_match": 16,
+        "abstained": 7,
+        "selected_without_gold_match": 14,
+        "rescued_from_non_top1": 3,
+        "citation_count": 36,
+        "citation_gold_match_count": 21,
+        "backend_verified": 7,
+        "backend_verified_gold_match": 3
+      },
+      "test": {
+        "query_count": 55,
+        "valid_selection_count": 51,
+        "search_top1": 15,
+        "search_top5": 23,
+        "selected_gold_match": 23,
+        "abstained": 14,
+        "selected_without_gold_match": 14,
+        "rescued_from_non_top1": 8,
+        "citation_count": 45,
+        "citation_gold_match_count": 28,
+        "backend_verified": 6,
+        "backend_verified_gold_match": 4
+      }
+    },
+    "note": "Existing backend GeminiReviewer with known benchmark issue category/check code; direct query, five baseline law passages, full synthetic contract clauses; no OCR/classifier/detection. Selected article match uses provisional gold."
+  },
+  "test_only_date_override": {
+    "effective_date": "2026-11-13",
+    "latest_candidate_law_date": "2026-10-08",
+    "original_contract_date": "2026-02-20",
+    "result_sha256": "d701baf48683ee3a1075b47af6037e5ae14035808357d949a73399dfb94c067d",
+    "paired_queries": 86,
+    "original_date_on_same_queries": {
+      "selected_gold_match": 38,
+      "backend_verified": 12,
+      "backend_verified_gold_match": 6,
+      "abstained": 20
+    },
+    "override_date": {
+      "valid_contracts": 33,
+      "failed_contracts": [
+        "CHK_SYN_031",
+        "CHK_SYN_037"
+      ],
+      "selected_gold_match": 38,
+      "backend_verified": 65,
+      "backend_verified_gold_match": 38,
+      "abstained": 21,
+      "selected_without_gold_match": 27,
+      "search_top1": 27,
+      "search_top5": 39,
+      "citation_count": 78,
+      "citation_gold_match_count": 48
+    },
+    "note": "Only Gemini evaluation context and citation-date validation use the override. Benchmark files, search index, query text and candidate ranking are unchanged."
+  },
+  "pool_promotion_trial": {
+    "dev50": {
+      "result_sha256": "f6646ec28a80d3e3d7e4b9d5cbdf1977cfc792d81bd567e88b036d75e4c1677f",
+      "dataset_sha256": "50fe2a484b5ae91bc14d8f68e55018eb6efefe9ef54b3aca756124ecf5957fe6",
+      "index_manifest_sha256": "7fa0374173aeeda0d466bec8d1f3c672f4d43c1e811a86f5fdc8a5980ac38306",
+      "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+      "model": {
+        "model_name": "BAAI/bge-reranker-v2-m3",
+        "model_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+        "max_length": 2048,
+        "batch_size": 2,
+        "score_type": "raw_logit_not_probability",
+        "passage_format": "law_name_title_and_clean_search_text_v1_original_content_preserved"
+      },
+      "summary": {
+        "query_count": 50,
+        "baseline_hit1": 31.0,
+        "baseline_hit5": 42.0,
+        "pool_gold": 46,
+        "margins": {
+          "0.0": {
+            "hit1": 31.0,
+            "hit5": 42.0,
+            "promotions": 41
+          },
+          "1.0": {
+            "hit1": 31.0,
+            "hit5": 43.0,
+            "promotions": 31
+          },
+          "2.0": {
+            "hit1": 31.0,
+            "hit5": 43.0,
+            "promotions": 19
+          },
+          "4.0": {
+            "hit1": 31.0,
+            "hit5": 42.0,
+            "promotions": 5
+          }
+        }
+      }
+    },
+    "benchmark40": {
+      "result_sha256": "dfd8cf4fac01dbac8727ada63a3c4115cbecf880fe9a8d4c4706c99f12df134f",
+      "dataset_sha256": "1bc1478322f78236f5b86705e1b03db834065c5968bc6e16ddce8834b590fa4f",
+      "index_manifest_sha256": "7fa0374173aeeda0d466bec8d1f3c672f4d43c1e811a86f5fdc8a5980ac38306",
+      "chunks_sha256": "a037674444552bd76963078ec82124e4c4cbfddddd542ca90f9b6c614e6dc614",
+      "model": {
+        "model_name": "BAAI/bge-reranker-v2-m3",
+        "model_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+        "max_length": 2048,
+        "batch_size": 2,
+        "score_type": "raw_logit_not_probability",
+        "passage_format": "law_name_title_and_clean_search_text_v1_original_content_preserved"
+      },
+      "summary": {
+        "query_count": 92,
+        "baseline_hit1": 30.0,
+        "baseline_hit5": 43.0,
+        "pool_gold": 70,
+        "margins": {
+          "2.0": {
+            "hit1": 30.0,
+            "hit5": 43.0,
+            "promotions": 41
+          }
+        }
+      }
+    }
+  }
+}

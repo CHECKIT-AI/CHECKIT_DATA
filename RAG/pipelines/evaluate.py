@@ -48,7 +48,7 @@ def main():
     parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help=f"평가 인덱스 (기본값: BGE-M3 {DEFAULT_CORPUS})")
     parser.add_argument("--dataset", type=Path, default=DATA_ROOT / "evaluation" / "retrieval_dev_v002.jsonl")
     parser.add_argument("--run-name", type=corpus_name)
-    parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"], default=DEFAULT_METHOD)
+    parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5", "dense_bm25_top5_rerank"], default=DEFAULT_METHOD)
     parser.add_argument("--candidate-k", type=int, default=20)
     parser.add_argument("--rrf-k", type=int, default=60)
     parser.add_argument("--dense-weight", type=float, default=0.8)
@@ -84,7 +84,7 @@ def main():
     results = []
     with tempfile.TemporaryDirectory(prefix="checkit-retrieval-eval-") as temp:
         snapshot = None
-        if args.method in {"dense", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"}:
+        if args.method in {"dense", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5", "dense_bm25_top5_rerank"}:
             snapshot = Path(temp) / "chroma"
             shutil.copytree(index_dir / "chroma", snapshot)
         retriever = LawRetriever(

@@ -4,10 +4,12 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from types import SimpleNamespace
 
 from RAG.indexing.bm25 import BM25Retriever, build_bm25_index
 from RAG.preprocessing.tokenizer import KoreanTokenizer
 from RAG.retrieval.hybrid import reciprocal_rank_fusion, rerank_dense_top_five
+from RAG.retrieval.retriever import LawRetriever
 from RAG.service import LawSearchService
 
 
@@ -45,12 +47,26 @@ class HybridTests(unittest.TestCase):
         self.assertIsNone(reranked[4]["dense_rank"])
 
     def test_experimental_clause_search_does_not_mix_priority_score_types(self):
-        service = object.__new__(LawSearchService)
-        service.method = "dense_bm25_top5"
-        service.search = lambda text, top_k: {"results": [dict(result("a"), rank=1)]}
-        response = service.search_clause("clause-1", "임금은 월말에 지급한다", ["임금"], top_k=1)
-        self.assertEqual(response["results"][0]["chunk_id"], "a")
-        self.assertIsNone(response["retrieval_policy"])
+        for method in ("dense_bm25_top5", "dense_bm25_top5_rerank"):
+            service = object.__new__(LawSearchService)
+            service.method = method
+            service.search = lambda text, top_k: {"results": [dict(result("a"), rank=1)]}
+            response = service.search_clause("clause-1", "임금은 월말에 지급한다", ["임금"], top_k=1)
+            self.assertEqual(response["results"][0]["chunk_id"], "a")
+            self.assertIsNone(response["retrieval_policy"])
+
+    def test_top_five_reranker_can_promote_inserted_bm25_candidate(self):
+        retriever = object.__new__(LawRetriever)
+        retriever.method = "dense_bm25_top5_rerank"
+        retriever.candidate_k = 20
+        retriever.chunks = []
+        retriever.embedder = SimpleNamespace(encode=lambda *args, **kwargs: [[0.0]])
+        retriever.store = SimpleNamespace(search=lambda *args, **kwargs: [dict(result(str(i)), rank=i) for i in range(1, 8)])
+        retriever.bm25 = SimpleNamespace(search=lambda *args, **kwargs: [dict(result("b"), rank=1)])
+        retriever.reranker = SimpleNamespace(score=lambda query, passages: [10 if passage.endswith("b") else 0 for passage in passages])
+        rows = retriever.search("임금 지급", top_k=7)
+        self.assertEqual([row["chunk_id"] for row in rows], ["b", "1", "2", "3", "4", "6", "7"])
+        self.assertEqual([row["rank"] for row in rows], list(range(1, 8)))
 
     def test_tokenizer_and_index_integrity(self):
         tokenizer = KoreanTokenizer()
