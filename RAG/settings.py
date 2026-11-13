@@ -16,6 +16,7 @@ OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "rag"
 
 # 기본 검색·평가는 기본 근로조건 보완 자료를 포함한 BGE-M3 인덱스를 사용한다.
 DEFAULT_CORPUS = "employment_basic_v004"
+DEFAULT_METHOD = "dense_bm25_top5"
 
 
 def relative_path(path):

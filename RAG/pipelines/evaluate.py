@@ -15,7 +15,7 @@ from RAG.evaluation.retrieval_metrics import score_query, summarize
 from RAG.indexing.vector_store import COLLECTION_NAME
 from RAG.retrieval.retriever import LawRetriever
 from RAG.pipelines.build_index import corpus_name
-from RAG.settings import DATA_ROOT, STORAGE_ROOT, OUTPUT_ROOT, PROJECT_ROOT, DEFAULT_CORPUS, relative_path
+from RAG.settings import DATA_ROOT, STORAGE_ROOT, OUTPUT_ROOT, PROJECT_ROOT, DEFAULT_CORPUS, DEFAULT_METHOD, relative_path
 
 
 def sha256(path):
@@ -48,7 +48,7 @@ def main():
     parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help=f"평가 인덱스 (기본값: BGE-M3 {DEFAULT_CORPUS})")
     parser.add_argument("--dataset", type=Path, default=DATA_ROOT / "evaluation" / "retrieval_dev_v002.jsonl")
     parser.add_argument("--run-name", type=corpus_name)
-    parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"], default="dense")
+    parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"], default=DEFAULT_METHOD)
     parser.add_argument("--candidate-k", type=int, default=20)
     parser.add_argument("--rrf-k", type=int, default=60)
     parser.add_argument("--dense-weight", type=float, default=0.8)

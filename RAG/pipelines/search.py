@@ -5,14 +5,14 @@ import json
 
 from RAG.pipelines.build_index import corpus_name
 from RAG.retrieval.retriever import LawRetriever
-from RAG.settings import DEFAULT_CORPUS
+from RAG.settings import DEFAULT_CORPUS, DEFAULT_METHOD
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--corpus", type=corpus_name, default=DEFAULT_CORPUS, help=f"검색 인덱스 (기본값: BGE-M3 {DEFAULT_CORPUS})")
     parser.add_argument("--query", required=True)
-    parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"], default="dense")
+    parser.add_argument("--method", choices=["dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"], default=DEFAULT_METHOD)
     parser.add_argument("--top-k", type=int, default=5)
     parser.add_argument("--candidate-k", type=int, default=20)
     parser.add_argument("--rrf-k", type=int, default=60)

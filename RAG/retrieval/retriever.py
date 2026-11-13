@@ -10,13 +10,13 @@ from RAG.indexing.embeddings import create_embedder
 from RAG.indexing.vector_store import COLLECTION_NAME, LawVectorStore
 from RAG.pipelines.build_index import corpus_name, load_chunks
 from RAG.retrieval.hybrid import reciprocal_rank_fusion, rerank_dense_top_five
-from RAG.settings import DATA_ROOT, STORAGE_ROOT, DEFAULT_CORPUS
+from RAG.settings import DATA_ROOT, STORAGE_ROOT, DEFAULT_CORPUS, DEFAULT_METHOD
 from RAG.retrieval.reranker import BGEReranker, rerank_candidates
 from RAG.retrieval.temporal import explicit_years, filter_notice_years
 
 
 class LawRetriever:
-    def __init__(self, corpus=DEFAULT_CORPUS, method="dense", device="cpu", candidate_k=20, rrf_k=60, chroma_directory=None, dense_weight=0.8, bm25_weight=0.2, reranker_batch_size=2):
+    def __init__(self, corpus=DEFAULT_CORPUS, method=DEFAULT_METHOD, device="cpu", candidate_k=20, rrf_k=60, chroma_directory=None, dense_weight=0.8, bm25_weight=0.2, reranker_batch_size=2):
         corpus_name(corpus)
         if method not in {"dense", "bm25", "hybrid", "weighted_rrf", "hybrid_rerank", "dense_bm25_top5"}:
             raise ValueError("지원하지 않는 검색 방식입니다.")
