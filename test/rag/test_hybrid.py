@@ -47,13 +47,15 @@ class HybridTests(unittest.TestCase):
         self.assertIsNone(reranked[4]["dense_rank"])
 
     def test_experimental_clause_search_does_not_mix_priority_score_types(self):
-        for method in ("dense_bm25_top5", "dense_bm25_top5_rerank"):
+        for method, expected_policy in (("dense_bm25_top5", "labels_stable_priority_v2"),
+                                        ("dense_bm25_top5_rerank", None)):
             service = object.__new__(LawSearchService)
             service.method = method
             service.search = lambda text, top_k: {"results": [dict(result("a"), rank=1)]}
             response = service.search_clause("clause-1", "임금은 월말에 지급한다", ["임금"], top_k=1)
             self.assertEqual(response["results"][0]["chunk_id"], "a")
-            self.assertIsNone(response["retrieval_policy"])
+            self.assertEqual(response["retrieval_policy"], expected_policy)
+            self.assertNotIn("label_priority_score", response["results"][0])
 
     def test_top_five_reranker_can_promote_inserted_bm25_candidate(self):
         retriever = object.__new__(LawRetriever)

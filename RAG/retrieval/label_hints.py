@@ -4,10 +4,11 @@ LABELS = (
     "손해배상·위약금", "기타 근로조건", "그 외",
 )
 POLICY_VERSION = "labels_soft_priority_v1"
+STABLE_POLICY_VERSION = "labels_stable_priority_v2"
 
 # 서비스 주제와 조문 사이의 개발용 연결. 적용 요건에 대한 전문가 검수는 별도다.
 LABOR_ARTICLES = {
-    "임금": {"제17조", "제36조", "제37조", "제43조", "제44조", "제44조의2", "제44조의3", "제45조", "제46조", "제47조", "제48조", "제49조"},
+    "임금": {"제17조", "제36조", "제37조", "제43조", "제44조", "제44조의2", "제44조의3", "제45조", "제46조", "제47조", "제48조", "제49조", "제56조"},
     "근로시간": {"제17조", "제50조", "제51조", "제51조의2", "제52조", "제53조", "제54조", "제56조", "제57조", "제58조", "제59조", "제63조", "제69조"},
     "휴일": {"제17조", "제55조", "제56조", "제63조", "제70조"},
     "휴가": {"제17조", "제60조", "제61조", "제62조", "제73조", "제74조"},
@@ -72,4 +73,13 @@ def prioritize(results, labels):
         output.append({**row, "base_rank": row["rank"], "matched_labels": matches,
                        "label_priority_score": float(score) + (bonus if matches else 0.0)})
     output.sort(key=lambda row: (-row["label_priority_score"], row["base_rank"]))
+    return [{**row, "rank": rank} for rank, row in enumerate(output, 1)]
+
+
+def prioritize_stably(results, labels):
+    """Promote matching law topics while preserving retrieval order within each group."""
+    validate_labels(labels)
+    output = [{**row, "base_rank": row["rank"],
+               "matched_labels": matched_labels(row["metadata"], labels)} for row in results]
+    output.sort(key=lambda row: not bool(row["matched_labels"]))
     return [{**row, "rank": rank} for rank, row in enumerate(output, 1)]

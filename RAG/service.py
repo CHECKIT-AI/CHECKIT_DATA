@@ -2,7 +2,8 @@
 
 from RAG.settings import DEFAULT_CORPUS, DEFAULT_METHOD
 from RAG.retrieval.temporal import explicit_years
-from RAG.retrieval.label_hints import POLICY_VERSION, prioritize, validate_labels
+from RAG.retrieval.label_hints import (POLICY_VERSION, STABLE_POLICY_VERSION,
+                                       prioritize, prioritize_stably, validate_labels)
 
 
 class LawSearchService:
@@ -38,11 +39,14 @@ class LawSearchService:
             raise ValueError("조항 원문과 1~10의 반환 개수가 필요합니다.")
         # 라벨을 원문 문자열에 섞지 않는다. 숫자·날짜·부정 표현을 그대로 검색한다.
         response = self.search(text, top_k=max(20, top_k))
-        if labels and self.method not in {"dense_bm25_top5", "dense_bm25_top5_rerank"}:
+        if labels and self.method == "dense_bm25_top5":
+            response["results"] = prioritize_stably(response["results"], labels)[:top_k]
+            policy = STABLE_POLICY_VERSION
+        elif labels and self.method not in {"dense_bm25_top5_rerank"}:
             response["results"] = prioritize(response["results"], labels)[:top_k]
             policy = POLICY_VERSION
         else:
-            # 빈 라벨이나 점수 단위가 섞인 실험 방식은 라벨 보정 없이 검색 순서를 유지한다.
+            # 빈 라벨이나 실험용 재정렬 방식은 검색 순서를 유지한다.
             response["results"] = response["results"][:top_k]
             policy = None
         response.update(clause_id=clause_id, labels=labels, retrieval_policy=policy)

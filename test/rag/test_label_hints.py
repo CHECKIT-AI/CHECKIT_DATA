@@ -1,7 +1,7 @@
 import unittest
 from types import SimpleNamespace
 
-from RAG.retrieval.label_hints import LABELS, prioritize, validate_labels
+from RAG.retrieval.label_hints import LABELS, prioritize, prioritize_stably, validate_labels
 from RAG.service import LawSearchService
 
 
@@ -11,6 +11,29 @@ def hit(identifier, rank, article, distance):
 
 
 class LabelHintTests(unittest.TestCase):
+    def test_stable_priority_preserves_rank_among_matching_articles(self):
+        rows = [
+            {"rank": 1, "chunk_id": "other", "metadata": {"law_name": "근로기준법", "article_no": "제90조"}},
+            {"rank": 2, "chunk_id": "premium", "metadata": {"law_name": "근로기준법", "article_no": "제56조"}},
+            {"rank": 3, "chunk_id": "wage", "metadata": {"law_name": "근로기준법", "article_no": "제43조"}},
+        ]
+        ranked = prioritize_stably(rows, ["임금"])
+        self.assertEqual([row["chunk_id"] for row in ranked], ["premium", "wage", "other"])
+        self.assertEqual([row["base_rank"] for row in ranked], [2, 3, 1])
+        self.assertEqual([row["rank"] for row in ranked], [1, 2, 3])
+
+    def test_default_clause_search_uses_stable_priority_without_score_mix(self):
+        service = LawSearchService.__new__(LawSearchService)
+        service.corpus = "test"
+        service.method = "dense_bm25_top5"
+        service.search = lambda text, top_k: {"results": [
+            {"rank": 1, "chunk_id": "other", "metadata": {"law_name": "근로기준법", "article_no": "제90조"}, "cosine_distance": 0.1},
+            {"rank": 2, "chunk_id": "premium", "metadata": {"law_name": "근로기준법", "article_no": "제56조"}},
+        ], "warnings": []}
+        result = service.search_clause("c-1", "가산수당", ["임금"], top_k=1)
+        self.assertEqual(result["results"][0]["chunk_id"], "premium")
+        self.assertEqual(result["retrieval_policy"], "labels_stable_priority_v2")
+
     def test_only_ten_unique_known_labels(self):
         self.assertEqual(len(LABELS), 10)
         self.assertEqual(validate_labels([]), [])
