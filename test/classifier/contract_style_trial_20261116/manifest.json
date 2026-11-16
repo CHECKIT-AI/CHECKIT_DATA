@@ -1,0 +1,25 @@
+{
+  "source": "newly authored fictional contracts, not actual signed contracts",
+  "contract_count": 12,
+  "clause_count": 120,
+  "single_count": 60,
+  "multi_count": 60,
+  "gold_sha256": "1b2b8686266e2ced0669854fdb210f502bb24b71ed343725dac4de83cae24f25",
+  "pdf_sha256": {
+    "new_contract_01.pdf": "2cec4bb2c7b8aff9dae69d87c546ed2a80c790ea7e7b65b64645a805688f1d88",
+    "new_contract_02.pdf": "dfbe3eb0a80727b5f79d2d682f7821ead1791b45907a16cf3f0299fb572532f6",
+    "new_contract_03.pdf": "79bdf9cbb0a61d3e322dae70bc3a89d9773858ac486c7fe84a5d480d2f7b0c4c",
+    "new_contract_04.pdf": "76a42f701d6516319260950584d82ec39e4388075d1a38ee14786a1516ae8d72",
+    "new_contract_05.pdf": "655393116b57ccdac45b408db0e7190c1f99586be0b2063a75954d3239e300e2",
+    "new_contract_06.pdf": "ed35926e9e8bb02fef6f134ce0548227eac9f16321c5776142bc7840ed42d71d",
+    "new_contract_07.pdf": "2ff6ed935f519d1c023fd20a750f5d00e49d2ec1e2d1d25ad1d2cf03a572592c",
+    "new_contract_08.pdf": "ef567afdd2830a1748362b734380ebd38ee204fc847b8427790075b0b1d09f20",
+    "new_contract_09.pdf": "db1f6497d9503fd112986d457674946e1d1121df1a1763804c494cbe986972cc",
+    "new_contract_10.pdf": "947eecab1aa7a6672b577aed8aeaf73e26c790f6c6b2f6a73858d5271d98d73a",
+    "new_contract_11.pdf": "2c28a9dc444daab273387a2d5a2374224d4985ea4894324e23d6e7873ed03b98",
+    "new_contract_12.pdf": "f1cee80bf1f6c7d1e73c35984ffd4b98a1206064ab58275e677d3886130ce54b"
+  },
+  "generator": "test/classifier/contract_style_trial_20261116/generate.py",
+  "label_status": "PROVISIONAL_UNREVIEWED",
+  "exact_overlap_with_existing": 0
+}

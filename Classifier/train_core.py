@@ -23,11 +23,11 @@ def evaluate_rows(model, tokenizer, rows, labels, thresholds, device):
 
 
 def train_one(name, train_rows, validation, test, labels, tokenizer, output, device,
-              epochs, learning_rate):
+              epochs, learning_rate, model_name=BASE_MODEL, model_revision=BASE_REVISION):
     torch.manual_seed(42)
     random.seed(42)
     model = AutoModelForSequenceClassification.from_pretrained(
-        BASE_MODEL, revision=BASE_REVISION, num_labels=len(labels),
+        model_name, revision=model_revision, num_labels=len(labels),
         problem_type="multi_label_classification", trust_remote_code=False,
     ).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)

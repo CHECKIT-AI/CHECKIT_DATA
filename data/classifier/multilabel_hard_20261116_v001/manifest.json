@@ -1,0 +1,17 @@
+{
+  "status": "PROVISIONAL_UNREVIEWED",
+  "generator": "Classifier/generate_hard_multilabel.py",
+  "counts": {
+    "train": 384,
+    "validation": 96,
+    "test": 96
+  },
+  "sha256": {
+    "train": "48ebe7677c70ed37b3a743fcd5c91233666698b1af50569e22820fa27ba8676c",
+    "validation": "59e28074a03e9ad007d6380c5bdc5a2400b4c7dbe76688d4682b83439fc8fd68",
+    "test": "92b03a5cf3e69334d56db6c8f5d47e23dc2da565bc95551a5cb431fe884a786a"
+  },
+  "template_count": 72,
+  "worker_variants": 8,
+  "exact_overlap_with_existing": 0
+}

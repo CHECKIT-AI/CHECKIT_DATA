@@ -90,6 +90,19 @@ Drive `processed_core_clean`의 `train.jsonl`, `test.jsonl`, `labels.json`을 `d
 
 기존 core test 446개는 앞선 실험에서도 확인한 자료이므로 위 변화는 탐색 결과입니다. 별도 잠금 테스트셋 100개는 미검수 상태로 평가에 사용하지 않았습니다. 백엔드 기본 모델은 새 공개 배포본을 참조하지만 실제 계약서와 독립 검수 정답으로 성능을 확인해야 합니다. 추가 합성 문장을 만들 경우에는 손해배상·위약금 등 오류 유형을 우선 분석하고 기존 train/validation/test와 동일·유사 문장이 겹치지 않는지 확인해야 합니다.
 
+## 멀티라벨 보강 실험 (2026-11-16)
+
+기존 학습 3,710개 중 235개가 멀티라벨입니다. 1차·2차 보강 이후에도 실제형 PDF 문구에서 두 번째 라벨을 놓쳐, 여섯 라벨 조합의 조항 576개를 추가 생성하고 384개를 학습에 사용했습니다. 생성과 학습은 다음과 같습니다.
+
+```bash
+.venv/bin/python -m Classifier.generate_hard_multilabel
+.venv/bin/python -m Classifier.train_multilabel_from_deployed --hard
+```
+
+데이터 분할, 학습 설정, 배포·2차·3차 모델 비교와 한계는 [3차 실험 보고서](reports/multilabel_hard_20261116.md)에 있습니다. PDF 정답은 별도 `CheckIt_Eval_Benchmark_v1.0.3`의 잠정 라벨을 사용했습니다. 3차 5e-6 모델을 새 Hugging Face 저장소에 공개하고 BE 기본값으로 적용했습니다.
+
+새로 작성한 합성 계약서 12개, 조항 120개의 별도 시험 결과는 [계약서 형식 시험 보고서](reports/contract_style_trial_20261116.md)에 있습니다. 실제 체결 계약서로 검증한 결과는 아닙니다.
+
 ## 배포와 백엔드 연결
 
-현재 백엔드 기본 설정은 공개 [Hugging Face 모델 `hur03/checkit-contract-classifier-core-synthetic-3epoch-v2`](https://huggingface.co/hur03/checkit-contract-classifier-core-synthetic-3epoch-v2)의 revision `1accf527c060396c5801b044e2cebf8bedb5ac12`를 참조합니다. 설정은 [백엔드 `app/config.py`](../../CheckIt_BE/app/config.py)와 `.env.example`의 `CHECKIT_CLASSIFIER_MODEL_ID`, `CHECKIT_CLASSIFIER_REVISION`에서 확인할 수 있습니다. 환경변수로 다른 값을 지정하면 기본값을 덮어씁니다. 이 모델 사용과 실제 계약서에서의 분류·판정 품질 검증은 별개입니다.
+현재 백엔드 기본 설정은 공개 [Hugging Face 모델 `hur03/checkit-contract-classifier-multilabel-hard-v1`](https://huggingface.co/hur03/checkit-contract-classifier-multilabel-hard-v1)의 revision `5f2a15e5fb7538c1ac0d0c12de4c65cf1c9e9e23`을 참조합니다. 설정은 [백엔드 `app/config.py`](../../CheckIt_BE/app/config.py)와 `.env.example`의 `CHECKIT_CLASSIFIER_MODEL_ID`, `CHECKIT_CLASSIFIER_REVISION`에서 확인할 수 있습니다. 환경변수로 다른 값을 지정하면 기본값을 덮어씁니다. 이 모델 사용과 실제 계약서에서의 분류·판정 품질 검증은 별개입니다.
