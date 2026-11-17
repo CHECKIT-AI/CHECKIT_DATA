@@ -4,5 +4,7 @@ chromadb>=1.0,<2
 sentence-transformers>=5,<6
 huggingface-hub>=0.34,<2
 python-dotenv>=1,<2
-rank-bm25>=0.2.2,<0.3
-kiwipiepy>=0.24,<0.25
+# Match the versions recorded by the employment_basic_v004 BM25 index.
+rank-bm25==0.2.2
+kiwipiepy==0.24.0
+kiwipiepy_model==0.24.0
