@@ -18,13 +18,15 @@ python3 -m venv .venv
 
 | 경로 | 역할 |
 | --- | --- |
-| `RAG/collection/`, `RAG/preprocessing/` | 법령 수집·정규화·청킹 |
-| `RAG/indexing/`, `RAG/retrieval/`, `RAG/service.py` | 인덱스 구축·검색과 백엔드 연결 |
-| `RAG/pipelines/`, `RAG/evaluation/` | 실행 명령·검색 평가 |
-| `Classifier/` | 분류 데이터 준비·학습·평가 |
-| `data/`, `storage/`, `models/`, `outputs/` | 입력 자료·인덱스·모델·실행 산출물 |
-| `test/` | 단위 테스트와 고정 평가셋·결과 |
-| `docs/` | [기존 상세 안내](docs/README-details.md) |
+| [`RAG/`](RAG/README.md) | 법령 수집·정규화·청킹, Chroma/BM25 인덱스, 검색·평가 및 `LawSearchService` |
+| [`Classifier/`](Classifier/README.md) | 조항 분류 데이터 분할, KLUE-RoBERTa 학습·비교 실험과 결과 |
+| [`data/rag/`](RAG/README.md#3-데이터와-디렉터리) | 법령 API 원본, 가공 청크, 평가 입력 데이터 |
+| [`data/classifier/`](Classifier/README.md#데이터-구성) | 합성 조항 240개와 로컬 clean core 원자료 |
+| `storage/rag/` | corpus별 Chroma/BM25 인덱스와 manifest (Git 제외) |
+| `models/classifier/` | 보존한 분류 모델 산출물 및 보고서 |
+| `outputs/rag/`, `outputs/classifier/` | 실행별 중간 산출물·평가 결과 (Git 제외) |
+| `test/rag/` | RAG 단위 테스트, 고정 평가셋과 공유 결과 |
+| `BASIC_LABOR_COVERAGE.md` | 기본 근로조건 관련 법령 원문 보완 기록 |
 
 ## 평가
 
