@@ -9,6 +9,20 @@ from RAG.service import LawSearchService
 
 
 class SearchSafetyTests(unittest.TestCase):
+    def test_annual_notice_uses_indexed_source_and_effective_date(self):
+        notice = {"chunk_id": "notice:2026", "content": "시급 10,320원", "law_name": "2026년 적용 최저임금 고시",
+                  "source_type": "administrative_notice", "valid_from": "20260101", "valid_to": "20261231",
+                  "source_url": "https://www.law.go.kr/notice"}
+        service = LawSearchService.__new__(LawSearchService)
+        service.corpus, service.method = "test", "dense"
+        service.retriever = SimpleNamespace(chunks=[notice])
+
+        found = service.annual_notice("2026-11-01")
+        self.assertEqual(found["results"][0]["chunk_id"], "notice:2026")
+        self.assertEqual(found["results"][0]["content"], notice["content"])
+        self.assertEqual(found["results"][0]["metadata"]["valid_to"], "20261231")
+        self.assertEqual(service.annual_notice("2025-11-01")["results"], [])
+
     def test_markup_removed_without_losing_numbers_or_negation(self):
         text = '① 월급 2,000,000원은 &lt;b&gt;공제하지 않는다&lt;/b&gt;.\n┃ 시급 │ 10,320원 ┃\n<img src="secret">'
         cleaned = clean_search_text(text)

@@ -1,5 +1,8 @@
 """백엔드에서 호출하는 검색 인터페이스. 별도 HTTP 서버는 실행하지 않는다."""
 
+from datetime import date
+
+from RAG.indexing.vector_store import METADATA_KEYS
 from RAG.settings import DEFAULT_CORPUS, DEFAULT_METHOD
 from RAG.retrieval.temporal import explicit_years
 from RAG.retrieval.label_hints import (POLICY_VERSION, STABLE_POLICY_VERSION,
@@ -30,6 +33,21 @@ class LawSearchService:
             "results": results,
             "warnings": warnings,
         }
+
+    def annual_notice(self, effective_date):
+        day = date.fromisoformat(effective_date).strftime("%Y%m%d")
+        matches = [row for row in self.retriever.chunks
+                   if row.get("source_type") == "administrative_notice"
+                   and row.get("law_name", "").endswith("적용 최저임금 고시")
+                   and row.get("valid_from") and row.get("valid_to")
+                   and row["valid_from"] <= day <= row["valid_to"]]
+        if len(matches) > 1:
+            raise RuntimeError("적용 기간이 겹치는 최저임금 고시가 있습니다.")
+        results = [{"rank": 1, "chunk_id": row["chunk_id"], "content": row["content"],
+                    "metadata": {key: row[key] for key in METADATA_KEYS if row.get(key) is not None}}
+                   for row in matches]
+        return {"corpus": self.corpus, "method": self.method, "results": results,
+                "warnings": [] if results else ["적용일에 해당하는 최저임금 고시가 현재 corpus에 없습니다."]}
 
     def search_clause(self, clause_id, text, labels, top_k=5):
         validate_labels(labels)
